@@ -1,0 +1,536 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16B00E311F5F410900A1429E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E301F5F410900A1429E /* AppDelegate.swift */; };
+		16B00E331F5F410900A1429E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E321F5F410900A1429E /* RootViewController.swift */; };
+		16B00E351F5F410900A1429E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E341F5F410900A1429E /* DataViewController.swift */; };
+		16B00E371F5F410900A1429E /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E361F5F410900A1429E /* ModelController.swift */; };
+		16B00E3A1F5F410900A1429E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E381F5F410900A1429E /* Main.storyboard */; };
+		16B00E3C1F5F410900A1429E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E3B1F5F410900A1429E /* Assets.xcassets */; };
+		16B00E3F1F5F410900A1429E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E3D1F5F410900A1429E /* LaunchScreen.storyboard */; };
+		16B00E4A1F5F410900A1429E /* Rhyme_DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E491F5F410900A1429E /* Rhyme_DiceTests.swift */; };
+		16B00E551F5F410900A1429E /* Rhyme_DiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E541F5F410900A1429E /* Rhyme_DiceUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		16B00E461F5F410900A1429E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16B00E251F5F410900A1429E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16B00E2C1F5F410900A1429E;
+			remoteInfo = "Rhyme-Dice";
+		};
+		16B00E511F5F410900A1429E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16B00E251F5F410900A1429E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16B00E2C1F5F410900A1429E;
+			remoteInfo = "Rhyme-Dice";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16B00E2D1F5F410900A1429E /* Rhyme-Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rhyme-Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16B00E301F5F410900A1429E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		16B00E321F5F410900A1429E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		16B00E341F5F410900A1429E /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		16B00E361F5F410900A1429E /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		16B00E391F5F410900A1429E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		16B00E3B1F5F410900A1429E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16B00E3E1F5F410900A1429E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		16B00E401F5F410900A1429E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16B00E451F5F410900A1429E /* Rhyme-DiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rhyme-DiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16B00E491F5F410900A1429E /* Rhyme_DiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rhyme_DiceTests.swift; sourceTree = "<group>"; };
+		16B00E4B1F5F410900A1429E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16B00E501F5F410900A1429E /* Rhyme-DiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rhyme-DiceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16B00E541F5F410900A1429E /* Rhyme_DiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rhyme_DiceUITests.swift; sourceTree = "<group>"; };
+		16B00E561F5F410900A1429E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16B00E2A1F5F410900A1429E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16B00E421F5F410900A1429E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16B00E4D1F5F410900A1429E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16B00E241F5F410900A1429E = {
+			isa = PBXGroup;
+			children = (
+				16B00E2F1F5F410900A1429E /* Rhyme-Dice */,
+				16B00E481F5F410900A1429E /* Rhyme-DiceTests */,
+				16B00E531F5F410900A1429E /* Rhyme-DiceUITests */,
+				16B00E2E1F5F410900A1429E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		16B00E2E1F5F410900A1429E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16B00E2D1F5F410900A1429E /* Rhyme-Dice.app */,
+				16B00E451F5F410900A1429E /* Rhyme-DiceTests.xctest */,
+				16B00E501F5F410900A1429E /* Rhyme-DiceUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16B00E2F1F5F410900A1429E /* Rhyme-Dice */ = {
+			isa = PBXGroup;
+			children = (
+				16B00E301F5F410900A1429E /* AppDelegate.swift */,
+				16B00E321F5F410900A1429E /* RootViewController.swift */,
+				16B00E341F5F410900A1429E /* DataViewController.swift */,
+				16B00E361F5F410900A1429E /* ModelController.swift */,
+				16B00E381F5F410900A1429E /* Main.storyboard */,
+				16B00E3B1F5F410900A1429E /* Assets.xcassets */,
+				16B00E3D1F5F410900A1429E /* LaunchScreen.storyboard */,
+				16B00E401F5F410900A1429E /* Info.plist */,
+			);
+			path = "Rhyme-Dice";
+			sourceTree = "<group>";
+		};
+		16B00E481F5F410900A1429E /* Rhyme-DiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				16B00E491F5F410900A1429E /* Rhyme_DiceTests.swift */,
+				16B00E4B1F5F410900A1429E /* Info.plist */,
+			);
+			path = "Rhyme-DiceTests";
+			sourceTree = "<group>";
+		};
+		16B00E531F5F410900A1429E /* Rhyme-DiceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				16B00E541F5F410900A1429E /* Rhyme_DiceUITests.swift */,
+				16B00E561F5F410900A1429E /* Info.plist */,
+			);
+			path = "Rhyme-DiceUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16B00E2C1F5F410900A1429E /* Rhyme-Dice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16B00E591F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-Dice" */;
+			buildPhases = (
+				16B00E291F5F410900A1429E /* Sources */,
+				16B00E2A1F5F410900A1429E /* Frameworks */,
+				16B00E2B1F5F410900A1429E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Rhyme-Dice";
+			productName = "Rhyme-Dice";
+			productReference = 16B00E2D1F5F410900A1429E /* Rhyme-Dice.app */;
+			productType = "com.apple.product-type.application";
+		};
+		16B00E441F5F410900A1429E /* Rhyme-DiceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16B00E5C1F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-DiceTests" */;
+			buildPhases = (
+				16B00E411F5F410900A1429E /* Sources */,
+				16B00E421F5F410900A1429E /* Frameworks */,
+				16B00E431F5F410900A1429E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16B00E471F5F410900A1429E /* PBXTargetDependency */,
+			);
+			name = "Rhyme-DiceTests";
+			productName = "Rhyme-DiceTests";
+			productReference = 16B00E451F5F410900A1429E /* Rhyme-DiceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		16B00E4F1F5F410900A1429E /* Rhyme-DiceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16B00E5F1F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-DiceUITests" */;
+			buildPhases = (
+				16B00E4C1F5F410900A1429E /* Sources */,
+				16B00E4D1F5F410900A1429E /* Frameworks */,
+				16B00E4E1F5F410900A1429E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16B00E521F5F410900A1429E /* PBXTargetDependency */,
+			);
+			name = "Rhyme-DiceUITests";
+			productName = "Rhyme-DiceUITests";
+			productReference = 16B00E501F5F410900A1429E /* Rhyme-DiceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16B00E251F5F410900A1429E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Will Meier";
+				TargetAttributes = {
+					16B00E2C1F5F410900A1429E = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					16B00E441F5F410900A1429E = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 16B00E2C1F5F410900A1429E;
+					};
+					16B00E4F1F5F410900A1429E = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 16B00E2C1F5F410900A1429E;
+					};
+				};
+			};
+			buildConfigurationList = 16B00E281F5F410900A1429E /* Build configuration list for PBXProject "Rhyme-Dice" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 16B00E241F5F410900A1429E;
+			productRefGroup = 16B00E2E1F5F410900A1429E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16B00E2C1F5F410900A1429E /* Rhyme-Dice */,
+				16B00E441F5F410900A1429E /* Rhyme-DiceTests */,
+				16B00E4F1F5F410900A1429E /* Rhyme-DiceUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		16B00E2B1F5F410900A1429E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B00E3F1F5F410900A1429E /* LaunchScreen.storyboard in Resources */,
+				16B00E3C1F5F410900A1429E /* Assets.xcassets in Resources */,
+				16B00E3A1F5F410900A1429E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16B00E431F5F410900A1429E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16B00E4E1F5F410900A1429E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16B00E291F5F410900A1429E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B00E331F5F410900A1429E /* RootViewController.swift in Sources */,
+				16B00E371F5F410900A1429E /* ModelController.swift in Sources */,
+				16B00E351F5F410900A1429E /* DataViewController.swift in Sources */,
+				16B00E311F5F410900A1429E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16B00E411F5F410900A1429E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B00E4A1F5F410900A1429E /* Rhyme_DiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16B00E4C1F5F410900A1429E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B00E551F5F410900A1429E /* Rhyme_DiceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		16B00E471F5F410900A1429E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16B00E2C1F5F410900A1429E /* Rhyme-Dice */;
+			targetProxy = 16B00E461F5F410900A1429E /* PBXContainerItemProxy */;
+		};
+		16B00E521F5F410900A1429E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16B00E2C1F5F410900A1429E /* Rhyme-Dice */;
+			targetProxy = 16B00E511F5F410900A1429E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		16B00E381F5F410900A1429E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16B00E391F5F410900A1429E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		16B00E3D1F5F410900A1429E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16B00E3E1F5F410900A1429E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		16B00E571F5F410900A1429E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		16B00E581F5F410900A1429E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		16B00E5A1F5F410900A1429E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Rhyme-Dice/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-Dice";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		16B00E5B1F5F410900A1429E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Rhyme-Dice/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-Dice";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		16B00E5D1F5F410900A1429E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Rhyme-DiceTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-DiceTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rhyme-Dice.app/Rhyme-Dice";
+			};
+			name = Debug;
+		};
+		16B00E5E1F5F410900A1429E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Rhyme-DiceTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-DiceTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rhyme-Dice.app/Rhyme-Dice";
+			};
+			name = Release;
+		};
+		16B00E601F5F410900A1429E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Rhyme-DiceUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-DiceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Rhyme-Dice";
+			};
+			name = Debug;
+		};
+		16B00E611F5F410900A1429E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Rhyme-DiceUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-DiceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Rhyme-Dice";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16B00E281F5F410900A1429E /* Build configuration list for PBXProject "Rhyme-Dice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16B00E571F5F410900A1429E /* Debug */,
+				16B00E581F5F410900A1429E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16B00E591F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-Dice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16B00E5A1F5F410900A1429E /* Debug */,
+				16B00E5B1F5F410900A1429E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		16B00E5C1F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-DiceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16B00E5D1F5F410900A1429E /* Debug */,
+				16B00E5E1F5F410900A1429E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		16B00E5F1F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-DiceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16B00E601F5F410900A1429E /* Debug */,
+				16B00E611F5F410900A1429E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 16B00E251F5F410900A1429E /* Project object */;
+}
