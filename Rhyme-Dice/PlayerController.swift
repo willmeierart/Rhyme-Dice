@@ -6,41 +6,44 @@
 //  Copyright © 2017 Will Meier. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import AVFoundation
 
-class PlayerController: UIViewController {
+var audioPlayer = AVAudioPlayer()
+var songs:[String] = []
+var thisSong = 0
+var audioStuffed = false
+
+class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var player:AVAudioPlayer = AVAudioPlayer()
     
-    @IBAction func play(_ sender: Any) {
-        player.play()
+    @IBOutlet weak var playerTable: UITableView!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return songs.count
     }
     
-    @IBAction func pause(_ sender: Any) {
-        player.pause()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "player")
+        cell.textLabel?.text = songs[indexPath.row]
+        return cell
     }
     
-    @IBAction func replay(_ sender: Any) {
-        player.currentTime = 0
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        do{
+           let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
+            try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+            audioPlayer.play()
+            thisSong = indexPath.row
+            audioStuffed = true
+        }catch{
+            print("error")
+        }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        do
-        {
-            let audioPath = Bundle.main.path(forResource: "wipe_me_down", ofType: "mp3")
-            try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
-        }
-        catch
-        {
-            
-        }
+        getSongs()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,6 +53,31 @@ class PlayerController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    
+    func getSongs(){
+        let folderURL = URL(fileURLWithPath: Bundle.main.resourcePath!)
+        
+        do{
+            let songPath = try FileManager.default.contentsOfDirectory(at:folderURL, includingPropertiesForKeys:nil, options: .skipsHiddenFiles)
+            
+            for song in songPath{
+                var mySong = song.absoluteString
+                if mySong.contains(".mp3"){
+                    let findString = mySong.components(separatedBy: "/")
+                    mySong = findString[findString.count-1]
+                    mySong = mySong.replacingOccurrences(of: "%20", with: " ")
+                    mySong = mySong.replacingOccurrences(of: ".mp3", with: "")
+                    songs.append(mySong)
+                    print(songs)
+                }
+            }
+            playerTable.reloadData()
+        }
+        catch{
+            
+        }
     }
     
 

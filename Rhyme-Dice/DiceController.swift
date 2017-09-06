@@ -1,30 +1,73 @@
 //
-//  ViewController.swift
+//  DiceController.swift
 //  Rhyme-Dice
 //
 //  Created by Will Meier on 9/5/17.
 //  Copyright © 2017 Will Meier. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 import AVFoundation
 import UIKit
 
 class DiceController: UIViewController {
     
-    var player:AVAudioPlayer = AVAudioPlayer()
+//    var player:AVAudioPlayer = AVAudioPlayer()
+    
+    @IBOutlet weak var nowPlaying: UILabel!
     
     @IBAction func play(_ sender: Any) {
-        player.play()
+        if audioStuffed == true && audioPlayer.isPlaying == false {
+            audioPlayer.play()
+        }
+        
     }
-    
     @IBAction func pause(_ sender: Any) {
-        player.pause()
+        if audioStuffed == true && audioPlayer.isPlaying {
+            audioPlayer.pause()
+        }
+        
+    }
+    @IBAction func prev(_ sender: Any) {
+        if audioStuffed == true && thisSong > 0{
+            playThis(thisOne: songs[thisSong-1])
+            thisSong -= 1
+            nowPlaying.text = songs[thisSong]
+        } else {
+            
+        }
+        
+    }
+    @IBAction func next(_ sender: Any) {
+        if audioStuffed == true && thisSong < songs.count-1{
+            playThis(thisOne: songs[thisSong+1])
+            thisSong += 1
+            nowPlaying.text = songs[thisSong]
+        }else{
+            
+        }
+        
+    }
+    @IBAction func volume(_ sender: UISlider) {
+        audioPlayer.volume = sender.value
     }
     
-    @IBAction func replay(_ sender: Any) {
-        player.currentTime = 0
+    
+    
+    
+    
+    func playThis(thisOne:String){
+        do{
+            let audioPath = Bundle.main.path(forResource: thisOne, ofType: ".mp3")
+            try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+            
+            audioPlayer.play()
+        }catch{
+            print("error")
+        }
     }
+    
+    
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var leftDie: UIImageView!
@@ -32,17 +75,11 @@ class DiceController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        do
-        {
-            let audioPath = Bundle.main.path(forResource: "Wipe Me Down", ofType: "mp3")
-            try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+        if audioStuffed == true {
+            nowPlaying.text = "Now Playing: \(songs[thisSong])"
         }
-        catch
-        {
-            
-        }
-        getSongs()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,28 +97,6 @@ class DiceController: UIViewController {
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         updateDice()
-    }
-    
-    func getSongs(){
-        let folderURL = URL(fileURLWithPath: Bundle.main.resourcePath!)
-        
-        do{
-            let songPath = try FileManager.default.contentsOfDirectory(at:folderURL, includingPropertiesForKeys:nil, options: .skipsHiddenFiles)
-            
-            for song in songPath{
-                var mySong = song.absoluteString
-                if mySong.contains(".mp3"){
-                    let findString = mySong.components(separatedBy: "/")
-                    mySong = findString[findString.count-1]
-                    mySong = mySong.replacingOccurrences(of: "%20", with: " ")
-                    mySong = mySong.replacingOccurrences(of: ".mp3", with: "")
-                    print(mySong)
-                }
-            }
-        }
-        catch{
-            
-        }
     }
     
     func updateDice(){
