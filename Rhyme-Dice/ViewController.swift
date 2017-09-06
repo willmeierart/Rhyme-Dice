@@ -31,38 +31,36 @@ class ViewController: UIViewController {
     }
     
     @IBAction func rollButton(_ sender: Any) {
-        updateDiceImages()
+        updateDice()
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        updateDiceImages()
+        updateDice()
     }
     
-    func updateDiceImages(){
+    func updateDice(){
         let firstNumber = Int(arc4random_uniform(6)+1)
         let secondNumber = Int(arc4random_uniform(6)+1)
         
         let shortSounds = [1:"fat", 2:"head", 3:"thick", 4:"hot", 5:"luck", 6:"wood"]
         let longSounds = [1:"stay", 2:"sweet", 3:"bite", 4:"float", 5:"boy", 6:"again"]
         
-        animateRoll(die:leftDie, imgSet:"Long", num:firstNumber)
-        animateRoll(die:rightDie, imgSet:"Short", num:secondNumber)
+        self.label.text = "spit bars rhymin with \(longSounds[firstNumber]!) n \(shortSounds[secondNumber]!)"
         
-        label.text = "spit bars rhymin with \(longSounds[firstNumber]!) n \(shortSounds[secondNumber]!)"
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            self.animateRoll(die:self.leftDie, imgSet:"Long")
+            self.animateRoll(die:self.rightDie, imgSet:"Short")
+        }
         
         leftDie.image = UIImage(named: "DiceLong\(firstNumber)")
         rightDie.image = UIImage(named: "DiceShort\(secondNumber)")
     }
     
-    func animateRoll(die:UIImageView!, imgSet:String, num:Int){
-        var imgList = (1..<6).map {UIImage(named:"Dice\(imgSet)\($0)")!}
-        imgList.append(UIImage(named:"Dice\(imgSet)\(num)")!)
-        die.animationImages = imgList
+    func animateRoll(die:UIImageView!, imgSet:String){
+        die.animationImages = (1..<6).map{UIImage(named:"Dice\(imgSet)\($0)")!}
         die.animationDuration = 1.0
         die.animationRepeatCount = 1
         die.startAnimating()
     }
-
-    
 }
 
