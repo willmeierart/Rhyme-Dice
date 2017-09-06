@@ -31,6 +31,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func rollButton(_ sender: Any) {
+        updateDiceImages()
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        updateDiceImages()
+    }
+    
+    func updateDiceImages(){
         let firstNumber = Int(arc4random_uniform(6) + 1)
         let secondNumber = Int(arc4random_uniform(6) + 1)
         
