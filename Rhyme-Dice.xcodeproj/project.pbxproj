@@ -16,7 +16,12 @@
 		16B00E4A1F5F410900A1429E /* Rhyme_DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E491F5F410900A1429E /* Rhyme_DiceTests.swift */; };
 		16B00E551F5F410900A1429E /* Rhyme_DiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E541F5F410900A1429E /* Rhyme_DiceUITests.swift */; };
 		16B00E681F5F573900A1429E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E341F5F410900A1429E /* DataViewController.swift */; };
-		16B00E6A1F5F6BF700A1429E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E691F5F6BF700A1429E /* ViewController.swift */; };
+		16B00E6A1F5F6BF700A1429E /* DiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E691F5F6BF700A1429E /* DiceController.swift */; };
+		16B00E6C1F607F9D00A1429E /* Wipe Me Down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E6B1F607F9D00A1429E /* Wipe Me Down.mp3 */; };
+		16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E6D1F6081AB00A1429E /* PlayerController.swift */; };
+		16B00E721F608EAC00A1429E /* Ice Cream Paint Job.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */; };
+		16B00E731F608EAC00A1429E /* Special Herbs 01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */; };
+		16B00E741F608EAC00A1429E /* Go DJ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E711F608EAC00A1429E /* Go DJ.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +57,12 @@
 		16B00E501F5F410900A1429E /* Rhyme-DiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rhyme-DiceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B00E541F5F410900A1429E /* Rhyme_DiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rhyme_DiceUITests.swift; sourceTree = "<group>"; };
 		16B00E561F5F410900A1429E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		16B00E691F5F6BF700A1429E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		16B00E691F5F6BF700A1429E /* DiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceController.swift; sourceTree = "<group>"; };
+		16B00E6B1F607F9D00A1429E /* Wipe Me Down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Wipe Me Down.mp3"; path = "../../../../../../Downloads/Wipe Me Down.mp3"; sourceTree = "<group>"; };
+		16B00E6D1F6081AB00A1429E /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Ice Cream Paint Job.mp3"; path = "../../../../../../Downloads/Ice Cream Paint Job.mp3"; sourceTree = "<group>"; };
+		16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Special Herbs 01.mp3"; path = "../../../../../../Downloads/Special Herbs 01.mp3"; sourceTree = "<group>"; };
+		16B00E711F608EAC00A1429E /* Go DJ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Go DJ.mp3"; path = "../../../../../../Downloads/Go DJ.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +116,7 @@
 				16B00E631F5F41FF00A1429E /* Model */,
 				16B00E641F5F420500A1429E /* View */,
 				16B00E651F5F420B00A1429E /* Controller */,
+				16B00E751F60901200A1429E /* Songs */,
 				16B00E621F5F41CC00A1429E /* SupportingFiles */,
 			);
 			path = "Rhyme-Dice";
@@ -161,9 +172,21 @@
 				16B00E321F5F410900A1429E /* RootViewController.swift */,
 				16B00E341F5F410900A1429E /* DataViewController.swift */,
 				16B00E301F5F410900A1429E /* AppDelegate.swift */,
-				16B00E691F5F6BF700A1429E /* ViewController.swift */,
+				16B00E691F5F6BF700A1429E /* DiceController.swift */,
+				16B00E6D1F6081AB00A1429E /* PlayerController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		16B00E751F60901200A1429E /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */,
+				16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */,
+				16B00E711F608EAC00A1429E /* Go DJ.mp3 */,
+				16B00E6B1F607F9D00A1429E /* Wipe Me Down.mp3 */,
+			);
+			name = Songs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,9 +297,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B00E731F608EAC00A1429E /* Special Herbs 01.mp3 in Resources */,
+				16B00E741F608EAC00A1429E /* Go DJ.mp3 in Resources */,
 				16B00E3F1F5F410900A1429E /* LaunchScreen.storyboard in Resources */,
 				16B00E3C1F5F410900A1429E /* Images.xcassets in Resources */,
 				16B00E3A1F5F410900A1429E /* Main.storyboard in Resources */,
+				16B00E721F608EAC00A1429E /* Ice Cream Paint Job.mp3 in Resources */,
+				16B00E6C1F607F9D00A1429E /* Wipe Me Down.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,8 +328,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16B00E6A1F5F6BF700A1429E /* ViewController.swift in Sources */,
+				16B00E6A1F5F6BF700A1429E /* DiceController.swift in Sources */,
 				16B00E681F5F573900A1429E /* DataViewController.swift in Sources */,
+				16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */,
 				16B00E331F5F410900A1429E /* RootViewController.swift in Sources */,
 				16B00E371F5F410900A1429E /* ModelController.swift in Sources */,
 				16B00E311F5F410900A1429E /* AppDelegate.swift in Sources */,

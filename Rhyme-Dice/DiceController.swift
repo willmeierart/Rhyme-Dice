@@ -7,18 +7,42 @@
 //
 
 import Foundation
+import AVFoundation
 import UIKit
 
-class ViewController: UIViewController {
+class DiceController: UIViewController {
+    
+    var player:AVAudioPlayer = AVAudioPlayer()
+    
+    @IBAction func play(_ sender: Any) {
+        player.play()
+    }
+    
+    @IBAction func pause(_ sender: Any) {
+        player.pause()
+    }
+    
+    @IBAction func replay(_ sender: Any) {
+        player.currentTime = 0
+    }
     
     @IBOutlet weak var label: UILabel!
-    
     @IBOutlet weak var leftDie: UIImageView!
     @IBOutlet weak var rightDie: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        do
+        {
+            let audioPath = Bundle.main.path(forResource: "Wipe Me Down", ofType: "mp3")
+            try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+        }
+        catch
+        {
+            
+        }
+        getSongs()
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,6 +60,28 @@ class ViewController: UIViewController {
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         updateDice()
+    }
+    
+    func getSongs(){
+        let folderURL = URL(fileURLWithPath: Bundle.main.resourcePath!)
+        
+        do{
+            let songPath = try FileManager.default.contentsOfDirectory(at:folderURL, includingPropertiesForKeys:nil, options: .skipsHiddenFiles)
+            
+            for song in songPath{
+                var mySong = song.absoluteString
+                if mySong.contains(".mp3"){
+                    let findString = mySong.components(separatedBy: "/")
+                    mySong = findString[findString.count-1]
+                    mySong = mySong.replacingOccurrences(of: "%20", with: " ")
+                    mySong = mySong.replacingOccurrences(of: ".mp3", with: "")
+                    print(mySong)
+                }
+            }
+        }
+        catch{
+            
+        }
     }
     
     func updateDice(){

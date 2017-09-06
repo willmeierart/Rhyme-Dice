@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="-63" y="-964"/>
         </scene>
-        <!--View Controller-->
+        <!--DiceRoll-->
         <scene sceneID="7fX-kh-XML">
             <objects>
-                <viewController id="m2R-k5-g67" customClass="ViewController" customModule="Rhyme_Dice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m2R-k5-g67" userLabel="DiceRoll" customClass="DiceController" customModule="Rhyme_Dice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RQB-xQ-YXQ"/>
                         <viewControllerLayoutGuide type="bottom" id="IgM-19-LCE"/>
@@ -83,13 +83,51 @@
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="zsP-6J-ZSY"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="247" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37R-l4-lo4">
-                                        <rect key="frame" x="171.5" y="270.5" width="32" height="366.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37R-l4-lo4">
+                                        <rect key="frame" x="171.5" y="270.5" width="32" height="286.5"/>
                                         <state key="normal" image="Roll"/>
                                         <connections>
-                                            <action selector="rollButton:" destination="m2R-k5-g67" eventType="touchUpInside" id="QIb-vn-CWm"/>
+                                            <action selector="rollButton:" destination="m2R-k5-g67" eventType="touchUpInside" id="mBP-YX-fnT"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-7X-Vh1">
+                                        <rect key="frame" x="102" y="607" width="171" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57l-r9-i6u">
+                                                <rect key="frame" x="0.0" y="0.0" width="36" height="30"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="PLAY">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="play:" destination="INE-Cc-8aF" eventType="touchUpInside" id="KJ1-MQ-bou"/>
+                                                    <action selector="play:" destination="m2R-k5-g67" eventType="touchUpInside" id="kib-uJ-e8h"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYX-Yr-630">
+                                                <rect key="frame" x="52" y="0.0" width="48" height="30"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="PAUSE">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pause:" destination="INE-Cc-8aF" eventType="touchUpInside" id="2Kc-UE-fFG"/>
+                                                    <action selector="pause:" destination="m2R-k5-g67" eventType="touchUpInside" id="wDH-lR-NuG"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbG-4h-KA0">
+                                                <rect key="frame" x="116" y="0.0" width="55" height="30"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="REPLAY">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="replay:" destination="m2R-k5-g67" eventType="touchUpInside" id="M39-wa-2aR"/>
+                                                    <action selector="replay:" destination="INE-Cc-8aF" eventType="touchUpInside" id="deZ-KJ-mrm"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="4Z0-eV-d83" firstAttribute="leading" secondItem="aZ1-Gf-ElO" secondAttribute="leading" constant="40" id="7hb-UJ-41h"/>
@@ -106,14 +144,67 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="label" destination="2b0-8r-8m0" id="heB-bi-PF6"/>
-                        <outlet property="leftDie" destination="oqq-vq-fPl" id="doY-0j-k2c"/>
-                        <outlet property="rightDie" destination="ljv-yz-T0z" id="SCM-9I-44g"/>
+                        <outlet property="label" destination="2b0-8r-8m0" id="i6k-ag-Taa"/>
+                        <outlet property="leftDie" destination="oqq-vq-fPl" id="0md-d8-drH"/>
+                        <outlet property="rightDie" destination="ljv-yz-T0z" id="YPC-RR-097"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTA-Cr-Ags" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="604" y="-243"/>
+        </scene>
+        <!--Player Controller-->
+        <scene sceneID="Xbn-RE-JwX">
+            <objects>
+                <viewController id="INE-Cc-8aF" customClass="PlayerController" customModule="Rhyme_Dice" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xsj-wJ-nHH"/>
+                        <viewControllerLayoutGuide type="bottom" id="wOW-1v-V8u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I62-xr-jRX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkd-Dm-gbq">
+                                <rect key="frame" x="124" y="499" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="REPLAY">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="replay:" destination="INE-Cc-8aF" eventType="touchUpInside" id="7pT-gi-JuJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-9J-U4v">
+                                <rect key="frame" x="209" y="452" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="PAUSE">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="pause:" destination="INE-Cc-8aF" eventType="touchUpInside" id="byA-0g-iU4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP2-Ei-mDy">
+                                <rect key="frame" x="48" y="452" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="PLAY">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="play:" destination="INE-Cc-8aF" eventType="touchUpInside" id="Fl9-ya-Ax0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8CY-zK-5pM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1264.8" y="-243.32833583208398"/>
         </scene>
     </scenes>
     <resources>
