@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		167C36291F610E11002A796F /* Sit Low.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36281F610E11002A796F /* Sit Low.mp3 */; };
+		167C362B1F610E23002A796F /* Jungle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362A1F610E23002A796F /* Jungle.mp3 */; };
+		167C362D1F610E3B002A796F /* Bipolar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362C1F610E3B002A796F /* Bipolar.mp3 */; };
+		167C36311F610E6D002A796F /* Thizzle Dance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36301F610E6D002A796F /* Thizzle Dance.mp3 */; };
+		167C36331F610E7C002A796F /* Ride to It.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36321F610E7C002A796F /* Ride to It.mp3 */; };
+		167C36351F610E8F002A796F /* Not My Job.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36341F610E8F002A796F /* Not My Job.mp3 */; };
+		167C36371F610EA3002A796F /* She Only Sees.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36361F610EA3002A796F /* She Only Sees.mp3 */; };
+		167C36391F610EC4002A796F /* Get Stupid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36381F610EC4002A796F /* Get Stupid.mp3 */; };
+		167C363B1F61AD3D002A796F /* VideoBackgroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167C363A1F61AD3D002A796F /* VideoBackgroundController.swift */; };
 		16B00E311F5F410900A1429E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E301F5F410900A1429E /* AppDelegate.swift */; };
 		16B00E331F5F410900A1429E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E321F5F410900A1429E /* RootViewController.swift */; };
 		16B00E371F5F410900A1429E /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E361F5F410900A1429E /* ModelController.swift */; };
@@ -22,6 +31,8 @@
 		16B00E721F608EAC00A1429E /* Ice Cream Paint Job.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */; };
 		16B00E731F608EAC00A1429E /* Special Herbs 01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */; };
 		16B00E741F608EAC00A1429E /* Go DJ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E711F608EAC00A1429E /* Go DJ.mp3 */; };
+		16DCCED91F61BAB5004A1180 /* RhymeDiceIntro.mov in Resources */ = {isa = PBXBuildFile; fileRef = 16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */; };
+		16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +53,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		167C36281F610E11002A796F /* Sit Low.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Sit Low.mp3"; path = "../../../../../../Downloads/Sit Low.mp3"; sourceTree = "<group>"; };
+		167C362A1F610E23002A796F /* Jungle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Jungle.mp3; path = ../../../../../../Downloads/Jungle.mp3; sourceTree = "<group>"; };
+		167C362C1F610E3B002A796F /* Bipolar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Bipolar.mp3; path = ../../../../../../Downloads/Bipolar.mp3; sourceTree = "<group>"; };
+		167C36301F610E6D002A796F /* Thizzle Dance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Thizzle Dance.mp3"; path = "../../../../../../Downloads/Thizzle Dance.mp3"; sourceTree = "<group>"; };
+		167C36321F610E7C002A796F /* Ride to It.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Ride to It.mp3"; path = "../../../../../../Downloads/Ride to It.mp3"; sourceTree = "<group>"; };
+		167C36341F610E8F002A796F /* Not My Job.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Not My Job.mp3"; path = "../../../../../../Downloads/Not My Job.mp3"; sourceTree = "<group>"; };
+		167C36361F610EA3002A796F /* She Only Sees.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "She Only Sees.mp3"; path = "../../../../../../Downloads/She Only Sees.mp3"; sourceTree = "<group>"; };
+		167C36381F610EC4002A796F /* Get Stupid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Get Stupid.mp3"; path = "../../../../../../Downloads/Get Stupid.mp3"; sourceTree = "<group>"; };
+		167C363A1F61AD3D002A796F /* VideoBackgroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBackgroundController.swift; sourceTree = "<group>"; };
 		16B00E2D1F5F410900A1429E /* Rhyme-Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rhyme-Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B00E301F5F410900A1429E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16B00E321F5F410900A1429E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +83,8 @@
 		16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Ice Cream Paint Job.mp3"; path = "../../../../../../Downloads/Ice Cream Paint Job.mp3"; sourceTree = "<group>"; };
 		16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Special Herbs 01.mp3"; path = "../../../../../../Downloads/Special Herbs 01.mp3"; sourceTree = "<group>"; };
 		16B00E711F608EAC00A1429E /* Go DJ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Go DJ.mp3"; path = "../../../../../../Downloads/Go DJ.mp3"; sourceTree = "<group>"; };
+		16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = RhymeDiceIntro.mov; path = ../../../../../../Desktop/RhymeDiceIntro.mov; sourceTree = "<group>"; };
+		16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +140,7 @@
 				16B00E651F5F420B00A1429E /* Controller */,
 				16B00E751F60901200A1429E /* Songs */,
 				16B00E621F5F41CC00A1429E /* SupportingFiles */,
+				16DCCED71F61BA96004A1180 /* Media */,
 			);
 			path = "Rhyme-Dice";
 			sourceTree = "<group>";
@@ -174,6 +197,8 @@
 				16B00E301F5F410900A1429E /* AppDelegate.swift */,
 				16B00E691F5F6BF700A1429E /* DiceController.swift */,
 				16B00E6D1F6081AB00A1429E /* PlayerController.swift */,
+				167C363A1F61AD3D002A796F /* VideoBackgroundController.swift */,
+				16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -181,12 +206,28 @@
 		16B00E751F60901200A1429E /* Songs */ = {
 			isa = PBXGroup;
 			children = (
+				167C362A1F610E23002A796F /* Jungle.mp3 */,
+				167C362C1F610E3B002A796F /* Bipolar.mp3 */,
+				167C36301F610E6D002A796F /* Thizzle Dance.mp3 */,
+				167C36281F610E11002A796F /* Sit Low.mp3 */,
 				16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */,
+				167C36321F610E7C002A796F /* Ride to It.mp3 */,
 				16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */,
+				167C36381F610EC4002A796F /* Get Stupid.mp3 */,
 				16B00E711F608EAC00A1429E /* Go DJ.mp3 */,
 				16B00E6B1F607F9D00A1429E /* Wipe Me Down.mp3 */,
+				167C36341F610E8F002A796F /* Not My Job.mp3 */,
+				167C36361F610EA3002A796F /* She Only Sees.mp3 */,
 			);
 			name = Songs;
+			sourceTree = "<group>";
+		};
+		16DCCED71F61BA96004A1180 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */,
+			);
+			name = Media;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,9 +338,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				167C36371F610EA3002A796F /* She Only Sees.mp3 in Resources */,
+				167C36391F610EC4002A796F /* Get Stupid.mp3 in Resources */,
 				16B00E731F608EAC00A1429E /* Special Herbs 01.mp3 in Resources */,
+				167C36331F610E7C002A796F /* Ride to It.mp3 in Resources */,
 				16B00E741F608EAC00A1429E /* Go DJ.mp3 in Resources */,
+				167C36291F610E11002A796F /* Sit Low.mp3 in Resources */,
+				167C36311F610E6D002A796F /* Thizzle Dance.mp3 in Resources */,
+				167C36351F610E8F002A796F /* Not My Job.mp3 in Resources */,
+				16DCCED91F61BAB5004A1180 /* RhymeDiceIntro.mov in Resources */,
+				167C362B1F610E23002A796F /* Jungle.mp3 in Resources */,
 				16B00E3F1F5F410900A1429E /* LaunchScreen.storyboard in Resources */,
+				167C362D1F610E3B002A796F /* Bipolar.mp3 in Resources */,
 				16B00E3C1F5F410900A1429E /* Images.xcassets in Resources */,
 				16B00E3A1F5F410900A1429E /* Main.storyboard in Resources */,
 				16B00E721F608EAC00A1429E /* Ice Cream Paint Job.mp3 in Resources */,
@@ -329,9 +379,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				16B00E6A1F5F6BF700A1429E /* DiceController.swift in Sources */,
+				16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */,
 				16B00E681F5F573900A1429E /* DataViewController.swift in Sources */,
 				16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */,
 				16B00E331F5F410900A1429E /* RootViewController.swift in Sources */,
+				167C363B1F61AD3D002A796F /* VideoBackgroundController.swift in Sources */,
 				16B00E371F5F410900A1429E /* ModelController.swift in Sources */,
 				16B00E311F5F410900A1429E /* AppDelegate.swift in Sources */,
 			);
@@ -580,6 +632,7 @@
 				16B00E5B1F5F410900A1429E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		16B00E5C1F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-DiceTests" */ = {
 			isa = XCConfigurationList;
@@ -588,6 +641,7 @@
 				16B00E5E1F5F410900A1429E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		16B00E5F1F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-DiceUITests" */ = {
 			isa = XCConfigurationList;
@@ -596,6 +650,7 @@
 				16B00E611F5F410900A1429E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
