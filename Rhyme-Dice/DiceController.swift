@@ -25,6 +25,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func play(_ sender: Any) {
         if audioStuffed == true && audioPlayer.isPlaying == false{
             audioPlayer.play()
+            audioPlayer2.pause()
             nowPlaying.text = songs[thisSong]
         } else if audioStuffed == false{
             print(songs)
@@ -69,7 +70,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         recordingSession = AVAudioSession.sharedInstance()
         
         do{
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+//            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission(){[unowned self] allowed in
                 DispatchQueue.main.async{
@@ -111,7 +112,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     func startRecording(){
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        let audioFilename = getDocumentsDirectory().appendingPathComponent( "\(Date()).m4a")
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
@@ -119,6 +120,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
         do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
@@ -136,6 +138,9 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     func finishRecording(success: Bool){
         audioRecorder.stop()
         audioRecorder = nil
+        do{
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch {}
         
         if success {
             recordButton.setTitle("RECORD", for: .normal)
@@ -146,7 +151,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
             startRecording()
         } else {
             finishRecording(success:true)
-            print(getDocumentsDirectory())
         }
     }
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {

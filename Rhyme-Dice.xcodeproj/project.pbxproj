@@ -33,6 +33,7 @@
 		16B00E741F608EAC00A1429E /* Go DJ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E711F608EAC00A1429E /* Go DJ.mp3 */; };
 		16DCCED91F61BAB5004A1180 /* RhymeDiceIntro.mov in Resources */ = {isa = PBXBuildFile; fileRef = 16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */; };
 		16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */; };
+		16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDC1F649A8C004A1180 /* Recording.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		16B00E711F608EAC00A1429E /* Go DJ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Go DJ.mp3"; path = "../../../../../../Downloads/Go DJ.mp3"; sourceTree = "<group>"; };
 		16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = RhymeDiceIntro.mov; path = ../../../../../../Desktop/RhymeDiceIntro.mov; sourceTree = "<group>"; };
 		16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsController.swift; sourceTree = "<group>"; };
+		16DCCEDC1F649A8C004A1180 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		16B00E631F5F41FF00A1429E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				16DCCEDC1F649A8C004A1180 /* Recording.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */,
 				16B00E681F5F573900A1429E /* DataViewController.swift in Sources */,
 				16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */,
+				16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */,
 				16B00E331F5F410900A1429E /* RootViewController.swift in Sources */,
 				167C363B1F61AD3D002A796F /* VideoBackgroundController.swift in Sources */,
 				16B00E371F5F410900A1429E /* ModelController.swift in Sources */,
