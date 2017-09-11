@@ -22,6 +22,16 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var leftDie: UIImageView!
     @IBOutlet weak var rightDie: UIImageView!
     
+    
+    
+//    @IBAction func goToLibrary(_ sender: UITapGestureRecognizer) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "playlist")
+//        self.present(vc, animated:true, completion:nil)
+//        print(vc)
+//    }
+//    
+    
     @IBAction func play(_ sender: Any) {
         if audioStuffed == true && audioPlayer.isPlaying == false{
             audioPlayer.play()
@@ -70,7 +80,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         recordingSession = AVAudioSession.sharedInstance()
         
         do{
-//            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission(){[unowned self] allowed in
                 DispatchQueue.main.async{
@@ -85,9 +94,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
             //
         }
         
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -111,6 +117,22 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
             print("error")
         }
     }
+    
+    
+    
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    func recordTapped(){
+        if audioRecorder == nil {
+            startRecording()
+        } else {
+            finishRecording(success:true)
+        }
+    }
     func startRecording(){
         let audioFilename = getDocumentsDirectory().appendingPathComponent( "\(Date()).m4a")
         let settings = [
@@ -130,27 +152,15 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
             finishRecording(success:false)
         }
     }
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
-    }
     func finishRecording(success: Bool){
         audioRecorder.stop()
         audioRecorder = nil
-        do{
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        } catch {}
+        
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         
         if success {
             recordButton.setTitle("RECORD", for: .normal)
-        }
-    }
-    func recordTapped(){
-        if audioRecorder == nil {
-            startRecording()
-        } else {
-            finishRecording(success:true)
+//            alertFinishedRecording()
         }
     }
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
@@ -158,13 +168,36 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
             finishRecording(success: false)
         }
     }
+//    func alertFinishedRecording(){
+//        let alert = UIAlertController(title: "Recording finished", message: "Recording finished", preferredStyle: .actionSheet)
+//        alert.addAction(UIAlertAction(title: "Keep", style: .default, handler: { (<#UIAlertAction#>) in
+//            self.keepRecording()
+//        }))
+//        alert.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (<#UIAlertAction#>) in
+//            self.editRecording()
+//        }))
+//        alert.addAction(UIAlertAction(title: "Discard", style: .destructive, handler: { (<#UIAlertAction#>) in
+//            self.discardRecording()
+//        }))
+//        
+//        present(alert, animated:true, completion: nil)
+//    }
     
+    func keepRecording(){
+        
+    }
+    func editRecording(){
+        
+    }
+    func discardRecording(){
+        
+    }
     
     func updateDice(){
         let firstNumber = Int(arc4random_uniform(6)+1)
         let secondNumber = Int(arc4random_uniform(6)+1)
         
-        let shortSounds = [1:"fat", 2:"head", 3:"thick", 4:"hot", 5:"luck", 6:"wood"]
+        let shortSounds = [1:"fat", 2:"head", 3:"thick", 4:"hot", 5:"cure", 6:"wood"]
         let longSounds = [1:"stay", 2:"sweet", 3:"bite", 4:"float", 5:"boy", 6:"again"]
         
         self.label.text = "spit bars rhymin with \(longSounds[firstNumber]!) n \(shortSounds[secondNumber]!)"

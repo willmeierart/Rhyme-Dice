@@ -19,6 +19,14 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet weak var playerTable: UITableView!
     
+    
+//    @IBAction func returnMain(_ sender: UITapGestureRecognizer) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "Rhyme")
+//        self.present(vc, animated:true, completion:nil)
+//        print("ok")
+//    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songs.count
     }
@@ -33,9 +41,12 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
         do{
            let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
             try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+//            audioPlayer2.pause()
             audioPlayer.play()
             thisSong = indexPath.row
             audioStuffed = true
+            
+            
         }catch{
             print("error")
         }

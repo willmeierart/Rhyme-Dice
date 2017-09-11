@@ -24,7 +24,6 @@
 		16B00E3F1F5F410900A1429E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E3D1F5F410900A1429E /* LaunchScreen.storyboard */; };
 		16B00E4A1F5F410900A1429E /* Rhyme_DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E491F5F410900A1429E /* Rhyme_DiceTests.swift */; };
 		16B00E551F5F410900A1429E /* Rhyme_DiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E541F5F410900A1429E /* Rhyme_DiceUITests.swift */; };
-		16B00E681F5F573900A1429E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E341F5F410900A1429E /* DataViewController.swift */; };
 		16B00E6A1F5F6BF700A1429E /* DiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E691F5F6BF700A1429E /* DiceController.swift */; };
 		16B00E6C1F607F9D00A1429E /* Wipe Me Down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E6B1F607F9D00A1429E /* Wipe Me Down.mp3 */; };
 		16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E6D1F6081AB00A1429E /* PlayerController.swift */; };
@@ -34,6 +33,7 @@
 		16DCCED91F61BAB5004A1180 /* RhymeDiceIntro.mov in Resources */ = {isa = PBXBuildFile; fileRef = 16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */; };
 		16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */; };
 		16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDC1F649A8C004A1180 /* Recording.swift */; };
+		16DCCEDF1F65C474004A1180 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDE1F65C474004A1180 /* DataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,6 @@
 		16B00E2D1F5F410900A1429E /* Rhyme-Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rhyme-Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B00E301F5F410900A1429E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16B00E321F5F410900A1429E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		16B00E341F5F410900A1429E /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		16B00E361F5F410900A1429E /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		16B00E391F5F410900A1429E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16B00E3B1F5F410900A1429E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 		16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = RhymeDiceIntro.mov; path = ../../../../../../Desktop/RhymeDiceIntro.mov; sourceTree = "<group>"; };
 		16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsController.swift; sourceTree = "<group>"; };
 		16DCCEDC1F649A8C004A1180 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		16DCCEDE1F65C474004A1180 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataViewController.swift; path = ../../../../../../.Trash/DataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,8 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				16B00E361F5F410900A1429E /* ModelController.swift */,
+				16DCCEDE1F65C474004A1180 /* DataViewController.swift */,
 				16B00E321F5F410900A1429E /* RootViewController.swift */,
-				16B00E341F5F410900A1429E /* DataViewController.swift */,
 				16B00E301F5F410900A1429E /* AppDelegate.swift */,
 				16B00E691F5F6BF700A1429E /* DiceController.swift */,
 				16B00E6D1F6081AB00A1429E /* PlayerController.swift */,
@@ -382,8 +382,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				16B00E6A1F5F6BF700A1429E /* DiceController.swift in Sources */,
+				16DCCEDF1F65C474004A1180 /* DataViewController.swift in Sources */,
 				16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */,
-				16B00E681F5F573900A1429E /* DataViewController.swift in Sources */,
 				16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */,
 				16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */,
 				16B00E331F5F410900A1429E /* RootViewController.swift in Sources */,

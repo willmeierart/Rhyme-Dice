@@ -11,7 +11,8 @@ import AVFoundation
 
 
 var audioPlayer2 = AVAudioPlayer()
-var recordings:[String] = []
+var recordings:[URL] = []
+var recordingTitles:[String] = []
 var thisRecording = 0
 
 class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDataSource{
@@ -24,48 +25,41 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "recording")
-        cell.textLabel?.text = recordings[indexPath.row]
+        cell.textLabel?.text = recordingTitles[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
-            let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys:nil, options:[])
-            let m4aFiles = directoryContents.filter{ $0.pathExtension == "m4a" }
-            let recordingPath = m4aFiles[indexPath.row]
+            let recordingPath = recordings[indexPath.row]
 
             try audioPlayer2 = AVAudioPlayer(contentsOf: recordingPath)
             audioPlayer2.play()
             thisRecording = indexPath.row
         }catch{
-            print("error")
+            print(error)
         }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         do{
-//            var recordingPath: URL
-//            recordingPath = getRecordingFile(row: indexPath.row)
-            
-            let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys:nil, options:[])
-            let m4aFiles = directoryContents.filter{ $0.pathExtension == "m4a" }
-            let recordingPath = m4aFiles[indexPath.row]
+            let recordingPath = recordings[indexPath.row]
             
             if editingStyle == .delete{
+                recordings.remove(at:indexPath.row)
+                recordingTitles.remove(at:indexPath.row)
+                recordingsTable.deleteRows(at: [indexPath], with: .automatic)
                 try FileManager.default.removeItem(at: recordingPath)
-                getRecordings()
             }
         }catch{
-            
+            print(error)
         }
-        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getRecordings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,30 +67,22 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
         getRecordings()
     }
     
-//    func getRecordingFile(row:Int)->URL{
-//        do{
-//            let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//            let directoryContents = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys:nil, options:[])
-//            let m4aFiles = directoryContents.filter{ $0.pathExtension == "m4a" }
-//            return m4aFiles[row]
-//        }catch{}
-//    }
-    
-    
     func getRecordings(){
-        let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        
+        let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        recordings = []
+        recordingTitles = []
             do{
                 let recordingPath = try FileManager.default.contentsOfDirectory(at:folderURL, includingPropertiesForKeys:nil, options: .skipsHiddenFiles)
                 for recording in recordingPath{
                     var myRecording = recording.absoluteString
                     if myRecording.contains(".m4a"){
+                        recordings.append(recording)
                         let findString = myRecording.components(separatedBy: "/")
                         myRecording = findString[findString.count-1]
                         myRecording = myRecording.replacingOccurrences(of: "%20", with: " ")
                         myRecording = myRecording.replacingOccurrences(of: ".m4a", with: "")
-                        if !recordings.contains(myRecording){
-                            recordings.append(myRecording)
+                        if !recordingTitles.contains(myRecording){
+                            recordingTitles.append(myRecording)
                         }
                     }
                 }
