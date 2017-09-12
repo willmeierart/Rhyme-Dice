@@ -217,7 +217,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWn-Oo-9Zp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="-119"/>
+            <point key="canvasLocation" x="1" y="-175"/>
         </scene>
         <!--Recordings-->
         <scene sceneID="7KM-Xq-5Zp">

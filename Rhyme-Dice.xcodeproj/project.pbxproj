@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08B9783096711F35A0474451 /* Pods_Rhyme_DiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0006128A58A32B0EB7AFE6BC /* Pods_Rhyme_DiceTests.framework */; };
 		167C36291F610E11002A796F /* Sit Low.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36281F610E11002A796F /* Sit Low.mp3 */; };
 		167C362B1F610E23002A796F /* Jungle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362A1F610E23002A796F /* Jungle.mp3 */; };
 		167C362D1F610E3B002A796F /* Bipolar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362C1F610E3B002A796F /* Bipolar.mp3 */; };
@@ -34,6 +35,9 @@
 		16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */; };
 		16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDC1F649A8C004A1180 /* Recording.swift */; };
 		16DCCEDF1F65C474004A1180 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDE1F65C474004A1180 /* DataViewController.swift */; };
+		16FBADF71F679E460000AE8B /* DiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E691F5F6BF700A1429E /* DiceController.swift */; };
+		A08A7175A3F3C651BA9D09BE /* Pods_Rhyme_DiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A54E578B6E81393D0806198 /* Pods_Rhyme_DiceUITests.framework */; };
+		A5138287C7C726D7C243B9E9 /* Pods_Rhyme_Dice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58760A473014AEBDB729C821 /* Pods_Rhyme_Dice.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0006128A58A32B0EB7AFE6BC /* Pods_Rhyme_DiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rhyme_DiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1168D20F55E2B69B1584314A /* Pods-Rhyme-DiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceUITests/Pods-Rhyme-DiceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		167C36281F610E11002A796F /* Sit Low.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Sit Low.mp3"; path = "../../../../../../Downloads/Sit Low.mp3"; sourceTree = "<group>"; };
 		167C362A1F610E23002A796F /* Jungle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Jungle.mp3; path = ../../../../../../Downloads/Jungle.mp3; sourceTree = "<group>"; };
 		167C362C1F610E3B002A796F /* Bipolar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Bipolar.mp3; path = ../../../../../../Downloads/Bipolar.mp3; sourceTree = "<group>"; };
@@ -87,6 +93,13 @@
 		16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsController.swift; sourceTree = "<group>"; };
 		16DCCEDC1F649A8C004A1180 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		16DCCEDE1F65C474004A1180 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataViewController.swift; path = ../../../../../../.Trash/DataViewController.swift; sourceTree = "<group>"; };
+		1B1009ACE46FD823CB090D15 /* Pods-Rhyme-DiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceTests/Pods-Rhyme-DiceTests.release.xcconfig"; sourceTree = "<group>"; };
+		4A4F4D348DF55AAD6EA14B3B /* Pods-Rhyme-DiceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceUITests/Pods-Rhyme-DiceUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4AA3C6474247E4F3E936B044 /* Pods-Rhyme-DiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceTests/Pods-Rhyme-DiceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		58760A473014AEBDB729C821 /* Pods_Rhyme_Dice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rhyme_Dice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78B5A5CAF2F5A9A8C7E38972 /* Pods-Rhyme-Dice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-Dice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-Dice/Pods-Rhyme-Dice.debug.xcconfig"; sourceTree = "<group>"; };
+		9A54E578B6E81393D0806198 /* Pods_Rhyme_DiceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rhyme_DiceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6FEC88E7E03A6CB262EF32F /* Pods-Rhyme-Dice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-Dice.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-Dice/Pods-Rhyme-Dice.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5138287C7C726D7C243B9E9 /* Pods_Rhyme_Dice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B9783096711F35A0474451 /* Pods_Rhyme_DiceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A08A7175A3F3C651BA9D09BE /* Pods_Rhyme_DiceUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +137,8 @@
 				16B00E481F5F410900A1429E /* Rhyme-DiceTests */,
 				16B00E531F5F410900A1429E /* Rhyme-DiceUITests */,
 				16B00E2E1F5F410900A1429E /* Products */,
+				FC7A0612F9B2D6A09118B59E /* Pods */,
+				3AD47EF3F67C4B90A684B54D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,6 +251,29 @@
 			name = Media;
 			sourceTree = "<group>";
 		};
+		3AD47EF3F67C4B90A684B54D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58760A473014AEBDB729C821 /* Pods_Rhyme_Dice.framework */,
+				0006128A58A32B0EB7AFE6BC /* Pods_Rhyme_DiceTests.framework */,
+				9A54E578B6E81393D0806198 /* Pods_Rhyme_DiceUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC7A0612F9B2D6A09118B59E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78B5A5CAF2F5A9A8C7E38972 /* Pods-Rhyme-Dice.debug.xcconfig */,
+				A6FEC88E7E03A6CB262EF32F /* Pods-Rhyme-Dice.release.xcconfig */,
+				4AA3C6474247E4F3E936B044 /* Pods-Rhyme-DiceTests.debug.xcconfig */,
+				1B1009ACE46FD823CB090D15 /* Pods-Rhyme-DiceTests.release.xcconfig */,
+				4A4F4D348DF55AAD6EA14B3B /* Pods-Rhyme-DiceUITests.debug.xcconfig */,
+				1168D20F55E2B69B1584314A /* Pods-Rhyme-DiceUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,9 +281,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16B00E591F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-Dice" */;
 			buildPhases = (
+				6CC897A95B8B7F38D362ACE4 /* [CP] Check Pods Manifest.lock */,
 				16B00E291F5F410900A1429E /* Sources */,
 				16B00E2A1F5F410900A1429E /* Frameworks */,
 				16B00E2B1F5F410900A1429E /* Resources */,
+				8BE0E10C18D3FBF9460E8CFD /* [CP] Embed Pods Frameworks */,
+				F787216B5754E65292CDA77D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,9 +301,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16B00E5C1F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-DiceTests" */;
 			buildPhases = (
+				A0EEE54E7809DFC83EC0CB57 /* [CP] Check Pods Manifest.lock */,
 				16B00E411F5F410900A1429E /* Sources */,
 				16B00E421F5F410900A1429E /* Frameworks */,
 				16B00E431F5F410900A1429E /* Resources */,
+				FA27EC37FF46D97D4DF04F98 /* [CP] Embed Pods Frameworks */,
+				F908CAFF082C138777C5D583 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,9 +322,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16B00E5F1F5F410900A1429E /* Build configuration list for PBXNativeTarget "Rhyme-DiceUITests" */;
 			buildPhases = (
+				35A7CB1E20C5B9247744F3A7 /* [CP] Check Pods Manifest.lock */,
 				16B00E4C1F5F410900A1429E /* Sources */,
 				16B00E4D1F5F410900A1429E /* Frameworks */,
 				16B00E4E1F5F410900A1429E /* Resources */,
+				67FEEC5CD42E97C505B9EEB9 /* [CP] Embed Pods Frameworks */,
+				0FECCB7FFC5C356E3A5F0FD8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -376,6 +426,158 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FECCB7FFC5C356E3A5F0FD8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rhyme-DiceUITests/Pods-Rhyme-DiceUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35A7CB1E20C5B9247744F3A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rhyme-DiceUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67FEEC5CD42E97C505B9EEB9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rhyme-DiceUITests/Pods-Rhyme-DiceUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CC897A95B8B7F38D362ACE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rhyme-Dice-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BE0E10C18D3FBF9460E8CFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Rhyme-Dice/Pods-Rhyme-Dice-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rhyme-Dice/Pods-Rhyme-Dice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0EEE54E7809DFC83EC0CB57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rhyme-DiceTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F787216B5754E65292CDA77D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rhyme-Dice/Pods-Rhyme-Dice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F908CAFF082C138777C5D583 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rhyme-DiceTests/Pods-Rhyme-DiceTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA27EC37FF46D97D4DF04F98 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rhyme-DiceTests/Pods-Rhyme-DiceTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		16B00E291F5F410900A1429E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -405,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FBADF71F679E460000AE8B /* DiceController.swift in Sources */,
 				16B00E551F5F410900A1429E /* Rhyme_DiceUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,6 +742,7 @@
 		};
 		16B00E5A1F5F410900A1429E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78B5A5CAF2F5A9A8C7E38972 /* Pods-Rhyme-Dice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YHQPELT3BZ;
@@ -552,6 +756,7 @@
 		};
 		16B00E5B1F5F410900A1429E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6FEC88E7E03A6CB262EF32F /* Pods-Rhyme-Dice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YHQPELT3BZ;
@@ -565,6 +770,7 @@
 		};
 		16B00E5D1F5F410900A1429E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AA3C6474247E4F3E936B044 /* Pods-Rhyme-DiceTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -579,6 +785,7 @@
 		};
 		16B00E5E1F5F410900A1429E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B1009ACE46FD823CB090D15 /* Pods-Rhyme-DiceTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -593,6 +800,7 @@
 		};
 		16B00E601F5F410900A1429E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A4F4D348DF55AAD6EA14B3B /* Pods-Rhyme-DiceUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Rhyme-DiceUITests/Info.plist";
@@ -606,6 +814,7 @@
 		};
 		16B00E611F5F410900A1429E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1168D20F55E2B69B1584314A /* Pods-Rhyme-DiceUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Rhyme-DiceUITests/Info.plist";
