@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JSONParserSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Rhyme-Dice.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1113169C8343BED6F3E9292E212DDCBF</key>
+		<key>241C2732692D22CA13BFD82273236C3C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B6C925E4CB9FB2965D273C649FE034F</key>
+		<key>60E5D9840065CAE3547ACBC798B3A227</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>68842AB9D9A7F45532BA312B2A53CB66</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,8 +7,9 @@ target 'Rhyme-Dice' do
 
   # Pods for Rhyme-Dice
     pod 'SwiftyJSON'
+    pod 'JSONParserSwift'
     pod 'Alamofire'
-    pod 'Alamofire-SwiftyJSON'
+    
 
   target 'Rhyme-DiceTests' do
     inherit! :search_paths

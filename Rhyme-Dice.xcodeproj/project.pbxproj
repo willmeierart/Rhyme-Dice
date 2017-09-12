@@ -35,7 +35,9 @@
 		16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */; };
 		16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDC1F649A8C004A1180 /* Recording.swift */; };
 		16DCCEDF1F65C474004A1180 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDE1F65C474004A1180 /* DataViewController.swift */; };
-		16FBADF71F679E460000AE8B /* DiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E691F5F6BF700A1429E /* DiceController.swift */; };
+		16FBADF91F688A570000AE8B /* ParsableWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FBADF81F688A570000AE8B /* ParsableWords.swift */; };
+		16FBAE001F68970B0000AE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E301F5F410900A1429E /* AppDelegate.swift */; };
+		16FBAE011F68970C0000AE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E301F5F410900A1429E /* AppDelegate.swift */; };
 		A08A7175A3F3C651BA9D09BE /* Pods_Rhyme_DiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A54E578B6E81393D0806198 /* Pods_Rhyme_DiceUITests.framework */; };
 		A5138287C7C726D7C243B9E9 /* Pods_Rhyme_Dice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58760A473014AEBDB729C821 /* Pods_Rhyme_Dice.framework */; };
 /* End PBXBuildFile section */
@@ -93,6 +95,7 @@
 		16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsController.swift; sourceTree = "<group>"; };
 		16DCCEDC1F649A8C004A1180 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		16DCCEDE1F65C474004A1180 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataViewController.swift; path = ../../../../../../.Trash/DataViewController.swift; sourceTree = "<group>"; };
+		16FBADF81F688A570000AE8B /* ParsableWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsableWords.swift; sourceTree = "<group>"; };
 		1B1009ACE46FD823CB090D15 /* Pods-Rhyme-DiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceTests/Pods-Rhyme-DiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		4A4F4D348DF55AAD6EA14B3B /* Pods-Rhyme-DiceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceUITests/Pods-Rhyme-DiceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AA3C6474247E4F3E936B044 /* Pods-Rhyme-DiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceTests/Pods-Rhyme-DiceTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 				16B00E6D1F6081AB00A1429E /* PlayerController.swift */,
 				167C363A1F61AD3D002A796F /* VideoBackgroundController.swift */,
 				16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */,
+				16FBADF81F688A570000AE8B /* ParsableWords.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -501,11 +505,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rhyme-Dice/Pods-Rhyme-Dice-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONParserSwift/JSONParserSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONParserSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +598,7 @@
 				167C363B1F61AD3D002A796F /* VideoBackgroundController.swift in Sources */,
 				16B00E371F5F410900A1429E /* ModelController.swift in Sources */,
 				16B00E311F5F410900A1429E /* AppDelegate.swift in Sources */,
+				16FBADF91F688A570000AE8B /* ParsableWords.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FBAE001F68970B0000AE8B /* AppDelegate.swift in Sources */,
 				16B00E4A1F5F410900A1429E /* Rhyme_DiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,7 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16FBADF71F679E460000AE8B /* DiceController.swift in Sources */,
+				16FBAE011F68970C0000AE8B /* AppDelegate.swift in Sources */,
 				16B00E551F5F410900A1429E /* Rhyme_DiceUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

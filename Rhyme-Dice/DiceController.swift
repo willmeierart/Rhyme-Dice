@@ -9,8 +9,9 @@
 import Foundation
 import AVFoundation
 import UIKit
-import Alamofire
 import SwiftyJSON
+import JSONParserSwift
+import Alamofire
 
 class DiceController: UIViewController, AVAudioRecorderDelegate {
     
@@ -25,6 +26,8 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var nowPlaying: UILabel!
     
     @IBOutlet weak var label: UILabel!
+    
+    
     @IBOutlet weak var leftDie: UIImageView!
     @IBOutlet weak var rightDie: UIImageView!
     
@@ -221,12 +224,9 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         
         asyncGetBothWordSets(url: APIurl, sounds: [sound1, sound2], numbers:[firstNumber, secondNumber])
         
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-            print(self.wordSets)
-        }
-
-        
-//        self.displayDiceData(numbers: [firstNumber,secondNumber])
+//        DispatchQueue.main.asyncAfter(deadline: .now()){
+//            print(self.wordSets)
+//        }
     }
     
     func animateRoll(die:UIImageView!, imgSet:String){
@@ -240,16 +240,14 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     func asyncGetBothWordSets(url:String, sounds:[String], numbers:[Int]){
         wordSets = []
         getWords(url:url, sound:sounds[0], completion:{response in
-            let arr = self.appendSetsArray(json:response[sounds[0]])
+            let arr = self.appendSetsArray(json:response, sound:sounds[0])
             self.wordSets.append(arr)
             self.getWords(url:url, sound:sounds[1], completion:{response in
-                let arr = self.appendSetsArray(json:response[sounds[1]])
+                let arr = self.appendSetsArray(json:response, sound:sounds[1])
                 self.wordSets.append(arr)
                 self.displayDiceData(numbers: numbers, sounds: self.wordSets)
             })
         })
-        
-        
     }
     
     func getWords(url:String, sound:String, completion: @escaping (_ success: JSON) -> Void){
@@ -259,7 +257,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         Alamofire.request(URL, method: .get, parameters:["sound":sound]).responseJSON{ response in
             if response.result.isSuccess {
                 let wordJSON:JSON = JSON(response.result.value!)
-                completion(wordJSON)
+                 completion(wordJSON)
             } else {
                 print("Error \(String(describing: response.result.error))")
                 arr.append(sound)
@@ -268,31 +266,20 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    func appendSetsArray(json:JSON) -> [String]{
+    func appendSetsArray(json:JSON, sound:String) -> [String]{
         var arr:[String] = []
-        for word in json {
-            print(word)
-            var Word = String(describing: word)
-            let pattern = "(\", )"
-            let regex = try! NSRegularExpression(pattern: pattern, options: [])
-            let breaker = regex.matches(in: Word, range: NSMakeRange(0, Word.utf16.count))
-            
-            let Words = splitThatString(matches:breaker, toSearch:Word)
-            Word = Words.last!
-            Word = Word.replacingOccurrences(of: ")", with: "")
-            Word = Word.replacingOccurrences(of: "\", ", with: "")
+        for word in json["word"].arrayValue {
+            let Word = word[sound].stringValue
             arr.append(Word)
         }
         return arr
     }
     
     func displayDiceData(numbers:[Int], sounds:[[String]]){
-        let index1 = Int(arc4random_uniform(UInt32(sounds[0].count)+1))
-        let index2 = Int(arc4random_uniform(UInt32(sounds[1].count)+1))
+        let index1 = Int(arc4random_uniform(UInt32(sounds[0].count-1)))
+        let index2 = Int(arc4random_uniform(UInt32(sounds[1].count-1)))
         let sound1 = sounds[0][index1]
         let sound2 = sounds[1][index2]
-        
-
         
         self.label.text = "spit bars rhymin with \(sound1) n \(sound2)"
         
@@ -305,16 +292,11 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         rightDie.image = UIImage(named: "DiceShort\(numbers[1])")
     }
     
-    
-    
-    
-    
     func splitThatString(matches:[NSTextCheckingResult], toSearch:String) -> [String]{
         let results = zip(matches, matches.dropFirst().map { Optional.some($0) } + [nil]).map { current, next -> String in
             let range = current.rangeAt(0)
             let start = String.UTF16Index(range.location)
             let end = next.map { $0.rangeAt(0) }.map { String.UTF16Index($0.location) } ?? String.UTF16Index(toSearch.utf16.count)
-            
             return String(toSearch.utf16[start..<end])!
         }
         return results
