@@ -10,10 +10,15 @@ import Foundation
 import AVFoundation
 import UIKit
 import SwiftyJSON
-import JSONParserSwift
 import Alamofire
+import MediaPlayer
 
-class DiceController: UIViewController, AVAudioRecorderDelegate {
+class DiceController: UIViewController, AVAudioRecorderDelegate
+//    UIDragInteractionDelegate
+{
+    
+
+    
     
     var wordSets:[[String]]!
     
@@ -35,6 +40,32 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var rightWordButton: UIButton!
     
     
+    @IBOutlet weak var leftDieStack: UIStackView!
+    @IBOutlet weak var leftDieStackContainerView: UIView!
+    @IBOutlet weak var rightDieStack: UIStackView!
+    @IBOutlet weak var rightDieStackContainerView: UIView!
+    
+    @IBOutlet weak var myVolumeViewParentView: UIView!
+    
+// IOS 11 THING:
+    
+    
+//    func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
+//        let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
+//        view.addInteraction(dragInteraction)
+//    }
+//    
+//    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+//        // Cast to NSString is required for NSItemProviderWriting support.
+//        let stringItemProvider = NSItemProvider(object: "Hello World" as NSString)
+//        return [
+//            UIDragItem(itemProvider: stringItemProvider)
+//        ]
+//    }
+    
+    
+    
+    
     
     
 //    @IBAction func goToLibrary(_ sender: UITapGestureRecognizer) {
@@ -48,7 +79,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func play(_ sender: Any) {
         if audioStuffed == true && audioPlayer.isPlaying == false{
             audioPlayer.play()
-            audioPlayer2.pause()
             nowPlaying.text = songs[thisSong]
         } else if audioStuffed == false{
             print(songs)
@@ -75,6 +105,8 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
             nowPlaying.text = songs[thisSong]
         }else{}
     }
+    
+//USE MPVOLUMEVIEW
     @IBAction func volume(_ sender: UISlider) {
         if audioStuffed == true{
             audioPlayer.volume = sender.value
@@ -85,15 +117,25 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         wordSets = []
         initWordButtons()
+        
+//        customEnableDragging()
+        
+        
+        myVolumeViewParentView.backgroundColor = UIColor.clear
+        let myVolumeView = MPVolumeView(frame: myVolumeViewParentView.bounds)
+        myVolumeViewParentView.addSubview(myVolumeView)
+        
+        
+        recordingSession = AVAudioSession.sharedInstance()
+        try!recordingSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
         
         if audioStuffed == true {
             nowPlaying.text = "Now Playing: \(songs[thisSong])"
         }
         
-        recordingSession = AVAudioSession.sharedInstance()
+        
         
         do{
             try recordingSession.setActive(true)
@@ -113,7 +155,10 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
+        
     }
+    
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         updateDice()
@@ -135,8 +180,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     }
     
     
-    
-    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
@@ -150,15 +193,16 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     func startRecording(){
-        let audioFilename = getDocumentsDirectory().appendingPathComponent( "\(Date()).m4a")
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(Date()).m4a")
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
-            AVNumberOfChannelsKey: 1,
+            AVSampleRateKey: 44100,
+            AVNumberOfChannelsKey: 2,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+            audioPlayer.volume = 0.6
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
@@ -188,7 +232,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         let alert = UIAlertController(title: "Recording finished", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Keep", style: .`default`, handler: { action in
 //            self.keepRecording()
-            print(self.title!)
+//            print(self.title? as Any)
         }))
         
         
@@ -200,7 +244,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         
         alert.addAction(UIAlertAction(title: "Discard", style: .`destructive`, handler: { action in
 //            self.discardRecording()
-            print(self.title!)
+//            print(self.title? as Any)
         }))
         
         present(alert, animated:true, completion: nil)
@@ -285,24 +329,32 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func displayDiceData(numbers:[Int]){
-        let sound1:String = getRandomWordFromSet(set: wordSets[0])
-        let sound2:String = getRandomWordFromSet(set: wordSets[1])
-        
-        leftWordButton.setTitle("\(sound1)", for: .normal)
-        rightWordButton.setTitle("\(sound2)", for: .normal)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-            self.animateRoll(die:self.leftDie, imgSet:"Long")
-            self.animateRoll(die:self.rightDie, imgSet:"Short")
+        if wordSets.count > 0 {
+            let sound1:String = getRandomWordFromSet(set: wordSets[0])
+            let sound2:String = getRandomWordFromSet(set: wordSets[1])
+            
+            leftWordButton.setTitle("\(sound1)", for: .normal)
+            rightWordButton.setTitle("\(sound2)", for: .normal)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()){
+                self.animateRoll(die:self.leftDie, imgSet:"Long")
+                self.animateRoll(die:self.rightDie, imgSet:"Short")
+            }
+            
+            leftDie.image = UIImage(named: "DiceLong\(numbers[0])")
+            rightDie.image = UIImage(named: "DiceShort\(numbers[1])")
+
         }
-        
-        leftDie.image = UIImage(named: "DiceLong\(numbers[0])")
-        rightDie.image = UIImage(named: "DiceShort\(numbers[1])")
-    }
+           }
     
     func getRandomWordFromSet(set:[String])->String{
-        let index = Int(arc4random_uniform(UInt32(set.count-1)))
-        return set[index]
+        if set.count > 0 {
+            let index = Int(arc4random_uniform(UInt32(set.count) - 1))
+            print(index)
+            return set[index]
+        } else {
+            return "fuck"
+        }
     }
     
     func initWordButtons(){
@@ -310,14 +362,16 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         rightWordButton.addTarget(self, action: #selector(swapRightWord), for: .touchUpInside)
     }
     func swapLeftWord(){
-        print("left")
-        let newSound = getRandomWordFromSet(set: wordSets[0])
-        leftWordButton.setTitle("\(newSound)", for: .normal)
+        if wordSets.count > 0{
+            let newSound = getRandomWordFromSet(set: wordSets[0])
+            leftWordButton.setTitle("\(newSound)", for: .normal)
+        }
     }
     func swapRightWord(){
-        print("right")
-        let newSound = getRandomWordFromSet(set: wordSets[1])
-        rightWordButton.setTitle("\(newSound)", for: .normal)
+        if wordSets.count > 0{
+            let newSound = getRandomWordFromSet(set: wordSets[1])
+            rightWordButton.setTitle("\(newSound)", for: .normal)
+        }
     }
 }
 

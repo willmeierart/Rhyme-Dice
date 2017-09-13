@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 
-
 var audioPlayer2 = AVAudioPlayer()
 var recordings:[URL] = []
 var recordingTitles:[String] = []
@@ -60,6 +59,7 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         getRecordings()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

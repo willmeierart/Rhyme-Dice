@@ -38,6 +38,9 @@
 		16FBADF91F688A570000AE8B /* ParsableWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FBADF81F688A570000AE8B /* ParsableWords.swift */; };
 		16FBAE001F68970B0000AE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E301F5F410900A1429E /* AppDelegate.swift */; };
 		16FBAE011F68970C0000AE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E301F5F410900A1429E /* AppDelegate.swift */; };
+		16FBAE051F68BF870000AE8B /* ARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FBAE041F68BF870000AE8B /* ARController.swift */; };
+		16FBAE071F68F5FA0000AE8B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FBAE061F68F5F90000AE8B /* MediaPlayer.framework */; };
+		16FBAE091F68F6350000AE8B /* MediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FBAE081F68F6350000AE8B /* MediaToolbox.framework */; };
 		A08A7175A3F3C651BA9D09BE /* Pods_Rhyme_DiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A54E578B6E81393D0806198 /* Pods_Rhyme_DiceUITests.framework */; };
 		A5138287C7C726D7C243B9E9 /* Pods_Rhyme_Dice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58760A473014AEBDB729C821 /* Pods_Rhyme_Dice.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +99,9 @@
 		16DCCEDC1F649A8C004A1180 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		16DCCEDE1F65C474004A1180 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataViewController.swift; path = ../../../../../../.Trash/DataViewController.swift; sourceTree = "<group>"; };
 		16FBADF81F688A570000AE8B /* ParsableWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsableWords.swift; sourceTree = "<group>"; };
+		16FBAE041F68BF870000AE8B /* ARController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARController.swift; sourceTree = "<group>"; };
+		16FBAE061F68F5F90000AE8B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		16FBAE081F68F6350000AE8B /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
 		1B1009ACE46FD823CB090D15 /* Pods-Rhyme-DiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceTests/Pods-Rhyme-DiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		4A4F4D348DF55AAD6EA14B3B /* Pods-Rhyme-DiceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceUITests/Pods-Rhyme-DiceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AA3C6474247E4F3E936B044 /* Pods-Rhyme-DiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceTests/Pods-Rhyme-DiceTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FBAE091F68F6350000AE8B /* MediaToolbox.framework in Frameworks */,
+				16FBAE071F68F5FA0000AE8B /* MediaPlayer.framework in Frameworks */,
 				A5138287C7C726D7C243B9E9 /* Pods_Rhyme_Dice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +232,7 @@
 				167C363A1F61AD3D002A796F /* VideoBackgroundController.swift */,
 				16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */,
 				16FBADF81F688A570000AE8B /* ParsableWords.swift */,
+				16FBAE041F68BF870000AE8B /* ARController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -258,6 +267,8 @@
 		3AD47EF3F67C4B90A684B54D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16FBAE081F68F6350000AE8B /* MediaToolbox.framework */,
+				16FBAE061F68F5F90000AE8B /* MediaPlayer.framework */,
 				58760A473014AEBDB729C821 /* Pods_Rhyme_Dice.framework */,
 				0006128A58A32B0EB7AFE6BC /* Pods_Rhyme_DiceTests.framework */,
 				9A54E578B6E81393D0806198 /* Pods_Rhyme_DiceUITests.framework */,
@@ -357,6 +368,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = YHQPELT3BZ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					16B00E441F5F410900A1429E = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -595,6 +611,7 @@
 				16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */,
 				16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */,
 				16B00E331F5F410900A1429E /* RootViewController.swift in Sources */,
+				16FBAE051F68BF870000AE8B /* ARController.swift in Sources */,
 				167C363B1F61AD3D002A796F /* VideoBackgroundController.swift in Sources */,
 				16B00E371F5F410900A1429E /* ModelController.swift in Sources */,
 				16B00E311F5F410900A1429E /* AppDelegate.swift in Sources */,
