@@ -31,6 +31,10 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var leftDie: UIImageView!
     @IBOutlet weak var rightDie: UIImageView!
     
+    @IBOutlet weak var leftWordButton: UIButton!
+    @IBOutlet weak var rightWordButton: UIButton!
+    
+    
     
     
 //    @IBAction func goToLibrary(_ sender: UITapGestureRecognizer) {
@@ -83,6 +87,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         super.viewDidLoad()
         
         wordSets = []
+        initWordButtons()
         
         if audioStuffed == true {
             nowPlaying.text = "Now Playing: \(songs[thisSong])"
@@ -185,10 +190,14 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
 //            self.keepRecording()
             print(self.title!)
         }))
+        
+        
 //        alert.addAction(UIAlertAction(title: "Edit", style: .`default`, handler: { action in
 ////            self.editRecording()
 //            print(self.title!)
 //        }))
+        
+        
         alert.addAction(UIAlertAction(title: "Discard", style: .`destructive`, handler: { action in
 //            self.discardRecording()
             print(self.title!)
@@ -245,7 +254,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
             self.getWords(url:url, sound:sounds[1], completion:{response in
                 let arr = self.appendSetsArray(json:response, sound:sounds[1])
                 self.wordSets.append(arr)
-                self.displayDiceData(numbers: numbers, sounds: self.wordSets)
+                self.displayDiceData(numbers: numbers)
             })
         })
     }
@@ -275,13 +284,12 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         return arr
     }
     
-    func displayDiceData(numbers:[Int], sounds:[[String]]){
-        let index1 = Int(arc4random_uniform(UInt32(sounds[0].count-1)))
-        let index2 = Int(arc4random_uniform(UInt32(sounds[1].count-1)))
-        let sound1 = sounds[0][index1]
-        let sound2 = sounds[1][index2]
+    func displayDiceData(numbers:[Int]){
+        let sound1:String = getRandomWordFromSet(set: wordSets[0])
+        let sound2:String = getRandomWordFromSet(set: wordSets[1])
         
-        self.label.text = "spit bars rhymin with \(sound1) n \(sound2)"
+        leftWordButton.setTitle("\(sound1)", for: .normal)
+        rightWordButton.setTitle("\(sound2)", for: .normal)
         
         DispatchQueue.main.asyncAfter(deadline: .now()){
             self.animateRoll(die:self.leftDie, imgSet:"Long")
@@ -292,15 +300,24 @@ class DiceController: UIViewController, AVAudioRecorderDelegate {
         rightDie.image = UIImage(named: "DiceShort\(numbers[1])")
     }
     
-    func splitThatString(matches:[NSTextCheckingResult], toSearch:String) -> [String]{
-        let results = zip(matches, matches.dropFirst().map { Optional.some($0) } + [nil]).map { current, next -> String in
-            let range = current.rangeAt(0)
-            let start = String.UTF16Index(range.location)
-            let end = next.map { $0.rangeAt(0) }.map { String.UTF16Index($0.location) } ?? String.UTF16Index(toSearch.utf16.count)
-            return String(toSearch.utf16[start..<end])!
-        }
-        return results
+    func getRandomWordFromSet(set:[String])->String{
+        let index = Int(arc4random_uniform(UInt32(set.count-1)))
+        return set[index]
     }
     
+    func initWordButtons(){
+        leftWordButton.addTarget(self, action: #selector(swapLeftWord), for: .touchUpInside)
+        rightWordButton.addTarget(self, action: #selector(swapRightWord), for: .touchUpInside)
+    }
+    func swapLeftWord(){
+        print("left")
+        let newSound = getRandomWordFromSet(set: wordSets[0])
+        leftWordButton.setTitle("\(newSound)", for: .normal)
+    }
+    func swapRightWord(){
+        print("right")
+        let newSound = getRandomWordFromSet(set: wordSets[1])
+        rightWordButton.setTitle("\(newSound)", for: .normal)
+    }
 }
 
