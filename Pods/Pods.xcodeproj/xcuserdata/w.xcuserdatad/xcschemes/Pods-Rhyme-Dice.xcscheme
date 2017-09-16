@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "241C2732692D22CA13BFD82273236C3C"
+               BlueprintIdentifier = "0B8CF273A2F385266F489E352FEFCA2D"
                BuildableName = "Pods_Rhyme_Dice.framework"
                BlueprintName = "Pods-Rhyme-Dice"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "241C2732692D22CA13BFD82273236C3C"
+            BlueprintIdentifier = "0B8CF273A2F385266F489E352FEFCA2D"
             BuildableName = "Pods_Rhyme_Dice.framework"
             BlueprintName = "Pods-Rhyme-Dice"
             ReferencedContainer = "container:Pods.xcodeproj">

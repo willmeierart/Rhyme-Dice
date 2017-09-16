@@ -12,56 +12,55 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import MediaPlayer
+import AWSCore
+import AWSCognito
+import AWSS3
 
-class DiceController: UIViewController, AVAudioRecorderDelegate
-//    UIDragInteractionDelegate
-{
-    
+@available(iOS 11.0, *)
 
-    
-    
+var globalCurrentAudioFile:URL!
+
+class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteractionDelegate{
+
     var wordSets:[[String]]!
+    var audioName:String!
+    var audioFilePath:URL!
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
 
-    
-    @IBOutlet weak var recordButton: UIButton!
-    
-    @IBOutlet weak var nowPlaying: UILabel!
-    
     @IBOutlet weak var label: UILabel!
-    
-    
-    @IBOutlet weak var leftDie: UIImageView!
-    @IBOutlet weak var rightDie: UIImageView!
-    
+
     @IBOutlet weak var leftWordButton: UIButton!
     @IBOutlet weak var rightWordButton: UIButton!
     
-    
+    @IBOutlet weak var leftDie: UIImageView!
+    @IBOutlet weak var rightDie: UIImageView!
     @IBOutlet weak var leftDieStack: UIStackView!
     @IBOutlet weak var leftDieStackContainerView: UIView!
     @IBOutlet weak var rightDieStack: UIStackView!
     @IBOutlet weak var rightDieStackContainerView: UIView!
     
+    @IBOutlet weak var nowPlaying: UILabel!
     @IBOutlet weak var myVolumeViewParentView: UIView!
+    @IBOutlet weak var recordButton: UIButton!
+
     
 // IOS 11 THING:
     
     
-//    func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
-//        let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
-//        view.addInteraction(dragInteraction)
-//    }
-//    
-//    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
-//        // Cast to NSString is required for NSItemProviderWriting support.
-//        let stringItemProvider = NSItemProvider(object: "Hello World" as NSString)
-//        return [
-//            UIDragItem(itemProvider: stringItemProvider)
-//        ]
-//    }
+    func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
+        let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
+        view.addInteraction(dragInteraction)
+    }
+    
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+        // Cast to NSString is required for NSItemProviderWriting support.
+        let stringItemProvider = NSItemProvider(object: "Hello World" as NSString)
+        return [
+            UIDragItem(itemProvider: stringItemProvider)
+        ]
+    }
     
     
     
@@ -81,7 +80,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
             audioPlayer.play()
             nowPlaying.text = songs[thisSong]
         } else if audioStuffed == false{
-            print(songs)
+//            print(songs)
 //            playThis(thisOne:songs[1])
         }
     }
@@ -110,11 +109,10 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
     @IBAction func volume(_ sender: UISlider) {
         if audioStuffed == true{
             audioPlayer.volume = sender.value
-            print(sender.value)
+//            print(sender.value)
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         wordSets = []
@@ -122,6 +120,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
         
 //        customEnableDragging()
         
+        initWordFetching(forceWords: ["oh", "i"])
         
         myVolumeViewParentView.backgroundColor = UIColor.clear
         let myVolumeView = MPVolumeView(frame: myVolumeViewParentView.bounds)
@@ -134,24 +133,17 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
         if audioStuffed == true {
             nowPlaying.text = "Now Playing: \(songs[thisSong])"
         }
-        
-        
-        
+
         do{
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission(){[unowned self] allowed in
                 DispatchQueue.main.async{
                     if allowed {
                         self.loadRecordingUI()
-                    } else {
-                        //
-                    }
+                    } else {}
                 }
             }
-        } catch {
-            //
-        }
-        
+        } catch {}
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -159,7 +151,9 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
         
     }
     
-    
+//    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+//        updateDice()
+//    }
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         updateDice()
     }
@@ -193,7 +187,12 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
         }
     }
     func startRecording(){
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(Date()).m4a")
+        audioFilePath = getDocumentsDirectory().appendingPathComponent("\(Date()).m4a")
+        globalCurrentAudioFile = audioFilePath
+        let date = "\(Date())"
+        let nameArr = date.components(separatedBy: " ")
+        audioName = "\(nameArr[0])\(nameArr[1])"
+        
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 44100,
@@ -201,11 +200,12 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
         do {
-            audioPlayer.volume = 0.6
+//            audioPlayer.volume = 0.6
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder = try AVAudioRecorder(url: audioFilePath, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
+//            print(audioFilePath)
             
             recordButton.setTitle("STOP", for: .normal)
         } catch {
@@ -215,10 +215,18 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
     func finishRecording(success: Bool){
         audioRecorder.stop()
         audioRecorder = nil
+        if audioPlayer.isPlaying {
+            audioPlayer.pause()
+        }
+        
+        
+        
+//        uploadToAWS(name: <#T##String#>, uploadURL: <#T##URL#>, fileSize: <#T##NSNumber#>)
         
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         
         if success {
+            getS3AuthHeader()
             recordButton.setTitle("RECORD", for: .normal)
             alertFinishedRecording()
         }
@@ -234,14 +242,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
 //            self.keepRecording()
 //            print(self.title? as Any)
         }))
-        
-        
-//        alert.addAction(UIAlertAction(title: "Edit", style: .`default`, handler: { action in
-////            self.editRecording()
-//            print(self.title!)
-//        }))
-        
-        
+
         alert.addAction(UIAlertAction(title: "Discard", style: .`destructive`, handler: { action in
 //            self.discardRecording()
 //            print(self.title? as Any)
@@ -264,7 +265,11 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
 
     
     func updateDice(){
-        let APIurl:String = "https://rhymedice.herokuapp.com/words/"
+        initWordFetching(forceWords: [])
+    }
+    
+    func initWordFetching(forceWords:[String]?){
+        
         
         let firstNumber = Int(arc4random_uniform(6)+1)
         let secondNumber = Int(arc4random_uniform(6)+1)
@@ -272,14 +277,10 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
         let shortSounds = [1:"a", 2:"eh", 3:"i", 4:"o", 5:"ure", 6:"oo"]
         let longSounds = [1:"ay", 2:"ee", 3:"ie", 4:"oh", 5:"oy", 6:"uh"]
         
-        let sound1 = longSounds[firstNumber]!
-        let sound2 = shortSounds[secondNumber]!
+        let sound1 = (forceWords?.isEmpty)! ? longSounds[firstNumber]! : forceWords![0]
+        let sound2 = (forceWords?.isEmpty)! ? shortSounds[secondNumber]! : forceWords![1]
         
-        asyncGetBothWordSets(url: APIurl, sounds: [sound1, sound2], numbers:[firstNumber, secondNumber])
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now()){
-//            print(self.wordSets)
-//        }
+         asyncGetBothWordSets(sounds: [sound1, sound2], numbers:[firstNumber, secondNumber])
     }
     
     func animateRoll(die:UIImageView!, imgSet:String){
@@ -290,12 +291,13 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
     }
     
     
-    func asyncGetBothWordSets(url:String, sounds:[String], numbers:[Int]){
+    func asyncGetBothWordSets(sounds:[String], numbers:[Int]){
+        let APIurl:String = "https://rhymedice.herokuapp.com/words/"
         wordSets = []
-        getWords(url:url, sound:sounds[0], completion:{response in
+        getWords(url:APIurl, sound:sounds[0], completion:{response in
             let arr = self.appendSetsArray(json:response, sound:sounds[0])
             self.wordSets.append(arr)
-            self.getWords(url:url, sound:sounds[1], completion:{response in
+            self.getWords(url:APIurl, sound:sounds[1], completion:{response in
                 let arr = self.appendSetsArray(json:response, sound:sounds[1])
                 self.wordSets.append(arr)
                 self.displayDiceData(numbers: numbers)
@@ -348,9 +350,9 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
            }
     
     func getRandomWordFromSet(set:[String])->String{
-        if set.count > 0 {
+        if !set.isEmpty {
             let index = Int(arc4random_uniform(UInt32(set.count) - 1))
-            print(index)
+//            print(index)
             return set[index]
         } else {
             return "fuck"
@@ -362,16 +364,65 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
         rightWordButton.addTarget(self, action: #selector(swapRightWord), for: .touchUpInside)
     }
     func swapLeftWord(){
-        if wordSets.count > 0{
+        if !wordSets.isEmpty {
             let newSound = getRandomWordFromSet(set: wordSets[0])
             leftWordButton.setTitle("\(newSound)", for: .normal)
         }
     }
     func swapRightWord(){
-        if wordSets.count > 0{
+        if !wordSets.isEmpty {
             let newSound = getRandomWordFromSet(set: wordSets[1])
             rightWordButton.setTitle("\(newSound)", for: .normal)
         }
+    }
+    
+    func getS3AuthHeader(){
+        let s3URL = "https://rhymedice.herokuapp.com/rhymes/sign-s3?filename=\(audioName!)&filetype=mpg4"
+        Alamofire.request(s3URL, method: .get, parameters:["name":audioName!, "type":"mpg4"]).responseJSON{ response in
+            if response.result.isSuccess {
+                let responseJSON:JSON = JSON(response.result.value!)
+                let signedRequest = responseJSON["signedRequest"].stringValue
+                let uploadURL = responseJSON["url"].stringValue
+//                print(responseJSON["signedRequest"])
+                self.uploadToAWS(file: self.audioFilePath, signedReqURL: signedRequest, uploadURL: uploadURL)
+            } else {
+                print("Error \(String(describing: response.result.error))")
+            }
+        }
+    }
+    
+    
+    func uploadToAWS(file:URL, signedReqURL:String, uploadURL:String){
+//        print(signedReqURL)
+        
+//        Alamofire.upload(file, to: signedReqURL).responseString { response in
+//            debugPrint(response)
+//        }
+//
+        
+        let File = file.absoluteString
+        let formattedURL = signedReqURL as! URLConvertible
+        Alamofire.request(formattedURL, method: .put, parameters:["body":File]).responseString{ response in
+//            print(signedReqURL)
+            if response.result.isSuccess {
+//                let responseJSON:JSON = JSON(response.result.value!)
+//                print(response.result.value!)
+                debugPrint(response)
+            } else {
+                print("Error \(String(describing: response.result.error))")
+            }
+        }
+//
+        
+//        let transferManager = AWSS3TransferManager.default()
+//        let uploadRequest = AWSS3TransferManagerUploadRequest()!
+//        uploadRequest.bucket = "rhyme-dice-audio-va"
+//        uploadRequest.key = name
+//        uploadRequest.body = uploadURL
+//        uploadRequest.contentLength = fileSize
+//        transferManager.upload(uploadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+//            print(task)
+//        })
     }
 }
 

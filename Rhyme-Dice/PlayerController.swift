@@ -44,8 +44,6 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
             audioPlayer.play()
             thisSong = indexPath.row
             audioStuffed = true
-            
-            
         }catch{
             print("error")
         }
@@ -68,10 +66,9 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func getSongs(){
         let folderURL = URL(fileURLWithPath: Bundle.main.resourcePath!)
-        
         do{
             let songPath = try FileManager.default.contentsOfDirectory(at:folderURL, includingPropertiesForKeys:nil, options: .skipsHiddenFiles)
-            
+
             for song in songPath{
                 var mySong = song.absoluteString
                 if mySong.contains(".mp3"){
@@ -80,15 +77,10 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     mySong = mySong.replacingOccurrences(of: "%20", with: " ")
                     mySong = mySong.replacingOccurrences(of: ".mp3", with: "")
                     songs.append(mySong)
-                    print(songs)
                 }
             }
             playerTable.reloadData()
         }
-        catch{
-            
-        }
+        catch{}
     }
-    
-
 }

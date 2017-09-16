@@ -9,6 +9,10 @@ target 'Rhyme-Dice' do
     pod 'SwiftyJSON'
     pod 'JSONParserSwift'
     pod 'Alamofire'
+    pod 'AWSCognito'
+    pod 'AWSCognitoIdentityProvider'
+    pod 'AWSS3'
+    pod 'IQAudioRecorderController', '~> 1.2'
     
 
   target 'Rhyme-DiceTests' do
