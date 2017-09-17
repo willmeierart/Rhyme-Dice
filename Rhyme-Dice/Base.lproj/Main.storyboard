@@ -34,6 +34,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Hxd-we-ego" appends="YES" id="4SD-Re-wle"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -53,6 +56,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4b9-mT-m32" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Hxd-we-ego">
+                    <connections>
+                        <action selector="returnMain:" destination="PNk-SB-ePM" id="zkS-hg-po4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-991" y="-808"/>
         </scene>
@@ -356,25 +364,6 @@
             </objects>
             <point key="canvasLocation" x="-1318" y="1167"/>
         </scene>
-        <!--VideoBG-->
-        <scene sceneID="WYh-Q8-YdB">
-            <objects>
-                <viewController id="izU-CV-CfO" userLabel="VideoBG" customClass="VideoBackgroundController" customModule="Rhyme_Dice" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CpQ-py-LxJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="GEr-eG-PhK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pku-Dr-Q7g">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="zy5-L5-6pX"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1OD-dN-mjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2023" y="913"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vwc-Vo-9es">
             <objects>
@@ -388,7 +377,6 @@
                         <segue destination="lit-Gs-IJ5" kind="relationship" relationship="viewControllers" id="9XQ-kF-a2e"/>
                         <segue destination="PNk-SB-ePM" kind="relationship" relationship="viewControllers" id="osE-GW-a3r"/>
                         <segue destination="KO3-78-yW8" kind="relationship" relationship="viewControllers" id="azv-3G-g35"/>
-                        <segue destination="izU-CV-CfO" kind="relationship" relationship="viewControllers" id="RwX-DS-XBg"/>
                         <segue destination="MQ7-GK-AOW" kind="relationship" relationship="viewControllers" id="2UF-Oa-cnL"/>
                     </connections>
                 </tabBarController>

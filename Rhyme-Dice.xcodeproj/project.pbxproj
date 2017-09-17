@@ -12,7 +12,6 @@
 		167C362B1F610E23002A796F /* Jungle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362A1F610E23002A796F /* Jungle.mp3 */; };
 		167C362D1F610E3B002A796F /* Bipolar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362C1F610E3B002A796F /* Bipolar.mp3 */; };
 		167C36311F610E6D002A796F /* Thizzle Dance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36301F610E6D002A796F /* Thizzle Dance.mp3 */; };
-		167C36331F610E7C002A796F /* Ride to It.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36321F610E7C002A796F /* Ride to It.mp3 */; };
 		167C36351F610E8F002A796F /* Not My Job.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36341F610E8F002A796F /* Not My Job.mp3 */; };
 		167C36371F610EA3002A796F /* She Only Sees.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36361F610EA3002A796F /* She Only Sees.mp3 */; };
 		167C36391F610EC4002A796F /* Get Stupid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36381F610EC4002A796F /* Get Stupid.mp3 */; };
@@ -25,13 +24,12 @@
 		16B00E3F1F5F410900A1429E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E3D1F5F410900A1429E /* LaunchScreen.storyboard */; };
 		16B00E4A1F5F410900A1429E /* Rhyme_DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E491F5F410900A1429E /* Rhyme_DiceTests.swift */; };
 		16B00E551F5F410900A1429E /* Rhyme_DiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E541F5F410900A1429E /* Rhyme_DiceUITests.swift */; };
-		16B00E6A1F5F6BF700A1429E /* DiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E691F5F6BF700A1429E /* DiceController.swift */; };
+		16B00E6A1F5F6BF700A1429E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E691F5F6BF700A1429E /* MainController.swift */; };
 		16B00E6C1F607F9D00A1429E /* Wipe Me Down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E6B1F607F9D00A1429E /* Wipe Me Down.mp3 */; };
 		16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E6D1F6081AB00A1429E /* PlayerController.swift */; };
 		16B00E721F608EAC00A1429E /* Ice Cream Paint Job.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */; };
 		16B00E731F608EAC00A1429E /* Special Herbs 01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */; };
 		16B00E741F608EAC00A1429E /* Go DJ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E711F608EAC00A1429E /* Go DJ.mp3 */; };
-		16D030F21F6CE13A00718A69 /* CropAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D030F11F6CE13A00718A69 /* CropAudioController.m */; };
 		16DCCED91F61BAB5004A1180 /* RhymeDiceIntro.mov in Resources */ = {isa = PBXBuildFile; fileRef = 16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */; };
 		16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */; };
 		16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCEDC1F649A8C004A1180 /* Recording.swift */; };
@@ -64,11 +62,14 @@
 /* Begin PBXFileReference section */
 		0006128A58A32B0EB7AFE6BC /* Pods_Rhyme_DiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rhyme_DiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1168D20F55E2B69B1584314A /* Pods-Rhyme-DiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceUITests/Pods-Rhyme-DiceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		161A3BAF1F6DF3B600A97FAF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		161A3BB01F6DF3B700A97FAF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		161A3BB11F6DF3B700A97FAF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		161A3BB21F6DF3B800A97FAF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		167C36281F610E11002A796F /* Sit Low.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Sit Low.mp3"; path = "../../../../../../Downloads/Sit Low.mp3"; sourceTree = "<group>"; };
 		167C362A1F610E23002A796F /* Jungle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Jungle.mp3; path = ../../../../../../Downloads/Jungle.mp3; sourceTree = "<group>"; };
 		167C362C1F610E3B002A796F /* Bipolar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Bipolar.mp3; path = ../../../../../../Downloads/Bipolar.mp3; sourceTree = "<group>"; };
 		167C36301F610E6D002A796F /* Thizzle Dance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Thizzle Dance.mp3"; path = "../../../../../../Downloads/Thizzle Dance.mp3"; sourceTree = "<group>"; };
-		167C36321F610E7C002A796F /* Ride to It.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Ride to It.mp3"; path = "../../../../../../Downloads/Ride to It.mp3"; sourceTree = "<group>"; };
 		167C36341F610E8F002A796F /* Not My Job.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Not My Job.mp3"; path = "../../../../../../Downloads/Not My Job.mp3"; sourceTree = "<group>"; };
 		167C36361F610EA3002A796F /* She Only Sees.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "She Only Sees.mp3"; path = "../../../../../../Downloads/She Only Sees.mp3"; sourceTree = "<group>"; };
 		167C36381F610EC4002A796F /* Get Stupid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Get Stupid.mp3"; path = "../../../../../../Downloads/Get Stupid.mp3"; sourceTree = "<group>"; };
@@ -87,15 +88,12 @@
 		16B00E501F5F410900A1429E /* Rhyme-DiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rhyme-DiceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B00E541F5F410900A1429E /* Rhyme_DiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rhyme_DiceUITests.swift; sourceTree = "<group>"; };
 		16B00E561F5F410900A1429E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		16B00E691F5F6BF700A1429E /* DiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceController.swift; sourceTree = "<group>"; };
+		16B00E691F5F6BF700A1429E /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		16B00E6B1F607F9D00A1429E /* Wipe Me Down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Wipe Me Down.mp3"; path = "../../../../../../Downloads/Wipe Me Down.mp3"; sourceTree = "<group>"; };
 		16B00E6D1F6081AB00A1429E /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Ice Cream Paint Job.mp3"; path = "../../../../../../Downloads/Ice Cream Paint Job.mp3"; sourceTree = "<group>"; };
 		16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Special Herbs 01.mp3"; path = "../../../../../../Downloads/Special Herbs 01.mp3"; sourceTree = "<group>"; };
 		16B00E711F608EAC00A1429E /* Go DJ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Go DJ.mp3"; path = "../../../../../../Downloads/Go DJ.mp3"; sourceTree = "<group>"; };
-		16D030F01F6CE13A00718A69 /* Rhyme-Dice-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rhyme-Dice-Bridging-Header.h"; sourceTree = "<group>"; };
-		16D030F11F6CE13A00718A69 /* CropAudioController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CropAudioController.m; sourceTree = "<group>"; };
-		16D030F31F6CE2D500718A69 /* IQAudioRecorderController */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IQAudioRecorderController; sourceTree = "<group>"; };
 		16DCCED81F61BAB5004A1180 /* RhymeDiceIntro.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = RhymeDiceIntro.mov; path = ../../../../../../Desktop/RhymeDiceIntro.mov; sourceTree = "<group>"; };
 		16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsController.swift; sourceTree = "<group>"; };
 		16DCCEDC1F649A8C004A1180 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
@@ -223,19 +221,16 @@
 		16B00E651F5F420B00A1429E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				16D030F31F6CE2D500718A69 /* IQAudioRecorderController */,
 				16B00E361F5F410900A1429E /* ModelController.swift */,
 				16DCCEDE1F65C474004A1180 /* DataViewController.swift */,
 				16B00E321F5F410900A1429E /* RootViewController.swift */,
 				16B00E301F5F410900A1429E /* AppDelegate.swift */,
-				16B00E691F5F6BF700A1429E /* DiceController.swift */,
+				16B00E691F5F6BF700A1429E /* MainController.swift */,
 				16B00E6D1F6081AB00A1429E /* PlayerController.swift */,
 				167C363A1F61AD3D002A796F /* VideoBackgroundController.swift */,
 				16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */,
 				16FBADF81F688A570000AE8B /* ParsableWords.swift */,
 				16FBAE041F68BF870000AE8B /* ARController.swift */,
-				16D030F11F6CE13A00718A69 /* CropAudioController.m */,
-				16D030F01F6CE13A00718A69 /* Rhyme-Dice-Bridging-Header.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -248,7 +243,6 @@
 				167C36301F610E6D002A796F /* Thizzle Dance.mp3 */,
 				167C36281F610E11002A796F /* Sit Low.mp3 */,
 				16B00E6F1F608EAC00A1429E /* Ice Cream Paint Job.mp3 */,
-				167C36321F610E7C002A796F /* Ride to It.mp3 */,
 				16B00E701F608EAC00A1429E /* Special Herbs 01.mp3 */,
 				167C36381F610EC4002A796F /* Get Stupid.mp3 */,
 				16B00E711F608EAC00A1429E /* Go DJ.mp3 */,
@@ -270,6 +264,10 @@
 		3AD47EF3F67C4B90A684B54D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				161A3BAF1F6DF3B600A97FAF /* Bolts.framework */,
+				161A3BB01F6DF3B700A97FAF /* FBSDKCoreKit.framework */,
+				161A3BB11F6DF3B700A97FAF /* FBSDKLoginKit.framework */,
+				161A3BB21F6DF3B800A97FAF /* FBSDKShareKit.framework */,
 				16FBAE081F68F6350000AE8B /* MediaToolbox.framework */,
 				16FBAE061F68F5F90000AE8B /* MediaPlayer.framework */,
 				58760A473014AEBDB729C821 /* Pods_Rhyme_Dice.framework */,
@@ -364,7 +362,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Will Meier";
 				TargetAttributes = {
 					16B00E2C1F5F410900A1429E = {
@@ -380,11 +378,13 @@
 					};
 					16B00E441F5F410900A1429E = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 16B00E2C1F5F410900A1429E;
 					};
 					16B00E4F1F5F410900A1429E = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 16B00E2C1F5F410900A1429E;
 					};
@@ -418,7 +418,6 @@
 				167C36371F610EA3002A796F /* She Only Sees.mp3 in Resources */,
 				167C36391F610EC4002A796F /* Get Stupid.mp3 in Resources */,
 				16B00E731F608EAC00A1429E /* Special Herbs 01.mp3 in Resources */,
-				167C36331F610E7C002A796F /* Ride to It.mp3 in Resources */,
 				16B00E741F608EAC00A1429E /* Go DJ.mp3 in Resources */,
 				167C36291F610E11002A796F /* Sit Low.mp3 in Resources */,
 				167C36311F610E6D002A796F /* Thizzle Dance.mp3 in Resources */,
@@ -621,9 +620,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16B00E6A1F5F6BF700A1429E /* DiceController.swift in Sources */,
+				16B00E6A1F5F6BF700A1429E /* MainController.swift in Sources */,
 				16DCCEDF1F65C474004A1180 /* DataViewController.swift in Sources */,
-				16D030F21F6CE13A00718A69 /* CropAudioController.m in Sources */,
 				16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */,
 				16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */,
 				16DCCEDD1F649A8C004A1180 /* Recording.swift in Sources */,
@@ -699,7 +697,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -707,7 +707,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -749,7 +753,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -757,7 +763,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -797,9 +807,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-Dice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Rhyme-Dice/Rhyme-Dice-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -818,8 +828,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-Dice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Rhyme-Dice/Rhyme-Dice-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -833,7 +843,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-DiceTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rhyme-Dice.app/Rhyme-Dice";
 			};
 			name = Debug;
@@ -848,7 +859,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-DiceTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rhyme-Dice.app/Rhyme-Dice";
 			};
 			name = Release;
@@ -862,7 +874,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-DiceUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Rhyme-Dice";
 			};
 			name = Debug;
@@ -876,7 +889,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willmeier.Rhyme-DiceUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "Rhyme-Dice";
 			};
 			name = Release;

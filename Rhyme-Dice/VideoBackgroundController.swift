@@ -20,7 +20,7 @@ class VideoBackgroundController: UIViewController {
         
         avPlayer = AVPlayer(url:theURL)
         avPlayerLayer = AVPlayerLayer(player:avPlayer)
-        avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        avPlayerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         avPlayer.volume = 0
         avPlayer.actionAtItemEnd = .none
         avPlayerLayer.frame = view.layer.bounds
@@ -33,7 +33,7 @@ class VideoBackgroundController: UIViewController {
                                                object:avPlayer.currentItem)
     }
     
-    func playerItemDidReachEnd(notification:Notification){
+    @objc func playerItemDidReachEnd(notification:Notification){
         let p: AVPlayerItem = notification.object as! AVPlayerItem
         p.seek(to: kCMTimeZero)
     }

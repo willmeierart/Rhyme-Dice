@@ -77,10 +77,16 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
                     var myRecording = recording.absoluteString
                     if myRecording.contains(".m4a"){
                         recordings.append(recording)
+                        let asset = AVURLAsset(url:recording)
+                        let recDuration = asset.duration
+                        let recDurationSecs = CMTimeGetSeconds(recDuration)
+                        var formatDur = String(format:"%.2f", recDurationSecs)
+                        formatDur = formatDur.replacingOccurrences(of: ".", with: ":")
                         let findString = myRecording.components(separatedBy: "/")
                         myRecording = findString[findString.count-1]
                         myRecording = myRecording.replacingOccurrences(of: "%20", with: " ")
                         myRecording = myRecording.replacingOccurrences(of: ".m4a", with: "")
+                        myRecording = "\(myRecording) - \(formatDur)"
                         if !recordingTitles.contains(myRecording){
                             recordingTitles.append(myRecording)
                         }

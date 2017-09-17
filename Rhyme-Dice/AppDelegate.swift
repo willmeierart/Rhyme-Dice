@@ -7,9 +7,9 @@
 //
 
 import UIKit
-//import AWSCore
-//import AWSCognito
-//import AWSS3
+import AWSCore
+import AWSCognito
+import AWSS3
 
 
 @UIApplicationMain
@@ -27,17 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-//        AWSLogger.default().logLevel = .verbose
 //
 //        let ACCESS_KEY_ID = ProcessInfo.processInfo.environment["AWS_ACCESS_KEY_ID"]
 //        let SECRET_KEY = ProcessInfo.processInfo.environment["AWS_SECRET_KEY"]
 //
-//        let credentialProvider = AWSStaticCredentialsProvider credentialsWithAccessKey:"\(ACCESS_KEY_ID)" secretKey:@"\(ACCESS_KEY_ID)"
-////        let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1_3vFsO1ewp")
-//        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
-//        AWSServiceManager.default().defaultServiceConfiguration = configuration
-//
-//        AWSLogger.default().logLevel = .verbose
+        let myIdentityPoolID = "us-east-1:9e6dd5f8-eed2-445e-9337-ae236e3994c2"
+        
+        let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: myIdentityPoolID)
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+
+        AWSLogger.default().logLevel = .verbose
         
         return true
     }

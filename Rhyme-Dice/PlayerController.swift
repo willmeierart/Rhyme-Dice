@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 
-var audioPlayer = AVAudioPlayer()
 var songs:[String] = []
 var thisSong = 0
 var audioStuffed = false
@@ -20,12 +19,12 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var playerTable: UITableView!
     
     
-//    @IBAction func returnMain(_ sender: UITapGestureRecognizer) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "Rhyme")
-//        self.present(vc, animated:true, completion:nil)
-//        print("ok")
-//    }
+    @IBAction func returnMain(_ sender: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Rhyme", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Rhyme")
+        self.present(vc, animated:true, completion:nil)
+        print("ok")
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songs.count
@@ -54,15 +53,9 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
         getSongs()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
     
     func getSongs(){
         let folderURL = URL(fileURLWithPath: Bundle.main.resourcePath!)
