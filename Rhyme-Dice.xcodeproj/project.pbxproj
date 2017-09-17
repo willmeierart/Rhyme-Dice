@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		08B9783096711F35A0474451 /* Pods_Rhyme_DiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0006128A58A32B0EB7AFE6BC /* Pods_Rhyme_DiceTests.framework */; };
+		161A3BB71F6ED2D700A97FAF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161A3BB61F6ED2D700A97FAF /* LoginController.swift */; };
+		161A3BBF1F6EDA5700A97FAF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161A3BBC1F6EDA5700A97FAF /* FBSDKLoginKit.framework */; };
+		161A3BC01F6EDA5700A97FAF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161A3BBD1F6EDA5700A97FAF /* FBSDKShareKit.framework */; };
+		161A3BC11F6EDA5700A97FAF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161A3BBE1F6EDA5700A97FAF /* FBSDKCoreKit.framework */; };
 		167C36291F610E11002A796F /* Sit Low.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36281F610E11002A796F /* Sit Low.mp3 */; };
 		167C362B1F610E23002A796F /* Jungle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362A1F610E23002A796F /* Jungle.mp3 */; };
 		167C362D1F610E3B002A796F /* Bipolar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362C1F610E3B002A796F /* Bipolar.mp3 */; };
@@ -63,9 +67,11 @@
 		0006128A58A32B0EB7AFE6BC /* Pods_Rhyme_DiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rhyme_DiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1168D20F55E2B69B1584314A /* Pods-Rhyme-DiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhyme-DiceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rhyme-DiceUITests/Pods-Rhyme-DiceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		161A3BAF1F6DF3B600A97FAF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		161A3BB01F6DF3B700A97FAF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		161A3BB11F6DF3B700A97FAF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		161A3BB21F6DF3B800A97FAF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		161A3BB31F6ECF1900A97FAF /* Rhyme-Dice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rhyme-Dice.entitlements"; sourceTree = "<group>"; };
+		161A3BB61F6ED2D700A97FAF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		161A3BBC1F6EDA5700A97FAF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../../Downloads/FacebookSDKs-iOS/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		161A3BBD1F6EDA5700A97FAF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../../Downloads/FacebookSDKs-iOS/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		161A3BBE1F6EDA5700A97FAF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../../Downloads/FacebookSDKs-iOS/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		167C36281F610E11002A796F /* Sit Low.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Sit Low.mp3"; path = "../../../../../../Downloads/Sit Low.mp3"; sourceTree = "<group>"; };
 		167C362A1F610E23002A796F /* Jungle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Jungle.mp3; path = ../../../../../../Downloads/Jungle.mp3; sourceTree = "<group>"; };
 		167C362C1F610E3B002A796F /* Bipolar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Bipolar.mp3; path = ../../../../../../Downloads/Bipolar.mp3; sourceTree = "<group>"; };
@@ -116,6 +122,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161A3BBF1F6EDA5700A97FAF /* FBSDKLoginKit.framework in Frameworks */,
+				161A3BC01F6EDA5700A97FAF /* FBSDKShareKit.framework in Frameworks */,
+				161A3BC11F6EDA5700A97FAF /* FBSDKCoreKit.framework in Frameworks */,
 				A5138287C7C726D7C243B9E9 /* Pods_Rhyme_Dice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +173,7 @@
 		16B00E2F1F5F410900A1429E /* Rhyme-Dice */ = {
 			isa = PBXGroup;
 			children = (
+				161A3BB31F6ECF1900A97FAF /* Rhyme-Dice.entitlements */,
 				16B00E631F5F41FF00A1429E /* Model */,
 				16B00E641F5F420500A1429E /* View */,
 				16B00E651F5F420B00A1429E /* Controller */,
@@ -231,6 +241,7 @@
 				16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */,
 				16FBADF81F688A570000AE8B /* ParsableWords.swift */,
 				16FBAE041F68BF870000AE8B /* ARController.swift */,
+				161A3BB61F6ED2D700A97FAF /* LoginController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -264,10 +275,10 @@
 		3AD47EF3F67C4B90A684B54D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				161A3BBE1F6EDA5700A97FAF /* FBSDKCoreKit.framework */,
+				161A3BBC1F6EDA5700A97FAF /* FBSDKLoginKit.framework */,
+				161A3BBD1F6EDA5700A97FAF /* FBSDKShareKit.framework */,
 				161A3BAF1F6DF3B600A97FAF /* Bolts.framework */,
-				161A3BB01F6DF3B700A97FAF /* FBSDKCoreKit.framework */,
-				161A3BB11F6DF3B700A97FAF /* FBSDKLoginKit.framework */,
-				161A3BB21F6DF3B800A97FAF /* FBSDKShareKit.framework */,
 				16FBAE081F68F6350000AE8B /* MediaToolbox.framework */,
 				16FBAE061F68F5F90000AE8B /* MediaPlayer.framework */,
 				58760A473014AEBDB729C821 /* Pods_Rhyme_Dice.framework */,
@@ -373,6 +384,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
 							};
 						};
 					};
@@ -621,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16B00E6A1F5F6BF700A1429E /* MainController.swift in Sources */,
+				161A3BB71F6ED2D700A97FAF /* LoginController.swift in Sources */,
 				16DCCEDF1F65C474004A1180 /* DataViewController.swift in Sources */,
 				16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */,
 				16B00E6E1F6081AB00A1429E /* PlayerController.swift in Sources */,
@@ -798,10 +813,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Rhyme-Dice/Rhyme-Dice.entitlements";
 				DEVELOPMENT_TEAM = YHQPELT3BZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"~/Downloads/FacebookSDKs-iOS",
 				);
 				INFOPLIST_FILE = "Rhyme-Dice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -819,10 +836,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Rhyme-Dice/Rhyme-Dice.entitlements";
 				DEVELOPMENT_TEAM = YHQPELT3BZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"~/Downloads/FacebookSDKs-iOS",
 				);
 				INFOPLIST_FILE = "Rhyme-Dice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
