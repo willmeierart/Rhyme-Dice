@@ -20,8 +20,6 @@ var audioPlayer = AVAudioPlayer()
 
 @available(iOS 11.0, *)
 
-//var globalCurrentAudioFile:URL!
-
 class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteractionDelegate{
 
     var wordSets:[[String]]!
@@ -30,8 +28,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
-
-    @IBOutlet weak var label: UILabel!
 
     @IBOutlet weak var leftWordButton: UIButton!
     @IBOutlet weak var rightWordButton: UIButton!
@@ -43,14 +39,12 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     @IBOutlet weak var rightDieStack: UIStackView!
     @IBOutlet weak var rightDieStackContainerView: UIView!
     
-    @IBOutlet weak var nowPlaying: UILabel!
     @IBOutlet weak var myVolumeViewParentView: UIView!
     @IBOutlet weak var recordButton: UIButton!
-
+    @IBOutlet weak var playButton: UIButton!
+    
     
 // IOS 11 THING:
-    
-    
     func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
         let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
         view.addInteraction(dragInteraction)
@@ -64,6 +58,8 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         ]
     }
     
+    
+    
 //    @IBAction func goToLibrary(_ sender: UITapGestureRecognizer) {
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewController(withIdentifier: "playlist")
@@ -75,31 +71,24 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     @IBAction func play(_ sender: Any) {
         if audioStuffed == true && audioPlayer.isPlaying == false{
             audioPlayer.play()
-            nowPlaying.text = songs[thisSong]
+            playButton.setImage(UIImage(named:"playerPause"), for: .normal)
         } else if audioStuffed == false{
-//            print(songs)
             playThis(thisOne:"Not My Job")
-            nowPlaying.text = "Not My Job"
-        }
-    }
-    @IBAction func pause(_ sender: Any) {
-        if audioStuffed == true && audioPlayer.isPlaying {
-            nowPlaying.text = songs[thisSong]
+        } else if audioPlayer.isPlaying == true{
             audioPlayer.pause()
+            playButton.setImage(UIImage(named:"playerPlay"), for: .normal)
         }
     }
     @IBAction func prev(_ sender: Any) {
         if audioStuffed == true && thisSong != 1 {
             playThis(thisOne: songs[thisSong-1])
             thisSong -= 1
-            nowPlaying.text = songs[thisSong]
         } else {}
     }
     @IBAction func next(_ sender: Any) {
         if audioStuffed == true && thisSong < songs.count-1{
             playThis(thisOne: songs[thisSong+1])
             thisSong += 1
-            nowPlaying.text = songs[thisSong]
         }else{}
     }
     
@@ -129,11 +118,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         
         recordingSession = AVAudioSession.sharedInstance()
         try!recordingSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
-        
-        if audioStuffed == true {
-            nowPlaying.text = "Now Playing: \(songs[thisSong])"
-        }
-
         do{
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission(){[unowned self] allowed in
@@ -194,8 +178,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         
         audioFilePath = getDocumentsDirectory().appendingPathComponent("\(audioName!).m4a")
         
-//        globalCurrentAudioFile = audioFilePath
-        
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 44100,
@@ -203,14 +185,12 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
         do {
-//            audioPlayer.volume = 0.6
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
             audioRecorder = try AVAudioRecorder(url: audioFilePath, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
-//            print(audioFilePath)
             
-            recordButton.setTitle("STOP", for: .normal)
+            recordButton.setImage(UIImage(named:"recButtonGreen"), for: .normal)
         } catch {
             finishRecording(success:false)
         }
@@ -225,7 +205,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         
         if success {
-            recordButton.setTitle("RECORD", for: .normal)
+            recordButton.setImage(UIImage(named:"recButton"), for: .normal)
             alertFinishedRecording()
         }
     }
@@ -244,12 +224,10 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         alert.addAction(UIAlertAction(title: "Discard", style: .`destructive`, handler: { action in
             self.discardRecording()
         }))
-        
         present(alert, animated:true, completion: nil)
     }
     
     func keepRecording(){
-        
         nameRecording()
     }
 
@@ -281,7 +259,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
                     try FileManager.default.moveItem(at: self!.audioFilePath!, to: newFilePath)
                     self!.audioFilePath = newFilePath
                     DispatchQueue.main.asyncAfter(deadline: .now()){
-//                        self!.getS3AuthHeader()
                         self!.uploadToAWS()
                     }
                 } catch {print(error)}
@@ -291,8 +268,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         alertController?.addAction(action)
         self.present(alertController!, animated:true, completion:nil)
     }
-
-    
     
     func updateDice(){
         initWordFetching(forceWords: [])
@@ -300,28 +275,27 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     
     func initWordFetching(forceWords:[String]?){
         
+        let firstNumber = Int(arc4random_uniform(12)+1)
+        var secondNumber = Int(arc4random_uniform(12)+1)
+        if secondNumber == firstNumber {
+            secondNumber = Int(arc4random_uniform(12)+1)
+        }
+//        let firstNumber = Int(arc4random_uniform(6)+1)
+//        let secondNumber = Int(arc4random_uniform(6)+1)
         
-        let firstNumber = Int(arc4random_uniform(6)+1)
-        let secondNumber = Int(arc4random_uniform(6)+1)
+        let sounds = [1:"a", 2:"eh", 3:"i", 4:"o", 5:"ure", 6:"oo", 7:"ay", 8:"ee", 9:"ie", 10:"oh", 11:"oy", 12:"uh"]
+//        let shortSounds = [1:"a", 2:"eh", 3:"i", 4:"o", 5:"ure", 6:"oo"]
+//        let longSounds = [1:"ay", 2:"ee", 3:"ie", 4:"oh", 5:"oy", 6:"uh"]
         
-        let shortSounds = [1:"a", 2:"eh", 3:"i", 4:"o", 5:"ure", 6:"oo"]
-        let longSounds = [1:"ay", 2:"ee", 3:"ie", 4:"oh", 5:"oy", 6:"uh"]
+        let sound1 = (forceWords?.isEmpty)! ? sounds[firstNumber]! : forceWords![0]
+        let sound2 = (forceWords?.isEmpty)! ? sounds[secondNumber]! : forceWords![1]
+//        let sound1 = (forceWords?.isEmpty)! ? longSounds[firstNumber]! : forceWords![0]
+//        let sound2 = (forceWords?.isEmpty)! ? shortSounds[secondNumber]! : forceWords![1]
         
-        let sound1 = (forceWords?.isEmpty)! ? longSounds[firstNumber]! : forceWords![0]
-        let sound2 = (forceWords?.isEmpty)! ? shortSounds[secondNumber]! : forceWords![1]
-        
-         asyncGetBothWordSets(sounds: [sound1, sound2], numbers:[firstNumber, secondNumber])
+         asyncGetBothWordSets(sounds: [sound1, sound2], soundSet:sounds)
     }
     
-    func animateRoll(die:UIImageView!, imgSet:String){
-        die.animationImages = (1..<6).map{UIImage(named:"Dice\(imgSet)\($0)")!}
-        die.animationDuration = 1.0
-        die.animationRepeatCount = 1
-        die.startAnimating()
-    }
-    
-    
-    func asyncGetBothWordSets(sounds:[String], numbers:[Int]){
+    func asyncGetBothWordSets(sounds:[String], soundSet:[Int:String]){
         let APIurl:String = "https://rhymedice.herokuapp.com/words/"
         wordSets = []
         getWords(url:APIurl, sound:sounds[0], completion:{response in
@@ -330,7 +304,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
             self.getWords(url:APIurl, sound:sounds[1], completion:{response in
                 let arr = self.appendSetsArray(json:response, sound:sounds[1])
                 self.wordSets.append(arr)
-                self.displayDiceData(numbers: numbers)
+                self.displayDiceData(sounds:sounds, soundSet:soundSet)
             })
         })
     }
@@ -360,7 +334,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         return arr
     }
     
-    func displayDiceData(numbers:[Int]){
+    func displayDiceData(sounds:[String], soundSet:[Int:String]){
         if wordSets.count > 0 {
             let sound1:String = getRandomWordFromSet(set: wordSets[0])
             let sound2:String = getRandomWordFromSet(set: wordSets[1])
@@ -369,20 +343,31 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
             rightWordButton.setTitle("\(sound2)", for: .normal)
             
             DispatchQueue.main.asyncAfter(deadline: .now()){
-                self.animateRoll(die:self.leftDie, imgSet:"Long")
-                self.animateRoll(die:self.rightDie, imgSet:"Short")
+                self.animateRoll(die:self.leftDie, sounds:soundSet)
+                self.animateRoll(die:self.rightDie, sounds:soundSet)
             }
             
-            leftDie.image = UIImage(named: "DiceLong\(numbers[0])")
-            rightDie.image = UIImage(named: "DiceShort\(numbers[1])")
-
+            leftDie.image = UIImage(named: "Dice-\(sounds[0])")
+            rightDie.image = UIImage(named: "Dice-\(sounds[1])")
         }
-           }
+    }
+
+    func animateRoll(die:UIImageView!, sounds:[Int:String]){
+        let randomNumArr = (1..<12).map{_ in Int(arc4random_uniform(12)+1)}
+        
+        die.animationImages = randomNumArr.map{
+            let thisSound = sounds[$0]
+            print(thisSound!)
+            return UIImage(named:"Dice-\(thisSound!)")!
+        }
+        die.animationDuration = 1.0
+        die.animationRepeatCount = 1
+        die.startAnimating()
+    }
     
     func getRandomWordFromSet(set:[String])->String{
         if !set.isEmpty {
             let index = Int(arc4random_uniform(UInt32(set.count) - 1))
-//            print(index)
             return set[index]
         } else {
             return "😶"
@@ -422,7 +407,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
                 print("upload failed with error: \(error)")
             }
             if task.result != nil {
-                let s3URL = NSURL(string:"https://s3.amazonaws.com/\(bucket)/\(uniqueFileName)")
+//                let s3URL = NSURL(string:"https://s3.amazonaws.com/\(bucket)/\(uniqueFileName)")
                 print(task)
                 print("successssssss")
             } else {
