@@ -173,7 +173,6 @@
 		16B00E2F1F5F410900A1429E /* Rhyme-Dice */ = {
 			isa = PBXGroup;
 			children = (
-				161A3BB31F6ECF1900A97FAF /* Rhyme-Dice.entitlements */,
 				16B00E631F5F41FF00A1429E /* Model */,
 				16B00E641F5F420500A1429E /* View */,
 				16B00E651F5F420B00A1429E /* Controller */,
@@ -205,6 +204,7 @@
 		16B00E621F5F41CC00A1429E /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				161A3BB31F6ECF1900A97FAF /* Rhyme-Dice.entitlements */,
 				16B00E401F5F410900A1429E /* Info.plist */,
 			);
 			name = SupportingFiles;

@@ -70,7 +70,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
 //        self.present(vc, animated:true, completion:nil)
 //        print(vc)
 //    }
-//    
+    
     
     @IBAction func play(_ sender: Any) {
         if audioStuffed == true && audioPlayer.isPlaying == false{

@@ -22,6 +22,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="Ls8-if-PJe" kind="show" identifier="loginSegue" id="Huh-x1-Ws2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meb-ej-vdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +56,7 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Hxd-we-ego" appends="YES" id="4SD-Re-wle"/>
+                                            <outletCollection property="gestureRecognizers" destination="fAE-G8-Xht" appends="YES" id="eZX-S8-SP2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -74,18 +77,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4b9-mT-m32" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Hxd-we-ego">
+                <tapGestureRecognizer delaysTouchesBegan="YES" id="fAE-G8-Xht">
                     <connections>
-                        <action selector="returnMain:" destination="PNk-SB-ePM" id="zkS-hg-po4"/>
+                        <segue destination="lit-Gs-IJ5" kind="show" id="nKF-bd-RMW"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-991" y="-808"/>
         </scene>
-        <!--Item 1-->
+        <!--rotation test-->
         <scene sceneID="be1-Q7-00Q">
             <objects>
-                <viewController id="MQ7-GK-AOW" customClass="ARController" customModule="Rhyme_Dice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MQ7-GK-AOW" userLabel="rotation test" customClass="ARController" customModule="Rhyme_Dice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aHA-qd-Tmf"/>
                         <viewControllerLayoutGuide type="bottom" id="hGr-fa-W5f"/>
@@ -286,6 +289,9 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="6JD-s0-Bww" appends="YES" id="i1I-Sg-k8I"/>
+                                    </connections>
                                 </label>
                                 <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JH7-fL-m2D">
                                     <rect key="frame" x="0.0" y="388" width="375" height="50"/>
@@ -331,6 +337,12 @@
                     </constraints>
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWn-Oo-9Zp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6JD-s0-Bww">
+                    <connections>
+                        <action selector="goToLibrary:" destination="lit-Gs-IJ5" id="vBP-fE-Xz0"/>
+                        <segue destination="PNk-SB-ePM" kind="presentation" id="ouy-AB-INf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1" y="-175"/>
         </scene>
@@ -351,7 +363,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gqt-Ue-MIZ" userLabel="recording">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recording" id="gqt-Ue-MIZ" userLabel="recording">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gqt-Ue-MIZ" id="kHO-1y-KfG">
@@ -421,4 +433,8 @@
         <image name="Graf1" width="1318" height="2617"/>
         <image name="Roll" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nKF-bd-RMW"/>
+        <segue reference="ouy-AB-INf"/>
+    </inferredMetricsTieBreakers>
 </document>
