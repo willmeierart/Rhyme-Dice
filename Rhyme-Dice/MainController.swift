@@ -20,9 +20,7 @@ var audioPlayer = AVAudioPlayer()
 
 //@available(iOS 11.0, *)
 
-class DiceController: UIViewController, AVAudioRecorderDelegate
-//UIDragInteractionDelegate
-{
+class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteractionDelegate{
 
     var wordSets:[[String]]!
     var audioName:String!
@@ -46,28 +44,22 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
     @IBOutlet weak var playButton: UIButton!
     
     
+    
+    
 // IOS 11 THING:
-//    func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
-//        let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
-//        view.addInteraction(dragInteraction)
-//    }
-//
-//    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
-//        // Cast to NSString is required for NSItemProviderWriting support.
-//        let stringItemProvider = NSItemProvider(object: "Hello World" as NSString)
-//        return [
-//            UIDragItem(itemProvider: stringItemProvider)
-//        ]
-//    }
-//
-    
-    
-//    @IBAction func goToLibrary(_ sender: UITapGestureRecognizer) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "playlist")
-//        self.present(vc, animated:true, completion:nil)
-//        print(vc)
-//    }
+    func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
+        let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
+        view.addInteraction(dragInteraction)
+    }
+
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+        // Cast to NSString is required for NSItemProviderWriting support.
+        let stringItemProvider = NSItemProvider(object: "Hello World" as NSString)
+        return [
+            UIDragItem(itemProvider: stringItemProvider)
+        ]
+    }
+
     
     
     @IBAction func play(_ sender: Any) {
@@ -131,7 +123,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//       navigationController?.setNavigationBarHidden(false, animated: false)
+       navigationController?.setNavigationBarHidden(false, animated: false)
         
     }
     
@@ -410,6 +402,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
             uploadRequest.bucket = bucket
             uploadRequest.key = uniqueFileName
             uploadRequest.body = file
+            uploadRequest.acl = AWSS3ObjectCannedACL.publicReadWrite
         transferManager.upload(uploadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
             
             if let error = task.error { print("upload failed with error: \(error)") }

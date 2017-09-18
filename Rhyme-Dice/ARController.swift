@@ -40,6 +40,10 @@ class ARController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
@@ -99,14 +103,14 @@ class ARController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    @IBAction func removeDice(_ sender: UIBarButtonItem) {
-        if !diceArray.isEmpty {
-            for dice in diceArray {
-                dice.removeFromParentNode()
-            }
-            diceArray = []
-        }
-    }
+//   @IBAction func removeDice(_ sender: UIBarButtonItem) {
+//       if !diceArray.isEmpty {
+//           for dice in diceArray {
+//               dice.removeFromParentNode()
+//           }
+//            diceArray = []
+//        }
+//   }
     
     
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {

@@ -233,16 +233,16 @@
 		16B00E651F5F420B00A1429E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				161A3BB61F6ED2D700A97FAF /* LoginController.swift */,
 				16B00E691F5F6BF700A1429E /* MainController.swift */,
-				16B00E361F5F410900A1429E /* ModelController.swift */,
 				1659A14E1F6F7D11007550BA /* ARController.swift */,
-				16DCCEDE1F65C474004A1180 /* DataViewController.swift */,
-				16B00E321F5F410900A1429E /* RootViewController.swift */,
-				16B00E301F5F410900A1429E /* AppDelegate.swift */,
 				16B00E6D1F6081AB00A1429E /* PlayerController.swift */,
 				167C363A1F61AD3D002A796F /* VideoBackgroundController.swift */,
 				16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */,
-				161A3BB61F6ED2D700A97FAF /* LoginController.swift */,
+				16B00E321F5F410900A1429E /* RootViewController.swift */,
+				16B00E361F5F410900A1429E /* ModelController.swift */,
+				16DCCEDE1F65C474004A1180 /* DataViewController.swift */,
+				16B00E301F5F410900A1429E /* AppDelegate.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

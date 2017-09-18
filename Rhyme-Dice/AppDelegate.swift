@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-//    internal var shouldRotate = false
-//    func application(_ application: UIApplication,
-//                     supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-//        return shouldRotate ? .allButUpsideDown : .portrait
-//    }
+    internal var shouldRotate = false
+    func application(_ application: UIApplication,
+                     supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return shouldRotate ? .allButUpsideDown : .portrait
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -34,22 +34,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
-//        let defaults = UserDefaults.standard
-//        if defaults.value(forKey: "login") != nil{
-//            let value = defaults.value(forKey: "login") as! String!
-//            var vc = UIViewController()
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            if value == "loggedin"{
-//                vc = storyboard.instantiateViewController(withIdentifier: "Main") as UIViewController!
-//            }
-//            else if value == "loggedout"{
-//                vc = storyboard.instantiateViewController(withIdentifier: "Login") as UIViewController!
-//            }
-////            let navigationController = UINavigationController(rootViewController: vc)
-////            self.window?.rootViewController?.present(navigationController, animated:true, completion:nil)
-//
-//             self.window?.rootViewController = vc
-//        }
+        let defaults = UserDefaults.standard
+        if defaults.value(forKey: "login") != nil{
+            let value = defaults.value(forKey: "login") as! String!
+            var vc = UIViewController()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if value == "loggedin"{
+                vc = storyboard.instantiateViewController(withIdentifier: "Main") as UIViewController!
+            }
+            else if value == "loggedout"{
+                vc = storyboard.instantiateViewController(withIdentifier: "Login") as UIViewController!
+            }
+//            let navigationController = UINavigationController(rootViewController: vc)
+//            self.window?.rootViewController?.present(navigationController, animated:true, completion:nil)
+
+             self.window?.rootViewController = vc
+        }
         
         return true
     }
