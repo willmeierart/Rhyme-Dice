@@ -18,9 +18,11 @@ import AWSS3
 
 var audioPlayer = AVAudioPlayer()
 
-@available(iOS 11.0, *)
+//@available(iOS 11.0, *)
 
-class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteractionDelegate{
+class DiceController: UIViewController, AVAudioRecorderDelegate
+//UIDragInteractionDelegate
+{
 
     var wordSets:[[String]]!
     var audioName:String!
@@ -45,19 +47,19 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     
     
 // IOS 11 THING:
-    func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
-        let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
-        view.addInteraction(dragInteraction)
-    }
-    
-    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
-        // Cast to NSString is required for NSItemProviderWriting support.
-        let stringItemProvider = NSItemProvider(object: "Hello World" as NSString)
-        return [
-            UIDragItem(itemProvider: stringItemProvider)
-        ]
-    }
-    
+//    func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
+//        let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
+//        view.addInteraction(dragInteraction)
+//    }
+//
+//    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+//        // Cast to NSString is required for NSItemProviderWriting support.
+//        let stringItemProvider = NSItemProvider(object: "Hello World" as NSString)
+//        return [
+//            UIDragItem(itemProvider: stringItemProvider)
+//        ]
+//    }
+//
     
     
 //    @IBAction func goToLibrary(_ sender: UITapGestureRecognizer) {
@@ -92,16 +94,13 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         }else{}
     }
     
-//USE MPVOLUMEVIEW
-    @IBAction func volume(_ sender: UISlider) {
-        if audioStuffed == true{
-            audioPlayer.volume = sender.value
-//            print(sender.value)
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let cloud1 = generateRandomCloud()
+        leftWordButton.setBackgroundImage(cloud1, for:.normal)
+        let cloud2 = generateRandomCloud()
+        rightWordButton.setBackgroundImage(cloud2, for:.normal)
         
         wordSets = []
         
@@ -128,10 +127,11 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
                 }
             }
         } catch {}
+               navigationController?.setNavigationBarHidden(false, animated: false)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+//       navigationController?.setNavigationBarHidden(false, animated: false)
         
     }
     
@@ -167,8 +167,10 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     @objc func recordTapped(){
         if audioRecorder == nil {
             startRecording()
+
         } else {
             finishRecording(success:true)
+
         }
     }
     func startRecording(){
@@ -270,6 +272,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     }
     
     func updateDice(){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         initWordFetching(forceWords: [])
     }
     
@@ -280,17 +283,11 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         if secondNumber == firstNumber {
             secondNumber = Int(arc4random_uniform(12)+1)
         }
-//        let firstNumber = Int(arc4random_uniform(6)+1)
-//        let secondNumber = Int(arc4random_uniform(6)+1)
         
         let sounds = [1:"a", 2:"eh", 3:"i", 4:"o", 5:"ure", 6:"oo", 7:"ay", 8:"ee", 9:"ie", 10:"oh", 11:"oy", 12:"uh"]
-//        let shortSounds = [1:"a", 2:"eh", 3:"i", 4:"o", 5:"ure", 6:"oo"]
-//        let longSounds = [1:"ay", 2:"ee", 3:"ie", 4:"oh", 5:"oy", 6:"uh"]
         
         let sound1 = (forceWords?.isEmpty)! ? sounds[firstNumber]! : forceWords![0]
         let sound2 = (forceWords?.isEmpty)! ? sounds[secondNumber]! : forceWords![1]
-//        let sound1 = (forceWords?.isEmpty)! ? longSounds[firstNumber]! : forceWords![0]
-//        let sound2 = (forceWords?.isEmpty)! ? shortSounds[secondNumber]! : forceWords![1]
         
          asyncGetBothWordSets(sounds: [sound1, sound2], soundSet:sounds)
     }
@@ -339,8 +336,8 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
             let sound1:String = getRandomWordFromSet(set: wordSets[0])
             let sound2:String = getRandomWordFromSet(set: wordSets[1])
             
-            leftWordButton.setTitle("\(sound1)", for: .normal)
-            rightWordButton.setTitle("\(sound2)", for: .normal)
+            leftWordButton.setTitle(" \(sound1) ", for: .normal)
+            rightWordButton.setTitle(" \(sound2) ", for: .normal)
             
             DispatchQueue.main.asyncAfter(deadline: .now()){
                 self.animateRoll(die:self.leftDie, sounds:soundSet)
@@ -363,6 +360,13 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         die.animationDuration = 1.0
         die.animationRepeatCount = 1
         die.startAnimating()
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        let cloud1 = generateRandomCloud()
+        leftWordButton.setBackgroundImage(cloud1, for:.normal)
+        let cloud2 = generateRandomCloud()
+        rightWordButton.setBackgroundImage(cloud2, for:.normal)
     }
     
     func getRandomWordFromSet(set:[String])->String{
@@ -381,13 +385,18 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     @objc func swapLeftWord(){
         if !wordSets.isEmpty {
             let newSound = getRandomWordFromSet(set: wordSets[0])
-            leftWordButton.setTitle("\(newSound)", for: .normal)
+            leftWordButton.setTitle(" \(newSound) ", for: .normal)
+            let cloud = generateRandomCloud()
+            leftWordButton.setBackgroundImage(cloud, for:.normal)
+            
         }
     }
     @objc func swapRightWord(){
         if !wordSets.isEmpty {
             let newSound = getRandomWordFromSet(set: wordSets[1])
-            rightWordButton.setTitle("\(newSound)", for: .normal)
+            rightWordButton.setTitle(" \(newSound) ", for: .normal)
+            let cloud = generateRandomCloud()
+            rightWordButton.setBackgroundImage(cloud, for:.normal)
         }
     }
     
@@ -403,18 +412,61 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
             uploadRequest.body = file
         transferManager.upload(uploadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
             
-            if let error = task.error {
-                print("upload failed with error: \(error)")
-            }
+            if let error = task.error { print("upload failed with error: \(error)") }
             if task.result != nil {
 //                let s3URL = NSURL(string:"https://s3.amazonaws.com/\(bucket)/\(uniqueFileName)")
-                print(task)
-                print("successssssss")
-            } else {
-                print("unexpected empty result")
-            }
+//                uploadRecordingData(recURL:s3URL)
+            } else { print("unexpected empty result") }
             return nil
         })
+    }
+    
+//    func uploadRecordingData(recURL:URL){
+//
+//    }
+    
+    
+    func generateRandomCloud() -> UIImage {
+        
+        func randomInt(lower: Int, upper: Int) -> Int {
+            assert(lower < upper)
+            return lower + Int(arc4random_uniform(UInt32(upper - lower)))
+        }
+        
+        func circle(at center: CGPoint, radius: CGFloat) -> UIBezierPath {
+            return UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat(2 * Double.pi), clockwise: true)
+        }
+        
+        let a = Double(randomInt(lower: 70, upper: 100))
+        let b = Double(randomInt(lower: 10, upper: 35))
+        let ndiv = 12 as Double
+        
+        let points = stride(from: 0.0, to: 1.0, by: 1/ndiv).map { CGPoint(x: a * cos(6.28 * $0), y: b * sin(6.28 * $0)) }
+        
+        let path = UIBezierPath()
+        path.move(to: points[0])
+        for point in points[1..<points.count] {
+            path.addLine(to: point)
+        }
+        path.close()
+        
+        let minRadius = (Int)(Double.pi * a/ndiv)
+        let maxRadius = minRadius + 25
+        
+        for point in points[1..<points.count] {
+            let randomRadius = CGFloat(randomInt(lower: minRadius, upper: maxRadius))
+            let circ = circle(at: point, radius: randomRadius)
+            path.append(circ)
+        }
+        
+        let (width, height) = (path.bounds.width, path.bounds.height)
+        let margin = CGFloat(20)
+        UIGraphicsBeginImageContext(CGSize(width: path.bounds.width + margin, height:path.bounds.height + margin))
+        UIColor.white.setFill()
+        path.apply(CGAffineTransform(translationX: width/2 + margin, y: height/2 + margin))
+        path.fill()
+        let im = UIGraphicsGetImageFromCurrentImageContext()
+        return im!
     }
 }
 

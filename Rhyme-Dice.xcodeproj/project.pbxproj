@@ -214,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				16DCCEDC1F649A8C004A1180 /* Recording.swift */,
+				16FBADF81F688A570000AE8B /* ParsableWords.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -239,7 +240,6 @@
 				16B00E6D1F6081AB00A1429E /* PlayerController.swift */,
 				167C363A1F61AD3D002A796F /* VideoBackgroundController.swift */,
 				16DCCEDA1F622FFE004A1180 /* RecordingsController.swift */,
-				16FBADF81F688A570000AE8B /* ParsableWords.swift */,
 				16FBAE041F68BF870000AE8B /* ARController.swift */,
 				161A3BB61F6ED2D700A97FAF /* LoginController.swift */,
 			);

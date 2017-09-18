@@ -52,6 +52,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidDisappear(animated)
         avPlayer.pause()
         paused = true
+//        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -61,7 +62,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             print("User has cancelled")
         } else {
 
-            performSegue(withIdentifier: "loginSegue", sender: nil)
+//            performSegue(withIdentifier: "loginSegue", sender: nil)
             
             if result.grantedPermissions.contains("email"){
                 if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]){
@@ -69,6 +70,9 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
                         if error != nil {
                             print(error!)
                         } else {
+                            let defaults = UserDefaults.standard
+                            defaults.setValue("loggedin", forKey: "login")
+                            
                             if let userDeets = result {
                                 print(userDeets)
                             }
@@ -80,6 +84,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     }
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("logged out")
+        let defaults = UserDefaults.standard
+        defaults.setValue("loggedout", forKey: "Login")
     }
     
     @objc func playerItemDidReachEnd(notification:Notification){

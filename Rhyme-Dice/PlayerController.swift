@@ -43,6 +43,8 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
             audioPlayer.play()
             thisSong = indexPath.row
             audioStuffed = true
+            let theMainController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Main") as! DiceController
+//            self.navigationController?.pushViewController(theMainController, animated: true)
         }catch{
             print("error")
         }
