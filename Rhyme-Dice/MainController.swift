@@ -463,7 +463,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate
         let margin = CGFloat(20)
         UIGraphicsBeginImageContext(CGSize(width: path.bounds.width + margin, height:path.bounds.height + margin))
         UIColor.white.setFill()
-        path.apply(CGAffineTransform(translationX: width/2 + margin, y: height/2 + margin))
+        path.apply(CGAffineTransform(translationX: width/2 + margin/2, y: height/2 + margin/2))
         path.fill()
         let im = UIGraphicsGetImageFromCurrentImageContext()
         return im!
