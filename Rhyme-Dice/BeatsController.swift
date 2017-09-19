@@ -9,9 +9,7 @@
 import UIKit
 import AVFoundation
 
-var songs:[String] = []
-var thisSong = 0
-var audioStuffed = false
+
 
 class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -31,12 +29,13 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
            let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
-            try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
-//            audioPlayer.url
-            audioPlayer.play()
+//            try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+//            audioPlayer.url =  NSURL(fileURLWithPath: audioPath!)
+            Player.loadNewSource(source:NSURL(fileURLWithPath: audioPath!) as URL)
+//            audioPlayer.play()
+            Player.Play()
             thisSong = indexPath.row
             audioStuffed = true
-//            let theMainController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Main") as! DiceController
             DispatchQueue.main.asyncAfter(deadline: .now()){
                 self.performSegue(withIdentifier: "Beats2Home", sender: self)
             }
