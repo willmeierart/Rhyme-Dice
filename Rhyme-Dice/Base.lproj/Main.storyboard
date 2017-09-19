@@ -66,8 +66,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTj-ap-3i3" userLabel="NavBar">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="VuE-es-TfA">
-                                        <rect key="frame" x="32.5" y="5" width="310" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="VuE-es-TfA">
+                                        <rect key="frame" x="37.5" y="5" width="300" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4e-cP-Lfq">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -78,7 +78,7 @@
                                                 <state key="normal" image="icon-Home"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGQ-jY-slg">
-                                                <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="130" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="KmM-Vs-a5f"/>
                                                     <constraint firstAttribute="width" constant="40" id="yHN-JQ-5Jy"/>
@@ -86,20 +86,12 @@
                                                 <state key="normal" image="icon-Recording"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xx-eE-MLP">
-                                                <rect key="frame" x="180" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="260" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="FcN-0i-KAt"/>
                                                     <constraint firstAttribute="height" constant="40" id="HeI-ei-6Q4"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-3D"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uls-TG-lwU">
-                                                <rect key="frame" x="270" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="6pr-4R-FZH"/>
-                                                    <constraint firstAttribute="width" constant="40" id="R7W-xN-OHc"/>
-                                                </constraints>
-                                                <state key="normal" image="icon-Music"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -226,7 +218,6 @@
         <scene sceneID="rdu-kb-DSg">
             <objects>
                 <viewController storyboardIdentifier="Main" title="Main" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lit-Gs-IJ5" customClass="DiceController" customModule="Rhyme_Dice" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="9HK-nW-knB"/>
                     <connections>
                         <outlet property="leftDie" destination="Mpy-Y8-Wci" id="CGG-HU-f7L"/>
                         <outlet property="leftDieStack" destination="hnn-DK-Ho6" id="Pka-kp-eXu"/>
@@ -418,19 +409,19 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-0I-XbI" userLabel="NavBar">
                             <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="p9d-Xw-rIN">
-                                    <rect key="frame" x="32.5" y="5" width="310" height="40"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="p9d-Xw-rIN">
+                                    <rect key="frame" x="37.5" y="5" width="300" height="40"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R3-zA-TI5">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D30-uH-Xre">
                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="HPc-zd-VFB"/>
-                                                <constraint firstAttribute="width" constant="40" id="xHv-JW-ghm"/>
+                                                <constraint firstAttribute="height" constant="40" id="KVF-Eb-Ua2"/>
+                                                <constraint firstAttribute="width" constant="40" id="Kf9-XQ-oPn"/>
                                             </constraints>
-                                            <state key="normal" image="icon-Home"/>
+                                            <state key="normal" image="icon-Music"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ig-67-jmb">
-                                            <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                            <rect key="frame" x="130" y="0.0" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="2OO-HU-6cS"/>
                                                 <constraint firstAttribute="height" constant="40" id="js4-IQ-bfM"/>
@@ -438,20 +429,12 @@
                                             <state key="normal" image="icon-Recording"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEZ-3w-nXu">
-                                            <rect key="frame" x="180" y="0.0" width="40" height="40"/>
+                                            <rect key="frame" x="260" y="0.0" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="WE8-td-0KH"/>
                                                 <constraint firstAttribute="width" constant="40" id="hNv-h0-7au"/>
                                             </constraints>
                                             <state key="normal" image="icon-3D"/>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D30-uH-Xre">
-                                            <rect key="frame" x="270" y="0.0" width="40" height="40"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="KVF-Eb-Ua2"/>
-                                                <constraint firstAttribute="width" constant="40" id="Kf9-XQ-oPn"/>
-                                            </constraints>
-                                            <state key="normal" image="icon-Music"/>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -517,8 +500,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RzA-2j-c6T" userLabel="NavBar">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-lV-qsr">
-                                        <rect key="frame" x="32.5" y="5" width="310" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-lV-qsr">
+                                        <rect key="frame" x="37.5" y="5" width="300" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfk-Cq-dTJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -529,23 +512,15 @@
                                                 <state key="normal" image="icon-Home"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7V-n2-IqA">
-                                                <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="130" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="azk-Uy-VRn"/>
                                                     <constraint firstAttribute="height" constant="40" id="gqi-H3-4UE"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Recording"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QY-6a-Pvd">
-                                                <rect key="frame" x="180" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="QYA-Ao-oX3"/>
-                                                    <constraint firstAttribute="height" constant="40" id="tS2-YY-fNs"/>
-                                                </constraints>
-                                                <state key="normal" image="icon-3D"/>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrO-Y6-H4u">
-                                                <rect key="frame" x="270" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="260" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="jyK-Mn-tTc"/>
                                                     <constraint firstAttribute="height" constant="40" id="wbq-iz-79I"/>
@@ -656,8 +631,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGX-xN-EaR" userLabel="NavBar">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Ah4-fF-00r">
-                                        <rect key="frame" x="32.5" y="5" width="310" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="Ah4-fF-00r">
+                                        <rect key="frame" x="37.5" y="5" width="300" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uI-Wi-gXv">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -667,29 +642,21 @@
                                                 </constraints>
                                                 <state key="normal" image="icon-Home"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHE-nY-l4a">
-                                                <rect key="frame" x="90" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="jJs-zc-C1j"/>
-                                                    <constraint firstAttribute="height" constant="40" id="xfM-NU-doT"/>
-                                                </constraints>
-                                                <state key="normal" image="icon-Recording"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lq-Vq-fhK">
-                                                <rect key="frame" x="180" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="lRb-Cg-xYQ"/>
-                                                    <constraint firstAttribute="width" constant="40" id="um1-9Q-vG1"/>
-                                                </constraints>
-                                                <state key="normal" image="icon-3D"/>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwL-DU-bEa">
-                                                <rect key="frame" x="270" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="130" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="4S3-FX-lEP"/>
                                                     <constraint firstAttribute="width" constant="40" id="qbI-bj-jSZ"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Music"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lq-Vq-fhK">
+                                                <rect key="frame" x="260" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="lRb-Cg-xYQ"/>
+                                                    <constraint firstAttribute="width" constant="40" id="um1-9Q-vG1"/>
+                                                </constraints>
+                                                <state key="normal" image="icon-3D"/>
                                             </button>
                                         </subviews>
                                     </stackView>
