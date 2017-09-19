@@ -40,6 +40,7 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
         do{
            let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
             try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+//            audioPlayer.url
             audioPlayer.play()
             thisSong = indexPath.row
             audioStuffed = true

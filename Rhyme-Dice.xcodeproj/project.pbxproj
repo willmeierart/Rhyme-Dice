@@ -14,6 +14,7 @@
 		161A3BC11F6EDA5700A97FAF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161A3BBE1F6EDA5700A97FAF /* FBSDKCoreKit.framework */; };
 		1659A14F1F6F7D11007550BA /* ARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659A14E1F6F7D11007550BA /* ARController.swift */; };
 		1659A1501F6F86AC007550BA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1659A14D1F6F7980007550BA /* art.scnassets */; };
+		1659A1531F7078D2007550BA /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659A1521F7078D2007550BA /* Cloud.swift */; };
 		167C36291F610E11002A796F /* Sit Low.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C36281F610E11002A796F /* Sit Low.mp3 */; };
 		167C362B1F610E23002A796F /* Jungle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362A1F610E23002A796F /* Jungle.mp3 */; };
 		167C362D1F610E3B002A796F /* Bipolar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167C362C1F610E3B002A796F /* Bipolar.mp3 */; };
@@ -75,6 +76,7 @@
 		161A3BBE1F6EDA5700A97FAF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../../Downloads/FacebookSDKs-iOS/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		1659A14D1F6F7980007550BA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		1659A14E1F6F7D11007550BA /* ARController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARController.swift; sourceTree = "<group>"; };
+		1659A1521F7078D2007550BA /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		167C36281F610E11002A796F /* Sit Low.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Sit Low.mp3"; path = "../../../../../../Downloads/Sit Low.mp3"; sourceTree = "<group>"; };
 		167C362A1F610E23002A796F /* Jungle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Jungle.mp3; path = ../../../../../../Downloads/Jungle.mp3; sourceTree = "<group>"; };
 		167C362C1F610E3B002A796F /* Bipolar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Bipolar.mp3; path = ../../../../../../Downloads/Bipolar.mp3; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1659A1511F7078AC007550BA /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				1659A1521F7078D2007550BA /* Cloud.swift */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
 		16B00E241F5F410900A1429E = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +185,7 @@
 		16B00E2F1F5F410900A1429E /* Rhyme-Dice */ = {
 			isa = PBXGroup;
 			children = (
+				1659A1511F7078AC007550BA /* lib */,
 				16B00E631F5F41FF00A1429E /* Model */,
 				16B00E641F5F420500A1429E /* View */,
 				16B00E651F5F420B00A1429E /* Controller */,
@@ -639,6 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16B00E6A1F5F6BF700A1429E /* MainController.swift in Sources */,
+				1659A1531F7078D2007550BA /* Cloud.swift in Sources */,
 				161A3BB71F6ED2D700A97FAF /* LoginController.swift in Sources */,
 				16DCCEDF1F65C474004A1180 /* DataViewController.swift in Sources */,
 				16DCCEDB1F622FFE004A1180 /* RecordingsController.swift in Sources */,
