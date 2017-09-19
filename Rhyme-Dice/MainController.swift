@@ -16,8 +16,6 @@ import AWSCore
 import AWSCognito
 import AWSS3
 
-//var audioPlayer = AVAudioPlayer()
-
 //@available(iOS 11.0, *)
 
 class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteractionDelegate{
@@ -48,8 +46,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     @IBOutlet weak var playButton: UIButton!
     
     
-    
-    
 // IOS 11 THING:
     func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
         let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
@@ -64,31 +60,14 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         ]
     }
 
-    
-    
     @IBAction func play(_ sender: Any) {
-        Player.Play()
-//        if audioStuffed == true && audioPlayer.isPlaying == false{
-//            audioPlayer.play()
-//            playButton.setImage(UIImage(named:"playerPause"), for: .normal)
-//        } else if audioPlayer.isPlaying == true{
-//            audioPlayer.pause()
-//            playButton.setImage(UIImage(named:"playerPlay"), for: .normal)
-//        }
+        Player.Play(button: playButton)
     }
     @IBAction func prev(_ sender: Any) {
         Player.Prev()
-//        if audioStuffed == true && thisSong != 1 {
-//            playThis(thisOne: songs[thisSong-1])
-//            thisSong -= 1
-//        } else {}
     }
     @IBAction func next(_ sender: Any) {
         Player.Next()
-//        if audioStuffed == true && thisSong < songs.count-1{
-//            playThis(thisOne: songs[thisSong+1])
-//            thisSong += 1
-//        }else{}
     }
     
     override func viewDidLoad() {
@@ -102,8 +81,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         wordSets = []
         
         initWordButtons()
-        
-//        customEnableDragging()
         
         initWordFetching(forceWords: ["oh", "i"])
         
@@ -141,22 +118,9 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         updateDice()
     }
     
-    
     func loadRecordingUI(){
         recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
     }
-    
-    
-//    func playThis(thisOne:String){
-//        do{
-//            let audioPath = Bundle.main.path(forResource: thisOne, ofType: ".mp3")
-//            try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
-//            audioPlayer.play()
-//        }catch{
-//            print("error")
-//        }
-//    }
-    
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -166,10 +130,8 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     @objc func recordTapped(){
         if audioRecorder == nil {
             startRecording()
-
         } else {
             finishRecording(success:true)
-
         }
     }
     func startRecording(){

@@ -16,6 +16,17 @@ import AVFoundation
 
 class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    @IBOutlet weak var playButton: UIButton!
+    @IBAction func play(_ sender: Any) {
+        Player.Play(button: playButton)
+    }
+    @IBAction func prev(_ sender: Any) {
+        Player.Prev()
+    }
+    @IBAction func next(_ sender: Any) {
+        Player.Next()
+    }
+    
     @IBOutlet weak var recordingsTable: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,12 +43,9 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
         do{
             let recordingPath = recordings[indexPath.row]
 
-//            try audioPlayer = AVAudioPlayer(contentsOf: recordingPath)
-            
             Player.loadNewSource(source:recordingPath)
             
-            Player.Play()
-//            audioPlayer.play()
+            Player.Play(button:playButton)
             thisRecording = indexPath.row
         }catch{
             print(error)

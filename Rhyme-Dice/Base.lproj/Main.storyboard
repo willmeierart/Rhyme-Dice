@@ -125,7 +125,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="prev:" destination="lit-Gs-IJ5" eventType="touchUpInside" id="Koa-hn-pfD"/>
+                                            <action selector="prev:" destination="PNk-SB-ePM" eventType="touchUpInside" id="6dh-Br-Kxg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pj9-sv-MaR">
@@ -142,7 +142,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="play:" destination="lit-Gs-IJ5" eventType="touchUpInside" id="727-5S-fMH"/>
+                                            <action selector="play:" destination="PNk-SB-ePM" eventType="touchUpInside" id="rmm-nJ-i0o"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Wx-Ch-PZB">
@@ -158,7 +158,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="next:" destination="lit-Gs-IJ5" eventType="touchUpInside" id="s8Z-rU-IZj"/>
+                                            <action selector="next:" destination="PNk-SB-ePM" eventType="touchUpInside" id="ONS-fk-unG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -221,6 +221,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5wD-on-W6b"/>
                     <connections>
+                        <outlet property="playButton" destination="Pj9-sv-MaR" id="0ij-xQ-w9y"/>
                         <outlet property="playerTable" destination="F0G-wc-frb" id="BBB-7h-OiQ"/>
                     </connections>
                 </viewController>
@@ -639,7 +640,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="prev:" destination="lit-Gs-IJ5" eventType="touchUpInside" id="PUY-lY-2HH"/>
+                                            <action selector="prev:" destination="KO3-78-yW8" eventType="touchUpInside" id="1PG-8A-Nd8"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wz-Kb-Vk9">
@@ -656,7 +657,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="play:" destination="lit-Gs-IJ5" eventType="touchUpInside" id="AxR-Ks-Ht1"/>
+                                            <action selector="play:" destination="KO3-78-yW8" eventType="touchUpInside" id="ckl-pg-jsx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52Y-A9-wXJ">
@@ -672,7 +673,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="next:" destination="lit-Gs-IJ5" eventType="touchUpInside" id="AyJ-jA-WU1"/>
+                                            <action selector="next:" destination="KO3-78-yW8" eventType="touchUpInside" id="WeV-Fv-dYX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -795,6 +796,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="playButton" destination="0wz-Kb-Vk9" id="VcI-R1-OEc"/>
                         <outlet property="recordingsTable" destination="EeY-25-xXz" id="Gsp-Gl-3i4"/>
                     </connections>
                 </viewController>
@@ -820,8 +822,8 @@
         <image name="recButton" width="103" height="103"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tOm-No-GTO"/>
-        <segue reference="mvy-yo-yR6"/>
+        <segue reference="que-j8-gdP"/>
+        <segue reference="IKS-FH-i6T"/>
         <segue reference="1V1-OX-2pz"/>
         <segue reference="egx-az-0c9"/>
     </inferredMetricsTieBreakers>

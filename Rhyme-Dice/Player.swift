@@ -21,22 +21,21 @@ var thisRecording = 0
 var audioPlayer = AVAudioPlayer()
 
 class Player {
-    static func initialize(){
-        
-    }
+    
+    
     
     static func loadNewSource(source:URL){
 //        audioPlayer.url = source
         try! audioPlayer = AVAudioPlayer(contentsOf: source)
     }
     
-    static func Play() {
+    static func Play(button:UIButton) {
         if audioStuffed == true && audioPlayer.isPlaying == false{
             audioPlayer.play()
-//            playButton.setImage(UIImage(named:"playerPause"), for: .normal)
+            button.setImage(UIImage(named:"playerPause"), for: .normal)
         } else if audioPlayer.isPlaying == true{
             audioPlayer.pause()
-//            playButton.setImage(UIImage(named:"playerPlay"), for: .normal)
+            button.setImage(UIImage(named:"playerPlay"), for: .normal)
         }
     }
     static func Prev() {

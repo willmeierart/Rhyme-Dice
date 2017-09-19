@@ -9,10 +9,18 @@
 import UIKit
 import AVFoundation
 
-
-
 class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var playButton: UIButton!
+    @IBAction func play(_ sender: Any) {
+        Player.Play(button: playButton)
+    }
+    @IBAction func prev(_ sender: Any) {
+        Player.Prev()
+    }
+    @IBAction func next(_ sender: Any) {
+        Player.Next()
+    }
     
     @IBOutlet weak var playerTable: UITableView!
     
@@ -29,11 +37,9 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
            let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
-//            try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
-//            audioPlayer.url =  NSURL(fileURLWithPath: audioPath!)
-            Player.loadNewSource(source:NSURL(fileURLWithPath: audioPath!) as URL)
-//            audioPlayer.play()
-            Player.Play()
+        Player.loadNewSource(source:NSURL(fileURLWithPath: audioPath!) as URL)
+            audioPlayer.Play(button:playButton)
+            Player.Play(button:playButton)
             thisSong = indexPath.row
             audioStuffed = true
             DispatchQueue.main.asyncAfter(deadline: .now()){
