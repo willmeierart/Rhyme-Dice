@@ -85,13 +85,8 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "AWS_ACCESS_KEY_ID"
-            value = "AKIAICJQ7JZ3WKQMYXZQ"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "AWS_SECRET_KEY"
-            value = "IEP1tJ2T15/HK9aI6ziuL21eJd2dbB1GBf5HHpgI"
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lit-Gs-IJ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lqo-yJ-Ihp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,27 +27,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="lit-Gs-IJ5" kind="show" identifier="LoginSegue" id="uV0-J5-zm9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meb-ej-vdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-919" y="-817"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="vdN-N4-0zp">
-            <objects>
-                <tabBarController id="QpM-ab-FeX" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ih0-gb-Sz4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="V50-if-5Bg" kind="relationship" relationship="viewControllers" id="rLl-Jt-hSr"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lwK-7q-VGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3186" y="-152"/>
+            <point key="canvasLocation" x="-1114" y="-1075"/>
         </scene>
         <!--Playlist-->
         <scene sceneID="KmS-Mz-6nq">
@@ -76,6 +63,12 @@
                                                     <constraint firstAttribute="width" constant="40" id="ecO-6f-rcw"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Home"/>
+                                                <connections>
+                                                    <segue destination="lit-Gs-IJ5" kind="show" id="1V1-OX-2pz">
+                                                        <segue key="commit" inheritsFrom="parent" id="wkM-Wa-V2g"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="d0E-sb-eon"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGQ-jY-slg">
                                                 <rect key="frame" x="130" y="0.0" width="40" height="40"/>
@@ -84,6 +77,12 @@
                                                     <constraint firstAttribute="width" constant="40" id="yHN-JQ-5Jy"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Recording"/>
+                                                <connections>
+                                                    <segue destination="KO3-78-yW8" kind="show" id="akx-s1-Pka">
+                                                        <segue key="commit" inheritsFrom="parent" id="que-j8-gdP"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="OyJ-fc-Gwr"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xx-eE-MLP">
                                                 <rect key="frame" x="260" y="0.0" width="40" height="40"/>
@@ -92,6 +91,12 @@
                                                     <constraint firstAttribute="height" constant="40" id="HeI-ei-6Q4"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-3D"/>
+                                                <connections>
+                                                    <segue destination="8ib-CN-i5C" kind="show" id="aFV-wR-iOs">
+                                                        <segue key="commit" inheritsFrom="parent" id="IKS-FH-i6T"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="G6K-JR-dmm"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -184,15 +189,25 @@
                                     <outlet property="delegate" destination="PNk-SB-ePM" id="UAg-p7-Zdy"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPm-d8-QyD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5nw-DL-04N"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LPm-d8-QyD" secondAttribute="trailing" id="1T7-FF-isj"/>
                             <constraint firstItem="QTj-ap-3i3" firstAttribute="leading" secondItem="mRm-6U-kAe" secondAttribute="leading" id="1aq-wL-7Hj"/>
+                            <constraint firstItem="LPm-d8-QyD" firstAttribute="leading" secondItem="mRm-6U-kAe" secondAttribute="leading" id="FMY-hP-Dgk"/>
                             <constraint firstItem="iTA-g4-Jq4" firstAttribute="top" secondItem="72e-r8-c8z" secondAttribute="bottom" id="HVz-9W-Qcw"/>
                             <constraint firstItem="iTA-g4-Jq4" firstAttribute="leading" secondItem="mRm-6U-kAe" secondAttribute="leading" id="KBz-ML-3rE"/>
                             <constraint firstAttribute="trailing" secondItem="F0G-wc-frb" secondAttribute="trailing" id="Kzr-Af-6fQ"/>
                             <constraint firstItem="sbn-Xt-KWh" firstAttribute="leading" secondItem="mRm-6U-kAe" secondAttribute="leading" constant="2" id="LJW-iM-Iau"/>
+                            <constraint firstItem="LPm-d8-QyD" firstAttribute="top" secondItem="mRm-6U-kAe" secondAttribute="top" id="Om3-cg-UNQ"/>
                             <constraint firstItem="F0G-wc-frb" firstAttribute="top" secondItem="72e-r8-c8z" secondAttribute="bottom" id="Q3w-r4-1zv"/>
                             <constraint firstAttribute="trailing" secondItem="QTj-ap-3i3" secondAttribute="trailing" id="WY2-TY-cef"/>
                             <constraint firstAttribute="trailing" secondItem="sbn-Xt-KWh" secondAttribute="trailing" constant="2" id="a9Q-jG-EMj"/>
@@ -212,7 +227,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4b9-mT-m32" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer delaysTouchesBegan="YES" id="fAE-G8-Xht"/>
             </objects>
-            <point key="canvasLocation" x="446" y="-152"/>
+            <point key="canvasLocation" x="193" y="-414"/>
         </scene>
         <!--Main-->
         <scene sceneID="rdu-kb-DSg">
@@ -419,6 +434,12 @@
                                                 <constraint firstAttribute="width" constant="40" id="Kf9-XQ-oPn"/>
                                             </constraints>
                                             <state key="normal" image="icon-Music"/>
+                                            <connections>
+                                                <segue destination="PNk-SB-ePM" kind="presentation" id="bFN-Vz-eyB">
+                                                    <segue key="commit" inheritsFrom="parent" id="4MA-bC-une"/>
+                                                    <segue key="preview" inheritsFrom="commit" id="IZE-6I-16d"/>
+                                                </segue>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ig-67-jmb">
                                             <rect key="frame" x="130" y="0.0" width="40" height="40"/>
@@ -427,6 +448,13 @@
                                                 <constraint firstAttribute="height" constant="40" id="js4-IQ-bfM"/>
                                             </constraints>
                                             <state key="normal" image="icon-Recording"/>
+                                            <connections>
+                                                <segue destination="KO3-78-yW8" kind="popoverPresentation" popoverAnchorView="6Ig-67-jmb" id="qDN-Sj-hZM">
+                                                    <segue key="commit" inheritsFrom="parent" id="9gE-UW-EAL"/>
+                                                    <segue key="preview" inheritsFrom="commit" id="qBy-TZ-Btj"/>
+                                                    <popoverArrowDirection key="popoverArrowDirection" down="YES"/>
+                                                </segue>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEZ-3w-nXu">
                                             <rect key="frame" x="260" y="0.0" width="40" height="40"/>
@@ -435,6 +463,12 @@
                                                 <constraint firstAttribute="width" constant="40" id="hNv-h0-7au"/>
                                             </constraints>
                                             <state key="normal" image="icon-3D"/>
+                                            <connections>
+                                                <segue destination="8ib-CN-i5C" kind="show" id="XkI-hh-aDq">
+                                                    <segue key="commit" inheritsFrom="parent" id="Pbs-gV-84O"/>
+                                                    <segue key="preview" inheritsFrom="commit" id="dcp-Nk-Br2"/>
+                                                </segue>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -446,11 +480,12 @@
                                 <constraint firstItem="p9d-Xw-rIN" firstAttribute="centerX" secondItem="NGP-0I-XbI" secondAttribute="centerX" id="fhQ-ZR-naD"/>
                             </constraints>
                         </view>
-                        <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX1-Cs-Zbq">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHy-MJ-GBc">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="biB-9b-6wa"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="1Cn-IT-VCq"/>
+                                <constraint firstAttribute="height" constant="20" id="CjE-3r-JyB"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -460,26 +495,26 @@
                         <constraint firstItem="hbi-hN-fgR" firstAttribute="top" secondItem="ed1-VA-Iti" secondAttribute="top" id="GZo-kG-Spb"/>
                         <constraint firstItem="JH7-fL-m2D" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" constant="20" id="HeM-jI-TD5"/>
                         <constraint firstItem="hbi-hN-fgR" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" id="I5d-96-OV7"/>
+                        <constraint firstAttribute="trailing" secondItem="pHy-MJ-GBc" secondAttribute="trailing" id="KRv-Si-1cq"/>
                         <constraint firstItem="huG-fr-moC" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" constant="2" id="O1D-6b-Vej"/>
                         <constraint firstItem="huG-fr-moC" firstAttribute="centerX" secondItem="ed1-VA-Iti" secondAttribute="centerX" id="QlB-AI-zIF"/>
                         <constraint firstAttribute="bottom" secondItem="hbi-hN-fgR" secondAttribute="bottom" id="Rvs-Pc-Xcu"/>
                         <constraint firstItem="TC0-ga-N8C" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" id="S2l-7Z-E64"/>
+                        <constraint firstItem="pHy-MJ-GBc" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" id="VGv-d8-Eap"/>
                         <constraint firstAttribute="trailing" secondItem="hbi-hN-fgR" secondAttribute="trailing" id="WhE-00-yTP"/>
                         <constraint firstItem="JH7-fL-m2D" firstAttribute="top" secondItem="TC0-ga-N8C" secondAttribute="bottom" id="XEq-8i-hw6"/>
                         <constraint firstAttribute="trailing" secondItem="TC0-ga-N8C" secondAttribute="trailing" id="XLs-yq-ouf"/>
-                        <constraint firstAttribute="trailing" secondItem="qX1-Cs-Zbq" secondAttribute="trailing" id="ZgQ-fj-Y6g"/>
+                        <constraint firstItem="pHy-MJ-GBc" firstAttribute="top" secondItem="ed1-VA-Iti" secondAttribute="top" id="ZR3-E0-Brk"/>
                         <constraint firstAttribute="bottom" secondItem="huG-fr-moC" secondAttribute="bottom" constant="52" id="asT-Jk-Wlx"/>
                         <constraint firstItem="NGP-0I-XbI" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" id="kQz-SO-PjB"/>
-                        <constraint firstItem="qX1-Cs-Zbq" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" id="rTZ-1w-M0D"/>
                         <constraint firstAttribute="trailing" secondItem="NGP-0I-XbI" secondAttribute="trailing" id="sAb-CB-Vpr"/>
-                        <constraint firstItem="qX1-Cs-Zbq" firstAttribute="top" secondItem="ed1-VA-Iti" secondAttribute="top" id="uCp-VN-jbG"/>
                         <constraint firstAttribute="trailing" secondItem="JH7-fL-m2D" secondAttribute="trailing" constant="20" id="uaa-xQ-11p"/>
                         <constraint firstItem="hbi-hN-fgR" firstAttribute="centerX" secondItem="ed1-VA-Iti" secondAttribute="centerX" id="v4T-Nj-QgM"/>
                         <constraint firstAttribute="bottom" secondItem="NGP-0I-XbI" secondAttribute="bottom" id="xgG-Kl-SLq"/>
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-234" y="-152"/>
+            <point key="canvasLocation" x="-460" y="-414"/>
         </scene>
         <!--AR-->
         <scene sceneID="1Hv-KS-rbn">
@@ -494,7 +529,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" autoenablesDefaultLighting="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xQ2-Lm-jOO">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </arscnView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RzA-2j-c6T" userLabel="NavBar">
@@ -510,6 +545,12 @@
                                                     <constraint firstAttribute="width" constant="40" id="pz9-ol-ycr"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Home"/>
+                                                <connections>
+                                                    <segue destination="lit-Gs-IJ5" kind="show" id="mHp-FH-BC0">
+                                                        <segue key="commit" inheritsFrom="parent" id="wP5-o0-eTc"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="Xau-0o-um7"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7V-n2-IqA">
                                                 <rect key="frame" x="130" y="0.0" width="40" height="40"/>
@@ -518,6 +559,12 @@
                                                     <constraint firstAttribute="height" constant="40" id="gqi-H3-4UE"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Recording"/>
+                                                <connections>
+                                                    <segue destination="KO3-78-yW8" kind="show" id="i67-oE-YY2">
+                                                        <segue key="commit" inheritsFrom="parent" id="tOm-No-GTO"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="BLu-nR-oJE"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrO-Y6-H4u">
                                                 <rect key="frame" x="260" y="0.0" width="40" height="40"/>
@@ -526,6 +573,12 @@
                                                     <constraint firstAttribute="height" constant="40" id="wbq-iz-79I"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Music"/>
+                                                <connections>
+                                                    <segue destination="PNk-SB-ePM" kind="show" id="umG-Tw-0QR">
+                                                        <segue key="commit" inheritsFrom="parent" id="H1F-fs-hGX"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="mSP-Ui-sOd"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -553,7 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCC-D5-Nfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-918" y="-152"/>
+            <point key="canvasLocation" x="-1114" y="-414"/>
         </scene>
         <!--Recordings-->
         <scene sceneID="7KM-Xq-5Zp">
@@ -641,6 +694,12 @@
                                                     <constraint firstAttribute="height" constant="40" id="xZz-2f-YTJ"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Home"/>
+                                                <connections>
+                                                    <segue destination="lit-Gs-IJ5" kind="show" id="0Zs-dx-SIf">
+                                                        <segue key="commit" inheritsFrom="parent" id="Ft4-n2-4H2"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="NdK-f8-eN0"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwL-DU-bEa">
                                                 <rect key="frame" x="130" y="0.0" width="40" height="40"/>
@@ -649,6 +708,12 @@
                                                     <constraint firstAttribute="width" constant="40" id="qbI-bj-jSZ"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-Music"/>
+                                                <connections>
+                                                    <segue destination="PNk-SB-ePM" kind="show" id="Kaq-0z-WMu">
+                                                        <segue key="commit" inheritsFrom="parent" id="egx-az-0c9"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="lfg-bo-Wa7"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lq-Vq-fhK">
                                                 <rect key="frame" x="260" y="0.0" width="40" height="40"/>
@@ -657,6 +722,12 @@
                                                     <constraint firstAttribute="width" constant="40" id="um1-9Q-vG1"/>
                                                 </constraints>
                                                 <state key="normal" image="icon-3D"/>
+                                                <connections>
+                                                    <segue destination="8ib-CN-i5C" kind="show" id="IB5-IC-smf">
+                                                        <segue key="commit" inheritsFrom="parent" id="wYD-yS-59t"/>
+                                                        <segue key="preview" inheritsFrom="commit" id="mvy-yo-yR6"/>
+                                                    </segue>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -687,22 +758,35 @@
                                     <outlet property="delegate" destination="KO3-78-yW8" id="86n-RC-uRG"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX1-Cs-Zbq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5vd-WF-8Dp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="vDh-KD-fe7" firstAttribute="leading" secondItem="iMF-6s-jvJ" secondAttribute="leading" constant="2" id="1sw-ym-fA3"/>
+                            <constraint firstItem="qX1-Cs-Zbq" firstAttribute="top" secondItem="iMF-6s-jvJ" secondAttribute="top" id="2AN-6i-rKc"/>
+                            <constraint firstItem="qX1-Cs-Zbq" firstAttribute="top" secondItem="iMF-6s-jvJ" secondAttribute="top" id="2ne-mB-YYb"/>
                             <constraint firstItem="YGX-xN-EaR" firstAttribute="leading" secondItem="iMF-6s-jvJ" secondAttribute="leading" id="499-FB-Wxs"/>
                             <constraint firstAttribute="trailing" secondItem="YGX-xN-EaR" secondAttribute="trailing" id="4GK-El-TBv"/>
                             <constraint firstItem="eQp-sd-8x5" firstAttribute="leading" secondItem="iMF-6s-jvJ" secondAttribute="leading" id="4jm-7O-Q8b"/>
+                            <constraint firstAttribute="trailing" secondItem="qX1-Cs-Zbq" secondAttribute="trailing" id="54r-sN-e0K"/>
                             <constraint firstItem="eQp-sd-8x5" firstAttribute="top" secondItem="iMF-6s-jvJ" secondAttribute="top" id="5ga-7E-Oaz"/>
                             <constraint firstItem="D3D-vN-iRV" firstAttribute="top" secondItem="eQp-sd-8x5" secondAttribute="bottom" id="DMM-5J-IV9"/>
                             <constraint firstAttribute="trailing" secondItem="EeY-25-xXz" secondAttribute="trailing" id="KUh-Xj-8b4"/>
                             <constraint firstItem="EeY-25-xXz" firstAttribute="top" secondItem="OEc-WQ-ry0" secondAttribute="bottom" id="M6g-gB-jSh"/>
+                            <constraint firstAttribute="trailing" secondItem="qX1-Cs-Zbq" secondAttribute="trailing" id="ebU-kd-SEq"/>
+                            <constraint firstItem="qX1-Cs-Zbq" firstAttribute="leading" secondItem="iMF-6s-jvJ" secondAttribute="leading" id="fex-Ca-gq2"/>
                             <constraint firstAttribute="trailing" secondItem="eQp-sd-8x5" secondAttribute="trailing" id="hk9-lQ-iq3"/>
                             <constraint firstItem="EeY-25-xXz" firstAttribute="leading" secondItem="iMF-6s-jvJ" secondAttribute="leading" id="iVP-Fe-FFD"/>
                             <constraint firstItem="D3D-vN-iRV" firstAttribute="top" secondItem="vDh-KD-fe7" secondAttribute="bottom" constant="52" id="jhh-ES-frk"/>
                             <constraint firstAttribute="bottom" secondItem="YGX-xN-EaR" secondAttribute="bottom" id="lvP-Fv-7Wp"/>
+                            <constraint firstItem="qX1-Cs-Zbq" firstAttribute="leading" secondItem="iMF-6s-jvJ" secondAttribute="leading" id="oKk-MF-Hlk"/>
                             <constraint firstAttribute="bottom" secondItem="EeY-25-xXz" secondAttribute="bottom" constant="104" id="oqN-T5-7yA"/>
                             <constraint firstAttribute="trailing" secondItem="vDh-KD-fe7" secondAttribute="trailing" constant="2" id="uSM-eK-sIb"/>
                         </constraints>
@@ -717,25 +801,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ErH-Mv-Hxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="XG6-74-4Sa"/>
             </objects>
-            <point key="canvasLocation" x="445.60000000000002" y="-817.24137931034488"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="sC0-OQ-LPF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="V50-if-5Bg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main" id="XeD-U3-fQm"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fH8-TA-Dh2">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c9b-Xu-uEh">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NKc-BO-29p" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2506" y="-152"/>
+            <point key="canvasLocation" x="193" y="-1075"/>
         </scene>
     </scenes>
     <resources>
@@ -753,4 +819,10 @@
         <image name="playerRW" width="50" height="50"/>
         <image name="recButton" width="103" height="103"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="tOm-No-GTO"/>
+        <segue reference="mvy-yo-yR6"/>
+        <segue reference="0Zs-dx-SIf"/>
+        <segue reference="egx-az-0c9"/>
+    </inferredMetricsTieBreakers>
 </document>

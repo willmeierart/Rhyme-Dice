@@ -7,6 +7,24 @@ PODS:
   - AWSCore (2.6.1)
   - AWSS3 (2.6.1):
     - AWSCore (= 2.6.1)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FBSDKCoreKit (4.26.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.26.0):
+    - FBSDKCoreKit
   - IQAudioRecorderController (1.2.1):
     - SCSiriWaveformView
   - JSONParserSwift (1.1.3)
@@ -18,6 +36,8 @@ DEPENDENCIES:
   - AWSCognito
   - AWSCognitoIdentityProvider
   - AWSS3
+  - FacebookCore
+  - FacebookLogin
   - IQAudioRecorderController (~> 1.2)
   - JSONParserSwift
   - SwiftyJSON
@@ -28,11 +48,16 @@ SPEC CHECKSUMS:
   AWSCognitoIdentityProvider: a335678a0024fa2b44213bc4e86b46b21773e567
   AWSCore: e7d37fa0715def975acf1b0d75556576780088b8
   AWSS3: 2e18ede28199a5530955dc1a65434da43dcc4d2c
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FBSDKCoreKit: c8b8582311ec11b145451d8b9717dc6cc2ae5a76
+  FBSDKLoginKit: f3f03b94c21eb834af243c0a881d48641f47ca60
   IQAudioRecorderController: 4db6e53d6b4e7134d156c4d4b7822a8595632a1d
   JSONParserSwift: 4eb72faa318c76d33fe3d1141f531b3d69132b43
   SCSiriWaveformView: 15b9dd6f94c7536e2032b34a35c6ff74d38c7411
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: d32720b65967f30dddd9ba291ed66bb5a458d842
+PODFILE CHECKSUM: 6e4ad7826c822a937f678b76d5d4e1789f545e11
 
 COCOAPODS: 1.3.1

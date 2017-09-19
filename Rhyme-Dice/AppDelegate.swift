@@ -11,6 +11,7 @@ import AWSCore
 import AWSCognito
 import AWSS3
 import FBSDKCoreKit
+//import FacebookCore
 
 
 @UIApplicationMain
@@ -26,30 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         let myIdentityPoolID = "us-east-1:9e6dd5f8-eed2-445e-9337-ae236e3994c2"
         let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: myIdentityPoolID)
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
-        let defaults = UserDefaults.standard
-        if defaults.value(forKey: "login") != nil{
-            let value = defaults.value(forKey: "login") as! String!
-            var vc = UIViewController()
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if value == "loggedin"{
-                vc = storyboard.instantiateViewController(withIdentifier: "Main") as UIViewController!
-            }
-            else if value == "loggedout"{
-                vc = storyboard.instantiateViewController(withIdentifier: "Login") as UIViewController!
-            }
-//            let navigationController = UINavigationController(rootViewController: vc)
-//            self.window?.rootViewController?.present(navigationController, animated:true, completion:nil)
-
-             self.window?.rootViewController = vc
-        }
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }

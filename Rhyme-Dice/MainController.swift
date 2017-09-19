@@ -21,13 +21,17 @@ var audioPlayer = AVAudioPlayer()
 //@available(iOS 11.0, *)
 
 class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteractionDelegate{
-
+    
+    var appData:[String:Any]!
+    
     var wordSets:[[String]]!
     var audioName:String!
     var audioFilePath:URL!
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
+    
+    
 
     @IBOutlet weak var leftWordButton: UIButton!
     @IBOutlet weak var rightWordButton: UIButton!
@@ -111,10 +115,12 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         try!recordingSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
         do{
             try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission(){[unowned self] allowed in
+            recordingSession.requestRecordPermission(){[weak self] allowed in
                 DispatchQueue.main.async{
                     if allowed {
-                        self.loadRecordingUI()
+                        if let strongSelf = self {
+                            self!.loadRecordingUI()
+                        }
                     } else {}
                 }
             }
