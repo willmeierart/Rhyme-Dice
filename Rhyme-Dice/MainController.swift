@@ -70,8 +70,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         if audioStuffed == true && audioPlayer.isPlaying == false{
             audioPlayer.play()
             playButton.setImage(UIImage(named:"playerPause"), for: .normal)
-        } else if audioStuffed == false{
-            playThis(thisOne:"Not My Job")
         } else if audioPlayer.isPlaying == true{
             audioPlayer.pause()
             playButton.setImage(UIImage(named:"playerPlay"), for: .normal)
@@ -104,7 +102,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         
 //        customEnableDragging()
         
-//        initWordFetching(forceWords: ["oh", "i"])
+        initWordFetching(forceWords: ["oh", "i"])
         
         myVolumeViewParentView.backgroundColor = UIColor.clear
         let myVolumeView = MPVolumeView(frame: myVolumeViewParentView.bounds)
@@ -253,7 +251,9 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
                 
                 let basePath = self!.audioFilePath!.deletingLastPathComponent()
                 
-                let newFilePath:URL = URL(string:"\(basePath)\(enteredText!).m4a")!
+                let newName = enteredText!.replacingOccurrences(of: " ", with: "-")
+                
+                let newFilePath:URL = URL(string:"\(basePath)\(newName).m4a")!
                 
                 do {
                     try FileManager.default.moveItem(at: self!.audioFilePath!, to: newFilePath)

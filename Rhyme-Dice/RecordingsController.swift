@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-var audioPlayer2 = AVAudioPlayer()
+//var audioPlayer2 = AVAudioPlayer()
 var recordings:[URL] = []
 var recordingTitles:[String] = []
 var thisRecording = 0
@@ -32,8 +32,8 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
         do{
             let recordingPath = recordings[indexPath.row]
 
-            try audioPlayer2 = AVAudioPlayer(contentsOf: recordingPath)
-            audioPlayer2.play()
+            try audioPlayer = AVAudioPlayer(contentsOf: recordingPath)
+            audioPlayer.play()
             thisRecording = indexPath.row
         }catch{
             print(error)

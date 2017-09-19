@@ -18,14 +18,6 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet weak var playerTable: UITableView!
     
-    
-    @IBAction func returnMain(_ sender: UITapGestureRecognizer) {
-        let storyboard = UIStoryboard(name: "Rhyme", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Rhyme")
-        self.present(vc, animated:true, completion:nil)
-        print("ok")
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songs.count
     }
@@ -44,8 +36,10 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
             audioPlayer.play()
             thisSong = indexPath.row
             audioStuffed = true
-            let theMainController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Main") as! DiceController
-//            self.navigationController?.pushViewController(theMainController, animated: true)
+//            let theMainController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Main") as! DiceController
+            DispatchQueue.main.asyncAfter(deadline: .now()){
+                self.performSegue(withIdentifier: "Beats2Home", sender: self)
+            }
         }catch{
             print("error")
         }

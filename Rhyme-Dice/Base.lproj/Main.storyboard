@@ -64,7 +64,7 @@
                                                 </constraints>
                                                 <state key="normal" image="icon-Home"/>
                                                 <connections>
-                                                    <segue destination="lit-Gs-IJ5" kind="show" id="1V1-OX-2pz">
+                                                    <segue destination="lit-Gs-IJ5" kind="show" identifier="Beats2Home" id="1V1-OX-2pz">
                                                         <segue key="commit" inheritsFrom="parent" id="wkM-Wa-V2g"/>
                                                         <segue key="preview" inheritsFrom="commit" id="d0E-sb-eon"/>
                                                     </segue>
@@ -258,7 +258,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="TC0-ga-N8C">
-                            <rect key="frame" x="0.0" y="100" width="375" height="373"/>
+                            <rect key="frame" x="0.0" y="70" width="375" height="373"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FfB-wl-5uh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -415,7 +415,7 @@
                             </constraints>
                         </stackView>
                         <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JH7-fL-m2D">
-                            <rect key="frame" x="20" y="473" width="335" height="70"/>
+                            <rect key="frame" x="20" y="495" width="335" height="70"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="G9O-p9-lpK"/>
@@ -491,7 +491,8 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="TC0-ga-N8C" firstAttribute="top" secondItem="ed1-VA-Iti" secondAttribute="top" constant="100" id="EDb-WS-hqB"/>
+                        <constraint firstItem="TC0-ga-N8C" firstAttribute="top" secondItem="ed1-VA-Iti" secondAttribute="top" constant="70" id="EDb-WS-hqB"/>
+                        <constraint firstItem="huG-fr-moC" firstAttribute="top" secondItem="JH7-fL-m2D" secondAttribute="bottom" id="FE4-Bf-Zjo"/>
                         <constraint firstItem="hbi-hN-fgR" firstAttribute="top" secondItem="ed1-VA-Iti" secondAttribute="top" id="GZo-kG-Spb"/>
                         <constraint firstItem="JH7-fL-m2D" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" constant="20" id="HeM-jI-TD5"/>
                         <constraint firstItem="hbi-hN-fgR" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" id="I5d-96-OV7"/>
@@ -502,7 +503,6 @@
                         <constraint firstItem="TC0-ga-N8C" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" id="S2l-7Z-E64"/>
                         <constraint firstItem="pHy-MJ-GBc" firstAttribute="leading" secondItem="ed1-VA-Iti" secondAttribute="leading" id="VGv-d8-Eap"/>
                         <constraint firstAttribute="trailing" secondItem="hbi-hN-fgR" secondAttribute="trailing" id="WhE-00-yTP"/>
-                        <constraint firstItem="JH7-fL-m2D" firstAttribute="top" secondItem="TC0-ga-N8C" secondAttribute="bottom" id="XEq-8i-hw6"/>
                         <constraint firstAttribute="trailing" secondItem="TC0-ga-N8C" secondAttribute="trailing" id="XLs-yq-ouf"/>
                         <constraint firstItem="pHy-MJ-GBc" firstAttribute="top" secondItem="ed1-VA-Iti" secondAttribute="top" id="ZR3-E0-Brk"/>
                         <constraint firstAttribute="bottom" secondItem="huG-fr-moC" secondAttribute="bottom" constant="52" id="asT-Jk-Wlx"/>
@@ -822,7 +822,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="tOm-No-GTO"/>
         <segue reference="mvy-yo-yR6"/>
-        <segue reference="0Zs-dx-SIf"/>
+        <segue reference="1V1-OX-2pz"/>
         <segue reference="egx-az-0c9"/>
     </inferredMetricsTieBreakers>
 </document>
