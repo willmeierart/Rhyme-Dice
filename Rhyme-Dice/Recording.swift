@@ -12,7 +12,6 @@ class Recording {
     
     let title : String
     let length : Int
-    let recorded_at : Date
     let recorded_by: String
     let filepath : URL
     let APIsrc : String
@@ -21,7 +20,6 @@ class Recording {
     init(rec_title : String, rec_length : Int, rec_date : Date, rec_user: String, rec_path : URL, rec_src : String, rec_friends : [String]){
         title = rec_title
         length = rec_length
-        recorded_at = rec_date
         recorded_by = rec_user
         filepath = rec_path
         APIsrc = rec_src

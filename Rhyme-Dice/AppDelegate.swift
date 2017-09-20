@@ -13,7 +13,6 @@ import AWSS3
 import FBSDKCoreKit
 //import FacebookCore
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -34,6 +33,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            RecordingsDataManager.updateAllDataFromServer()
+        }
+        
+        
+        
+        
+        
         
         return true
     }

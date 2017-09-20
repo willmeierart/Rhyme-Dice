@@ -37,9 +37,8 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
            let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
-        Player.loadNewSource(source:NSURL(fileURLWithPath: audioPath!) as URL)
-            audioPlayer.Play(button:playButton)
-            Player.Play(button:playButton)
+            Player.loadNewSource(source:NSURL(fileURLWithPath: audioPath!) as URL)
+//            Player.Play(button:playButton)
             thisSong = indexPath.row
             audioStuffed = true
             DispatchQueue.main.asyncAfter(deadline: .now()){

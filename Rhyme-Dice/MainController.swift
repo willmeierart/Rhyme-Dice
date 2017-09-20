@@ -20,7 +20,7 @@ import AWSS3
 
 class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteractionDelegate{
     
-    var appData:[String:Any]!
+    var appData:[String:Any]?
     
     var wordSets:[[String]]!
     var audioName:String!
@@ -28,8 +28,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
-    
-    
 
     @IBOutlet weak var leftWordButton: UIButton!
     @IBOutlet weak var rightWordButton: UIButton!
@@ -44,7 +42,6 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     @IBOutlet weak var myVolumeViewParentView: UIView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
-    
     
 // IOS 11 THING:
     func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
@@ -74,8 +71,8 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         super.viewDidLoad()
         
         let cloud1 = Cloud.generate()
-        leftWordButton.setBackgroundImage(cloud1, for:.normal)
         let cloud2 = Cloud.generate()
+        leftWordButton.setBackgroundImage(cloud1, for:.normal)
         rightWordButton.setBackgroundImage(cloud2, for:.normal)
         
         wordSets = []
@@ -103,12 +100,9 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
                 }
             }
         } catch {}
-               navigationController?.setNavigationBarHidden(false, animated: false)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       navigationController?.setNavigationBarHidden(false, animated: false)
-        
     }
     
 //    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
@@ -224,7 +218,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
                     try FileManager.default.moveItem(at: self!.audioFilePath!, to: newFilePath)
                     self!.audioFilePath = newFilePath
                     DispatchQueue.main.asyncAfter(deadline: .now()){
-                        self!.uploadToAWS()
+                        RecordingsDataManager.uploadToAWS(file:self!.audioFilePath!)
                     }
                 } catch {print(error)}
             }
@@ -317,7 +311,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         
         die.animationImages = randomNumArr.map{
             let thisSound = sounds[$0]
-            print(thisSound!)
+//            print(thisSound!)
             return UIImage(named:"Dice-\(thisSound!)")!
         }
         die.animationDuration = 1.0
@@ -363,26 +357,26 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         }
     }
     
-    func uploadToAWS(){
-        let file = audioFilePath!
-        let uniqueFileName = NSUUID().uuidString + "-" + file.lastPathComponent
-        let bucket = "rhyme-dice-audio-va"
-        
-        let transferManager = AWSS3TransferManager.default()
-        let uploadRequest = AWSS3TransferManagerUploadRequest()!
-            uploadRequest.bucket = bucket
-            uploadRequest.key = uniqueFileName
-            uploadRequest.body = file
-            uploadRequest.acl = AWSS3ObjectCannedACL.publicReadWrite
-        transferManager.upload(uploadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
-            
-            if let error = task.error { print("upload failed with error: \(error)") }
-            if task.result != nil {
-//                let s3URL = NSURL(string:"https://s3.amazonaws.com/\(bucket)/\(uniqueFileName)")
-//                uploadRecordingData(recURL:s3URL)
-            } else { print("unexpected empty result") }
-            return nil
-        })
-    }
+//    func uploadToAWS(){
+//        let file = audioFilePath!
+//        let uniqueFileName = NSUUID().uuidString + "-" + file.lastPathComponent
+//        let bucket = "rhyme-dice-audio-va"
+//        
+//        let transferManager = AWSS3TransferManager.default()
+//        let uploadRequest = AWSS3TransferManagerUploadRequest()!
+//            uploadRequest.bucket = bucket
+//            uploadRequest.key = uniqueFileName
+//            uploadRequest.body = file
+//            uploadRequest.acl = AWSS3ObjectCannedACL.publicReadWrite
+//        transferManager.upload(uploadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+//            
+//            if let error = task.error { print("upload failed with error: \(error)") }
+//            if task.result != nil {
+////                let s3URL = NSURL(string:"https://s3.amazonaws.com/\(bucket)/\(uniqueFileName)")
+////                uploadRecordingData(recURL:s3URL)
+//            } else { print("unexpected empty result") }
+//            return nil
+//        })
+//    }
 }
 

@@ -9,10 +9,7 @@
 import UIKit
 import AVFoundation
 
-//var audioPlayer2 = AVAudioPlayer()
-//var recordings:[URL] = []
-//var recordingTitles:[String] = []
-//var thisRecording = 0
+var thisRecording = 0
 
 class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
@@ -52,62 +49,98 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        do{
-            let recordingPath = recordings[indexPath.row]
-            
-            if editingStyle == .delete{
-                recordings.remove(at:indexPath.row)
-                recordingTitles.remove(at:indexPath.row)
-                recordingsTable.deleteRows(at: [indexPath], with: .automatic)
-                try FileManager.default.removeItem(at: recordingPath)
-            }
-        }catch{
-            print(error)
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        UIButton.appearance().setTitleColor(UIColor.black, for: .normal)
+
+        var recordingPath = recordings[indexPath.row]
+        
+        let Edit = UITableViewRowAction(style: .normal, title: "edit") { (rowAction, indexPath) in
+            self.renameRecording(path:recordingPath, title:recordingTitles[indexPath.row], row:indexPath.row, indexPath: [indexPath])
         }
+        Edit.backgroundColor = .yellow
+        
+        let Delete = UITableViewRowAction(style: .normal, title: "delete") { (rowAction, indexPath) in
+            recordings.remove(at:indexPath.row)
+            recordingTitles.remove(at:indexPath.row)
+            self.recordingsTable.deleteRows(at: [indexPath], with: .automatic)
+            try! FileManager.default.removeItem(at: recordingPath)
+        }
+        Delete.backgroundColor = .red
+        return [Delete, Edit]
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getRecordings()
+        RecordingsDataManager.getStoredRecordings()
+//        print(recordingTitles)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getRecordings()
+        RecordingsDataManager.getStoredRecordings()
+    }
+    
+    func renameRecording(path:URL, title:String, row:Int, indexPath:[IndexPath]){
+        var alertController:UIAlertController?
+        alertController = UIAlertController(title: "Name Recording",
+                                            message: nil,
+                                            preferredStyle: .alert)
+        alertController!.addTextField(configurationHandler: {(textField: UITextField!) in
+            textField.placeholder = title
+        })
+        let action = UIAlertAction(title: "Save",
+                                   style:UIAlertActionStyle.default,
+                                   handler: {[unowned self]
+                                    (paramAction:UIAlertAction) -> Void?  in
+                                    if let textFields = alertController?.textFields{
+                                        let theTextFields = textFields as [UITextField]
+                                        let enteredText = theTextFields[0].text
+                                        
+                                        let basePath = path.deletingLastPathComponent()
+//                                        var Path = path
+                                        
+                                        let newName = enteredText!.replacingOccurrences(of: " ", with: "%20")
+                                        
+                                        let newFilePath:URL = URL(string:"\(basePath)\(newName).m4a")!
+                                        
+//                                        print(newName)
+//                                        print(newFilePath)
+                                        
+                                        do {
+                                            recordings.remove(at:row)
+                                            recordingTitles.remove(at:row)
+                                            recordings.append(newFilePath)
+                                            recordingTitles.append(newName)
+                                            self.recordingsTable.deleteRows(at: indexPath, with: .automatic)
+                                            try! FileManager.default.moveItem(at: path, to: newFilePath)
+                                            
+//                                            path = newFilePath
+                                            DispatchQueue.main.asyncAfter(deadline: .now()){
+                                                RecordingsDataManager.uploadToAWS(file:newFilePath)
+                                            }
+                                            DispatchQueue.main.asyncAfter(deadline: .now()){
+                                                RecordingsDataManager.getStoredRecordings()
+                                            }
+                                        } catch {print(error)}
+//                                        try FileManager.default.removeItem(at: path)
+                                    }
+                                    return nil
+                                    } as? (UIAlertAction) -> Void)
+        
+        alertController?.addAction(action)
+        self.present(alertController!, animated:true, completion:nil)
+        
     }
     
     func getRecordings(){
-        let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        recordings = []
-        recordingTitles = []
-            do{
-                let recordingPath = try FileManager.default.contentsOfDirectory(at:folderURL, includingPropertiesForKeys:nil, options: .skipsHiddenFiles)
-                for recording in recordingPath{
-                    var myRecording = recording.absoluteString
-                    if myRecording.contains(".m4a"){
-                        recordings.append(recording)
-                        let asset = AVURLAsset(url:recording)
-                        let recDuration = asset.duration
-                        let recDurationSecs = CMTimeGetSeconds(recDuration)
-                        var formatDur = String(format:"%.2f", recDurationSecs)
-                        formatDur = formatDur.replacingOccurrences(of: ".", with: ":")
-                        let findString = myRecording.components(separatedBy: "/")
-                        myRecording = findString[findString.count-1]
-                        myRecording = myRecording.replacingOccurrences(of: "%20", with: " ")
-                        myRecording = myRecording.replacingOccurrences(of: ".m4a", with: "")
-                        myRecording = "\(myRecording) - \(formatDur)"
-                        if !recordingTitles.contains(myRecording){
-                            recordingTitles.append(myRecording)
-                        }
-                    }
-                }
-                recordingsTable.reloadData()
-            }
-            catch{
-                
-            }
+        RecordingsDataManager.getStoredRecordings()
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            self.recordingsTable.reloadData()
+        }
+        
+        
+        
     }
 }

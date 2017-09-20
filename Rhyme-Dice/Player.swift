@@ -14,10 +14,6 @@ var songs:[String] = []
 var thisSong = 0
 var audioStuffed = false
 
-var recordings:[URL] = []
-var recordingTitles:[String] = []
-var thisRecording = 0
-
 var audioPlayer = AVAudioPlayer()
 
 class Player {
@@ -26,7 +22,13 @@ class Player {
     
     static func loadNewSource(source:URL){
 //        audioPlayer.url = source
-        try! audioPlayer = AVAudioPlayer(contentsOf: source)
+        print(source)
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOf: source)
+        } catch {
+            print(error)
+        }
+//        audioPlayer = AVAudioPlayer(contentsOf: source)
     }
     
     static func Play(button:UIButton) {

@@ -11,9 +11,8 @@ import UIKit
 import AVFoundation
 import FBSDKCoreKit
 import FBSDKLoginKit
-//import FacebookLogin
-//import FacebookCore
 
+//var AppData:[String:Any]!
 
 class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     
@@ -60,8 +59,14 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+//    let mypermission = FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, HTTPMethod: "DELETE")
+//    mypermission.startWithCompletionHandler({(connection,result,error)-> Void in
+//    print("Success")
+//    // in here call your login action method, it called every time user login permission
+//
+//    })
+    
     func fetchProfile(){
-        
         var fbID:String = ""
         var email:String = ""
         var picture:String = ""
@@ -79,27 +84,18 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             let id = Result["id"] as! String
             let pic = Result["picture"] as! NSDictionary, picData = pic["data"] as! NSDictionary, picURL = picData["url"] as! String
             let friendz = Result["friends"] as! NSDictionary, friendsData = friendz["data"] as! [NSObject]
-            print(id)
-            print(picURL)
-            print(email)
-            print(friendsData)
             fbID = id
             email = Email
             picture = picURL
             friends = friendsData
             self.appData = ["id":fbID, "email":email, "picture":picture, "friends":friends]
+            UserDefaults.standard.set(self.appData, forKey: "AppData")
+            self.loginViewSegue()
         }
-        loginViewSegue()
+        
     }
     func loginViewSegue(){
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-             self.performSegue(withIdentifier: "LoginSegue", sender: self)
-        }
-       
-        
-        
-//        let vc = DiceController()
-//        self.present(vc, animated:true, completion:nil)
+        self.performSegue(withIdentifier: "LoginSegue", sender: self)
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -108,13 +104,14 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LoginSegue" {
             if let destination = segue.destination as? DiceController {
-                destination.appData = appData
+                destination.appData = self.appData
             }
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("logged out")
+//        FBSDKAccessToken.setValue(nil, forKey:"token")
     }
     
     @objc func playerItemDidReachEnd(notification:Notification){
