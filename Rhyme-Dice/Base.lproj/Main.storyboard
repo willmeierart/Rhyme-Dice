@@ -167,7 +167,7 @@
                                     <constraint firstAttribute="height" constant="50" id="bdb-yA-Efy"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F0G-wc-frb">
+                            <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F0G-wc-frb">
                                 <rect key="frame" x="0.0" y="20" width="375" height="545"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -223,6 +223,7 @@
                     <connections>
                         <outlet property="playButton" destination="Pj9-sv-MaR" id="0ij-xQ-w9y"/>
                         <outlet property="playerTable" destination="F0G-wc-frb" id="BBB-7h-OiQ"/>
+                        <outlet property="topBar" destination="LPm-d8-QyD" id="Upa-6E-g23"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4b9-mT-m32" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,6 +247,7 @@
                         <outlet property="rightDieStack" destination="EFw-cA-ock" id="Bs3-ao-I2h"/>
                         <outlet property="rightDieStackContainerView" destination="HXi-ur-bwI" id="Yjc-zu-51P"/>
                         <outlet property="rightWordButton" destination="ubD-eF-PG5" id="UlR-Wq-9K9"/>
+                        <outlet property="topBar" destination="pHy-MJ-GBc" id="xro-so-VMl"/>
                         <outlet property="view" destination="ed1-VA-Iti" id="sHe-Hf-AnR"/>
                     </connections>
                 </viewController>
@@ -255,11 +257,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Graf1" translatesAutoresizingMaskIntoConstraints="NO" id="hbi-hN-fgR">
+                        <imageView userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Graf1" translatesAutoresizingMaskIntoConstraints="NO" id="hbi-hN-fgR">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         </imageView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="TC0-ga-N8C">
-                            <rect key="frame" x="0.0" y="70" width="375" height="373"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="TC0-ga-N8C">
+                            <rect key="frame" x="0.0" y="70" width="375" height="380"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FfB-wl-5uh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -344,10 +346,10 @@
                                     </constraints>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ill-8p-1wm">
-                                    <rect key="frame" x="131" y="270" width="113" height="103"/>
+                                    <rect key="frame" x="152.5" y="320" width="70" height="60"/>
                                     <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                     <size key="titleShadowOffset" width="0.0" height="10"/>
-                                    <state key="normal" image="recButton">
+                                    <state key="normal" image="recordButton2">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     </state>
@@ -376,9 +378,10 @@
                                         <action selector="prev:" destination="lit-Gs-IJ5" eventType="touchUpInside" id="Aw4-z6-BEV"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLL-Ea-zXk">
+                                <button opaque="NO" tag="1" contentMode="center" restorationIdentifier="MainPlay" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLL-Ea-zXk">
                                     <rect key="frame" x="85.5" y="0.0" width="200" height="50"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="MainPlay"/>
                                     <rect key="contentStretch" x="0.69999999999999996" y="0.0" width="1" height="1"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="2I3-12-QDL"/>
@@ -798,6 +801,7 @@
                     <connections>
                         <outlet property="playButton" destination="0wz-Kb-Vk9" id="VcI-R1-OEc"/>
                         <outlet property="recordingsTable" destination="EeY-25-xXz" id="Gsp-Gl-3i4"/>
+                        <outlet property="topBar" destination="qX1-Cs-Zbq" id="rfK-Vo-rxu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ErH-Mv-Hxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -819,12 +823,12 @@
         <image name="playerFF" width="50" height="50"/>
         <image name="playerPlay" width="50" height="50"/>
         <image name="playerRW" width="50" height="50"/>
-        <image name="recButton" width="103" height="103"/>
+        <image name="recordButton2" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="que-j8-gdP"/>
-        <segue reference="IKS-FH-i6T"/>
-        <segue reference="1V1-OX-2pz"/>
+        <segue reference="mvy-yo-yR6"/>
+        <segue reference="0Zs-dx-SIf"/>
         <segue reference="egx-az-0c9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@ import AVFoundation
 
 class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var topBar: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBAction func play(_ sender: Any) {
         Player.Play(button: playButton)
@@ -38,11 +39,21 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
         do{
            let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
             Player.loadNewSource(source:NSURL(fileURLWithPath: audioPath!) as URL)
-            Player.Play(button:playButton)
+            
             thisSong = indexPath.row
             audioStuffed = true
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Main")
+            let mainPlayBtn = vc.view.viewWithTag(1) as? UIButton
+            
             DispatchQueue.main.asyncAfter(deadline: .now()){
-                self.performSegue(withIdentifier: "Beats2Home", sender: self)
+                Player.Play(button:self.playButton)
+                mainPlayBtn?.setImage(UIImage(named:"playerPause"), for: .normal)
+                DispatchQueue.main.asyncAfter(deadline: .now()){
+                    
+                    self.playButton.setImage(UIImage(named:"playerPause"), for: .normal)
+                    self.performSegue(withIdentifier: "Beats2Home", sender: self)
+                }
             }
         }catch{
             print("error")
@@ -52,6 +63,10 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         getSongs()
+        topBar.layer.shadowColor = UIColor.black.cgColor
+        topBar.layer.shadowOpacity = 0.5
+        topBar.layer.shadowOffset = CGSize(width:0, height:4.0)
+        topBar.layer.shadowRadius = 4
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -13,6 +13,7 @@ var thisRecording = 0
 
 class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    @IBOutlet weak var topBar: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBAction func play(_ sender: Any) {
         Player.Play(button: playButton)
@@ -42,8 +43,19 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
 
             Player.loadNewSource(source:recordingPath)
             
-            Player.Play(button:playButton)
             thisRecording = indexPath.row
+            audioStuffed = true
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Main")
+            let mainPlayBtn = vc.view.viewWithTag(1) as? UIButton
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()){
+                Player.Play(button:self.playButton)
+                mainPlayBtn?.setImage(UIImage(named:"playerPause"), for: .normal)
+                DispatchQueue.main.asyncAfter(deadline: .now()){
+                    self.playButton.setImage(UIImage(named:"playerPause"), for: .normal)
+                }
+            }
         }catch{
             print(error)
         }
@@ -56,7 +68,8 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
         var recordingPath = recordings[indexPath.row]
         
         let Edit = UITableViewRowAction(style: .normal, title: "edit") { (rowAction, indexPath) in
-            self.renameRecording(path:recordingPath, title:recordingTitles[indexPath.row], row:indexPath.row, indexPath: [indexPath])
+            print("edited")
+            self.renameRecording(path:recordingPath, title:recordingTitles[indexPath.row], row:indexPath.row, indexPath: indexPath)
         }
         Edit.backgroundColor = .yellow
         
@@ -64,6 +77,7 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
             recordings.remove(at:indexPath.row)
             recordingTitles.remove(at:indexPath.row)
             self.recordingsTable.deleteRows(at: [indexPath], with: .automatic)
+            print("recordingPath", recordingPath)
             try! FileManager.default.removeItem(at: recordingPath)
         }
         Delete.backgroundColor = .red
@@ -74,6 +88,10 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         RecordingsDataManager.getStoredRecordings()
 //        print(recordingTitles)
+        topBar.layer.shadowColor = UIColor.black.cgColor
+        topBar.layer.shadowOpacity = 0.5
+        topBar.layer.shadowOffset = CGSize(width:0, height:4.0)
+        topBar.layer.shadowRadius = 4
         
     }
     
@@ -82,9 +100,9 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
         RecordingsDataManager.getStoredRecordings()
     }
     
-    func renameRecording(path:URL, title:String, row:Int, indexPath:[IndexPath]){
+    func renameRecording(path:URL, title:String, row:Int, indexPath:IndexPath){
         var alertController:UIAlertController?
-        alertController = UIAlertController(title: "Name Recording",
+        alertController = UIAlertController(title: "Rename Recording",
                                             message: nil,
                                             preferredStyle: .alert)
         alertController!.addTextField(configurationHandler: {(textField: UITextField!) in
@@ -92,8 +110,8 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         let action = UIAlertAction(title: "Save",
                                    style:UIAlertActionStyle.default,
-                                   handler: {[unowned self]
-                                    (paramAction:UIAlertAction) -> Void?  in
+                                   handler: {[weak self]
+                                    (paramAction:UIAlertAction) in
                                     if let textFields = alertController?.textFields{
                                         let theTextFields = textFields as [UITextField]
                                         let enteredText = theTextFields[0].text
@@ -102,32 +120,41 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
 //                                        var Path = path
                                         
                                         let newName = enteredText!.replacingOccurrences(of: " ", with: "%20")
+                                        print(newName)
                                         
                                         let newFilePath:URL = URL(string:"\(basePath)\(newName).m4a")!
                                         
 //                                        print(newName)
-//                                        print(newFilePath)
+                                        
                                         
                                         do {
+                                            self?.recordingsTable.deleteRows(at: [indexPath], with: .automatic)
                                             recordings.remove(at:row)
                                             recordingTitles.remove(at:row)
                                             recordings.append(newFilePath)
                                             recordingTitles.append(newName)
-                                            self.recordingsTable.deleteRows(at: indexPath, with: .automatic)
+                                            
+                                            
+                                            print(newFilePath)
+                                            print(path)
+                                            
                                             try! FileManager.default.moveItem(at: path, to: newFilePath)
                                             
 //                                            path = newFilePath
                                             DispatchQueue.main.asyncAfter(deadline: .now()){
+                                                print("newFilePath", newFilePath)
                                                 RecordingsDataManager.uploadToAWS(file:newFilePath)
+                                                DispatchQueue.main.asyncAfter(deadline: .now()){
+                                                    RecordingsDataManager.getStoredRecordings()
+                                                    DispatchQueue.main.asyncAfter(deadline: .now()){
+                                                        self?.getRecordings()
+                                                    }
+                                                }
                                             }
-                                            DispatchQueue.main.asyncAfter(deadline: .now()){
-                                                RecordingsDataManager.getStoredRecordings()
-                                            }
+                                           
                                         } catch {print(error)}
-//                                        try FileManager.default.removeItem(at: path)
                                     }
-                                    return nil
-                                    } as? (UIAlertAction) -> Void)
+                                })
         
         alertController?.addAction(action)
         self.present(alertController!, animated:true, completion:nil)

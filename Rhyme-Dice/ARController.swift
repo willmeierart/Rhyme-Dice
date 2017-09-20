@@ -16,7 +16,6 @@ import ARKit
 class ARController: UIViewController, ARSCNViewDelegate {
     
     var diceArray:[SCNNode] = []
-    
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -123,7 +122,7 @@ class ARController: UIViewController, ARSCNViewDelegate {
     
     func roll(dice:SCNNode){
         let randomMultiplier = Float(arc4random_uniform(4)+7)
-        let randomFaceValue = CGFloat(Float(arc4random_uniform(4)+1) * (Float.pi/2))
+        let randomFaceValue = CGFloat(Float(arc4random_uniform(8)+1) * (Float.pi/2))
         
         let diceHeight = (0.000000002*dice.boundingSphere.radius)
         dice.pivot = SCNMatrix4MakeTranslation(0, 1.2, 0)
@@ -132,7 +131,7 @@ class ARController: UIViewController, ARSCNViewDelegate {
             SCNAction.rotateBy(
                 x: randomFaceValue,
                 y: 0,
-                z: 0,
+                z: randomFaceValue,
                 duration: TimeInterval(randomMultiplier * 0.1)
             )
         )

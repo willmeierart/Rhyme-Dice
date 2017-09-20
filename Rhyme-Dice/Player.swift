@@ -17,9 +17,7 @@ var audioStuffed = false
 var audioPlayer = AVAudioPlayer()
 
 class Player {
-    
-    
-    
+
     static func loadNewSource(source:URL){
 //        audioPlayer.url = source
         print(source)
@@ -35,10 +33,10 @@ class Player {
         if audioStuffed == true && audioPlayer.isPlaying == false{
             audioPlayer.play()
             button.setImage(UIImage(named:"playerPause"), for: .normal)
-        } else if audioPlayer.isPlaying == true{
+        } else if audioStuffed == true && audioPlayer.isPlaying == true{
             audioPlayer.pause()
             button.setImage(UIImage(named:"playerPlay"), for: .normal)
-        }
+        } else {return}
     }
     static func Prev() {
         if audioStuffed == true && thisSong != 1 {

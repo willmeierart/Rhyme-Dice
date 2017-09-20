@@ -42,6 +42,9 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     @IBOutlet weak var myVolumeViewParentView: UIView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var topBar: UIView!
+    
+    
     
 // IOS 11 THING:
     func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
@@ -69,11 +72,42 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let cloud1 = Cloud.generate()
         let cloud2 = Cloud.generate()
+        
         leftWordButton.setBackgroundImage(cloud1, for:.normal)
         rightWordButton.setBackgroundImage(cloud2, for:.normal)
+        
+        leftWordButton.layer.shadowColor = UIColor.black.cgColor
+        leftWordButton.layer.shadowOpacity = 0.75
+        leftWordButton.layer.shadowOffset = CGSize(width:0, height:3.0)
+        leftWordButton.layer.shadowRadius = 10
+        rightWordButton.layer.shadowColor = UIColor.black.cgColor
+        rightWordButton.layer.shadowOpacity = 0.75
+        rightWordButton.layer.shadowOffset = CGSize(width:0, height:3.0)
+        rightWordButton.layer.shadowRadius = 10
+        rightWordButton.titleLabel?.textAlignment = NSTextAlignment.center
+        leftWordButton.titleLabel?.textAlignment = NSTextAlignment.center
+        
+        leftDie.layer.shadowColor = UIColor.black.cgColor
+        leftDie.layer.shadowOpacity = 1
+        leftDie.layer.shadowOffset = CGSize(width:0, height:8.0)
+        leftDie.layer.shadowRadius = 10
+        rightDie.layer.shadowColor = UIColor.black.cgColor
+        rightDie.layer.shadowOpacity = 1
+        rightDie.layer.shadowOffset = CGSize(width:0, height:8.0)
+        rightDie.layer.shadowRadius = 10
+        
+        recordButton.layer.shadowColor = UIColor.black.cgColor
+        recordButton.layer.shadowOpacity = 1
+        recordButton.layer.shadowOffset = CGSize.zero
+        recordButton.layer.shadowRadius = 4
+        
+        topBar.layer.shadowColor = UIColor.black.cgColor
+        topBar.layer.shadowOpacity = 0.5
+        topBar.layer.shadowOffset = CGSize(width:0, height:4.0)
+        topBar.layer.shadowRadius = 4
         
         wordSets = []
         
@@ -147,7 +181,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
             audioRecorder.delegate = self
             audioRecorder.record()
             
-            recordButton.setImage(UIImage(named:"recButtonGreen"), for: .normal)
+            recordButton.setImage(UIImage(named:"recordButton2on"), for: .normal)
         } catch {
             finishRecording(success:false)
         }
@@ -162,7 +196,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         
         if success {
-            recordButton.setImage(UIImage(named:"recButton"), for: .normal)
+            recordButton.setImage(UIImage(named:"recordButton2"), for: .normal)
             alertFinishedRecording()
         }
     }

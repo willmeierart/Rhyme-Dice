@@ -123,7 +123,6 @@ class RecordingsDataManager {
                     if !recordingTitles.contains(myRecording){
                         recordingTitles.append(myRecording)
                     }
-                    
                 }
             }
             print("titles", recordingTitles.count)
@@ -132,8 +131,9 @@ class RecordingsDataManager {
         catch{}
     }
     static func formatRecordingTitle(recording:String) -> String{
-        var formatted = recording.replacingOccurrences(of: "%20", with: " ")
-        formatted = recording.replacingOccurrences(of: ".m4a", with: "")
+        let realSegment = recording.split(separator: "-").last
+        var formatted = realSegment!.replacingOccurrences(of: "%20", with: " ")
+        formatted = formatted.replacingOccurrences(of: ".m4a", with: "")
         return formatted
     }
     
@@ -153,10 +153,10 @@ class RecordingsDataManager {
             if let error = task.error { print("upload failed with error: \(error)") }
             if task.result != nil {
                 //                let s3URL = NSURL(string:"https://s3.amazonaws.com/\(bucket)/\(uniqueFileName)")
-                //                uploadRecordingData(recURL:s3URL)
+//                self.uploadRecordingDataToDB(recURL:s3URL)
             } else { print("unexpected empty result") }
             return nil
         })
     }
-    
+    static func uploadRecordingDataToDB(recURL:URL){}
 }
