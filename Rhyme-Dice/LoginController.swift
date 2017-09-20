@@ -67,6 +67,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
 //    })
     
     func fetchProfile(){
+        
+        
         var fbID:String = ""
         var email:String = ""
         var picture:String = ""
@@ -96,6 +98,9 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
     }
     func loginViewSegue(){
         self.performSegue(withIdentifier: "LoginSegue", sender: self)
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            RecordingsDataManager.updateAllDataFromServer()
+        }
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {

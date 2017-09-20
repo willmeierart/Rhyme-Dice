@@ -38,7 +38,7 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
         do{
            let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
             Player.loadNewSource(source:NSURL(fileURLWithPath: audioPath!) as URL)
-//            Player.Play(button:playButton)
+            Player.Play(button:playButton)
             thisSong = indexPath.row
             audioStuffed = true
             DispatchQueue.main.asyncAfter(deadline: .now()){

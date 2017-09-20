@@ -36,7 +36,9 @@ class RecordingsDataManager {
 //                print(myRecordingTitles)
 //                print(taggedRecordings)
 //                print(taggedRecordingTitles)
-                self.compareAndDownloadNew()
+                DispatchQueue.main.asyncAfter(deadline: .now()){
+                    self.compareAndDownloadNew()
+                }
             })
         })
     }
@@ -45,10 +47,11 @@ class RecordingsDataManager {
         let titles = Array([myRecordingTitles, taggedRecordingTitles].joined())
         let recs = Array([myRecordings, taggedRecordings].joined())
         for title in titles {
-            let recordingAtTitleIndex = recordings[titles.index(of:title)!]
+            
 //            print(recordingAtTitleIndex)
             if !recordingTitles.contains(title){
-                self.downloadRecordingFromAWS(rec:recordingAtTitleIndex)
+                let recordingAtTitleIndex = recs[titles.index(of:title)!]
+                self.downloadRecordingFromAWS(rec:URL(string:recordingAtTitleIndex)!)
 //                recordingTitles.append(title)
             }
         }

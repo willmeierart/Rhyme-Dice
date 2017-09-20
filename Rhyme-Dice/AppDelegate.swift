@@ -34,9 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-            RecordingsDataManager.updateAllDataFromServer()
-        }
+       
         
         
         
