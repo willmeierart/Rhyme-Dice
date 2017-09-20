@@ -38,7 +38,6 @@ class RecordingsDataManager {
 //                print(taggedRecordingTitles)
                 self.compareAndDownloadNew()
             })
-            
         })
     }
     
@@ -46,59 +45,26 @@ class RecordingsDataManager {
         let titles = Array([myRecordingTitles, taggedRecordingTitles].joined())
         let recs = Array([myRecordings, taggedRecordings].joined())
         for title in titles {
+            let recordingAtTitleIndex = recordings[titles.index(of:title)!]
+//            print(recordingAtTitleIndex)
             if !recordingTitles.contains(title){
-                self.downloadRecordingFromAWS(rec:recordings[titles.index(of:title)!])
-                recordingTitles.append(title)
+                self.downloadRecordingFromAWS(rec:recordingAtTitleIndex)
+//                recordingTitles.append(title)
             }
-
-//            recordingTitles.append(title)
         }
-//        for recording in recs {
-//            if !recordings.contains(URL(string: recording)!){
-//                self.downloadRecordingFromAWS(rec:recording)
-////                 recordings.append(URL(string: recording)!)
-//            }
-////
-//        }
-//        print(recordingTitles)
-//        print(recordings)
+        print (titles.count)
+        print (recs.count)
     }
     
-    static func downloadRecordingFromAWS(rec:String) {
-        if let audioUrl = URL(string: rec) {
-//            print(audioUrl)
-//            let documentsUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-//            let destination = documentsUrl.appendingPathComponent(audioUrl.lastPathComponent)
-////            print(destination)
-//            if FileManager().fileExists(atPath: destination.path) {
-//                print("The file already exists at path")
-//            } else {
-//                print("ok")
-//                URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, response, error) in
-//                    guard
-//                        let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-//                        let mimeType = response?.mimeType, mimeType.hasPrefix("audio"),
-//                        let location = location, error == nil
-//                        else {
-//                            print("ejected")
-//                            return }
-//                    do {
-//                        try FileManager.default.moveItem(at: location, to: destination)
-//                        print("file saved")
-//                    } catch {
-//                        print(error)
-//                    }
-//                }).resume()
-//            }
-//            let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//            let destination = try FileManager.default.contentsOfDirectory(at:folderURL, includingPropertiesForKeys:nil, options: .skipsHiddenFiles)
+    static func downloadRecordingFromAWS(rec:URL) {
+//        if let audioUrl = URL(string: rec) {
             let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
-            Alamofire.download(audioUrl, to:destination).responseData { response in
+            Alamofire.download(rec, to:destination).responseData { response in
                 if let data = response.result.value {
-//                    print(data)
+                    print(data)
                 }
             }
-        }
+//        }
     }
     
     static func parseData(data:JSON, set:String){
@@ -138,27 +104,27 @@ class RecordingsDataManager {
 //                print(recording)
                 var myRecording = recording.absoluteString
                 if myRecording.contains(".m4a"){
-                    print(recording)
-                    recordings.append(recording)
+//                    print(recording)
+                    if !recordings.contains(recording){
+                        recordings.append(recording)
+                    }
                     let asset = AVURLAsset(url:recording)
                     let recDuration = asset.duration
                     let recDurationSecs = CMTimeGetSeconds(recDuration)
                     var formatDur = String(format:"%.2f", recDurationSecs)
                     formatDur = formatDur.replacingOccurrences(of: ".", with: ":")
-//                    print(recording)
                     
                     myRecording = recording.lastPathComponent
                     myRecording = formatRecordingTitle(recording: myRecording)
-//                    print(myRecording)
 
-                    
-                    
-//                    myRecording = "\(myRecording) - \(formatDur)"
                     if !recordingTitles.contains(myRecording){
                         recordingTitles.append(myRecording)
                     }
+                    
                 }
             }
+            print("titles", recordingTitles.count)
+            print("recordings", recordings.count)
         }
         catch{}
     }

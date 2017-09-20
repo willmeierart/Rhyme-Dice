@@ -39,6 +39,8 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
             let recordingPath = recordings[indexPath.row]
+            
+            print(recordingPath)
 
             Player.loadNewSource(source:recordingPath)
             
