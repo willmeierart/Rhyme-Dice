@@ -34,6 +34,7 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "recording")
         cell.textLabel?.text = recordingTitles[indexPath.row]
+        cell.textLabel?.font = UIFont(name:"HelveticaNeue-Bold", size:22)
         return cell
     }
     
@@ -117,30 +118,22 @@ class RecordingsController: UIViewController, UITableViewDelegate, UITableViewDa
                                         let enteredText = theTextFields[0].text
                                         
                                         let basePath = path.deletingLastPathComponent()
-//                                        var Path = path
                                         
                                         let newName = enteredText!.replacingOccurrences(of: " ", with: "%20")
-                                        print(newName)
-                                        
                                         let newFilePath:URL = URL(string:"\(basePath)\(newName).m4a")!
-                                        
-//                                        print(newName)
-                                        
-                                        
+
                                         do {
                                             self?.recordingsTable.deleteRows(at: [indexPath], with: .automatic)
                                             recordings.remove(at:row)
                                             recordingTitles.remove(at:row)
                                             recordings.append(newFilePath)
                                             recordingTitles.append(newName)
-                                            
-                                            
-                                            print(newFilePath)
-                                            print(path)
+
+//                                            print(newFilePath)
+//                                            print(path)
                                             
                                             try! FileManager.default.moveItem(at: path, to: newFilePath)
                                             
-//                                            path = newFilePath
                                             DispatchQueue.main.asyncAfter(deadline: .now()){
                                                 print("newFilePath", newFilePath)
                                                 RecordingsDataManager.uploadToAWS(file:newFilePath)

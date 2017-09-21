@@ -97,9 +97,10 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     func loginViewSegue(){
-        self.performSegue(withIdentifier: "LoginSegue", sender: self)
+        RecordingsDataManager.updateAllDataFromServer()
         DispatchQueue.main.asyncAfter(deadline: .now()){
-            RecordingsDataManager.updateAllDataFromServer()
+            
+            self.performSegue(withIdentifier: "LoginSegue", sender: self)
         }
     }
     

@@ -112,27 +112,41 @@ class RecordingsDataManager {
                         recordings.append(recording)
                     }
                     let asset = AVURLAsset(url:recording)
-                    let recDuration = asset.duration
-                    let recDurationSecs = CMTimeGetSeconds(recDuration)
-                    var formatDur = String(format:"%.2f", recDurationSecs)
-                    formatDur = formatDur.replacingOccurrences(of: ".", with: ":")
+                    let formatDur = getRecDuration(asset: asset)
                     
                     myRecording = recording.lastPathComponent
                     myRecording = formatRecordingTitle(recording: myRecording)
+                    
+                    
+                    
+                    let fullRecordingFormat = "\(myRecording) - \(formatDur)"
 
-                    if !recordingTitles.contains(myRecording){
-                        recordingTitles.append(myRecording)
+//                    if !recordingTitles.contains(myRecording){
+//                        recordingTitles.append(myRecording)
+//                    }
+                    if !recordingTitles.contains(fullRecordingFormat){
+                        recordingTitles.append(fullRecordingFormat)
                     }
                 }
             }
-            print("titles", recordingTitles.count)
-            print("recordings", recordings.count)
+//            print("titles", recordingTitles.count)
+//            print("recordings", recordings.count)
         }
         catch{}
     }
+    
+    static func getRecDuration(asset:AVURLAsset)->String{
+        let recDuration = asset.duration
+        let recDurationSecs = CMTimeGetSeconds(recDuration)
+        var formatDur = String(format:"%.2f", recDurationSecs)
+        formatDur = formatDur.replacingOccurrences(of: ".", with: ":")
+        return formatDur
+    }
+    
     static func formatRecordingTitle(recording:String) -> String{
         let realSegment = recording.split(separator: "-").last
         var formatted = realSegment!.replacingOccurrences(of: "%20", with: " ")
+        formatted = formatted.replacingOccurrences(of: "+", with: " ")
         formatted = formatted.replacingOccurrences(of: ".m4a", with: "")
         return formatted
     }
@@ -158,5 +172,17 @@ class RecordingsDataManager {
             return nil
         })
     }
-    static func uploadRecordingDataToDB(recURL:URL){}
+//    static func uploadRecordingDataToDB(recURL:URL, title:String tags:[String?], length:Int){
+//
+//
+//        let postURL = baseAPIurl+"rec"
+//        Alamofire.request(postURL, method: .post, parameters:["url":recURL, title:title ]).responseJSON{ response in
+//            if response.result.isSuccess {
+//                let response:JSON = JSON(response.result.value!)
+//                completion(response)
+//            } else {
+//                print("Error \(String(describing: response.result.error))")
+//            }
+//        }
+//    }
 }

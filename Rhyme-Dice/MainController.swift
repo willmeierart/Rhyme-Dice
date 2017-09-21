@@ -89,6 +89,8 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
         rightWordButton.layer.shadowRadius = 10
         rightWordButton.titleLabel?.textAlignment = NSTextAlignment.center
         leftWordButton.titleLabel?.textAlignment = NSTextAlignment.center
+        rightWordButton.titleLabel?.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+        leftWordButton.titleLabel?.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         
         leftDie.layer.shadowColor = UIColor.black.cgColor
         leftDie.layer.shadowOpacity = 1
@@ -181,7 +183,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
             audioRecorder.delegate = self
             audioRecorder.record()
             
-            recordButton.setImage(UIImage(named:"recordButton2on"), for: .normal)
+            recordButton.setImage(UIImage(named:"recButton3b"), for: .normal)
         } catch {
             finishRecording(success:false)
         }
@@ -189,14 +191,17 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     func finishRecording(success: Bool){
         audioRecorder.stop()
         audioRecorder = nil
+//        audioPlayer()
+        
         if audioPlayer.isPlaying {
             audioPlayer.pause()
         }
         
+        
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         
         if success {
-            recordButton.setImage(UIImage(named:"recordButton2"), for: .normal)
+            recordButton.setImage(UIImage(named:"recButton3a"), for: .normal)
             alertFinishedRecording()
         }
     }
@@ -390,27 +395,5 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
             rightWordButton.setBackgroundImage(cloud, for:.normal)
         }
     }
-    
-//    func uploadToAWS(){
-//        let file = audioFilePath!
-//        let uniqueFileName = NSUUID().uuidString + "-" + file.lastPathComponent
-//        let bucket = "rhyme-dice-audio-va"
-//        
-//        let transferManager = AWSS3TransferManager.default()
-//        let uploadRequest = AWSS3TransferManagerUploadRequest()!
-//            uploadRequest.bucket = bucket
-//            uploadRequest.key = uniqueFileName
-//            uploadRequest.body = file
-//            uploadRequest.acl = AWSS3ObjectCannedACL.publicReadWrite
-//        transferManager.upload(uploadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
-//            
-//            if let error = task.error { print("upload failed with error: \(error)") }
-//            if task.result != nil {
-////                let s3URL = NSURL(string:"https://s3.amazonaws.com/\(bucket)/\(uniqueFileName)")
-////                uploadRecordingData(recURL:s3URL)
-//            } else { print("unexpected empty result") }
-//            return nil
-//        })
-//    }
 }
 

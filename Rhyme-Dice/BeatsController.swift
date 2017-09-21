@@ -32,6 +32,7 @@ class PlayerController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "player")
         cell.textLabel?.text = songs[indexPath.row]
+        cell.textLabel?.font = UIFont(name:"HelveticaNeue-Bold", size:22)
         return cell
     }
     

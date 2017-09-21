@@ -16,14 +16,25 @@ import ARKit
 class ARController: UIViewController, ARSCNViewDelegate {
     
     var diceArray:[SCNNode] = []
-
+    
     @IBOutlet var sceneView: ARSCNView!
+    
+    @IBAction func swipeReset(_ sender: UISwipeGestureRecognizer) {
+       if !diceArray.isEmpty {
+           for dice in diceArray {
+               dice.removeFromParentNode()
+           }
+            diceArray = []
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneView.delegate = self
         sceneView.autoenablesDefaultLighting = true
+        sceneView.automaticallyUpdatesLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +42,7 @@ class ARController: UIViewController, ARSCNViewDelegate {
         
         if ARWorldTrackingConfiguration.isSupported{
             let configuration = ARWorldTrackingConfiguration()
+//            func set
             configuration.planeDetection = .horizontal
             sceneView.session.run(configuration)
         } else {
@@ -102,14 +114,6 @@ class ARController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-//   @IBAction func removeDice(_ sender: UIBarButtonItem) {
-//       if !diceArray.isEmpty {
-//           for dice in diceArray {
-//               dice.removeFromParentNode()
-//           }
-//            diceArray = []
-//        }
-//   }
     
     
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
@@ -121,7 +125,7 @@ class ARController: UIViewController, ARSCNViewDelegate {
     }
     
     func roll(dice:SCNNode){
-        let randomMultiplier = Float(arc4random_uniform(4)+7)
+        let randomMultiplier = Float(arc4random_uniform(4)+3)
         let randomFaceValue = CGFloat(Float(arc4random_uniform(8)+1) * (Float.pi/2))
         
         let diceHeight = (0.000000002*dice.boundingSphere.radius)
@@ -156,6 +160,20 @@ class ARController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor,
+            let planeNode = node.childNodes.first,
+            let plane = planeNode.geometry as? SCNPlane
+        else{return}
+        
+        planeNode.simdPosition = float3(planeAnchor.center.x, 0, planeAnchor.center.z)
+        plane.width = CGFloat(planeAnchor.extent.x)
+        plane.height = CGFloat(planeAnchor.extent.z)
+        
+//        let planeNode = createPlane(withPlaneAnchor: planeAnchor)
+//        node.addChildNode(planeNode)
+    }
+    
     
     //MARK: - PlaneRenderingMethods:
     
@@ -167,8 +185,10 @@ class ARController: UIViewController, ARSCNViewDelegate {
         planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
         
         let gridMaterial = SCNMaterial()
-        gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
+        gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/gradientSurface.png")
         plane.materials = [gridMaterial]
+        
+        planeNode.opacity = 0.125
         
         planeNode.geometry = plane
         

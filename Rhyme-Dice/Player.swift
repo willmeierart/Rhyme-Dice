@@ -17,6 +17,10 @@ var audioStuffed = false
 var audioPlayer = AVAudioPlayer()
 
 class Player {
+    
+//    static func initialize(){
+//        audioPlayer = AVAudioPlayer()
+//    }
 
     static func loadNewSource(source:URL){
 //        audioPlayer.url = source
