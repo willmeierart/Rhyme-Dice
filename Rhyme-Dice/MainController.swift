@@ -139,6 +139,7 @@ class DiceController: UIViewController, AVAudioRecorderDelegate, UIDragInteracti
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        RecordingsDataManager.updateAllDataFromServer()
     }
     
 //    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {

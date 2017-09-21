@@ -92,16 +92,19 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
             friends = friendsData
             self.appData = ["id":fbID, "email":email, "picture":picture, "friends":friends]
             UserDefaults.standard.set(self.appData, forKey: "AppData")
-            self.loginViewSegue()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()){
+                self.performSegue(withIdentifier: "LoginSegue", sender: self)
+            }
+//            self.loginViewSegue()
         }
         
     }
     func loginViewSegue(){
-        RecordingsDataManager.updateAllDataFromServer()
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-            
-            self.performSegue(withIdentifier: "LoginSegue", sender: self)
-        }
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now()){
+//        self.performSegue(withIdentifier: "LoginSegue", sender: self)
+//        }
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -133,5 +136,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidDisappear(animated)
         avPlayer.pause()
         paused = true
+        
+
     }
 }
