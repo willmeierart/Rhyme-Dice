@@ -139,6 +139,34 @@ class ARController: UIViewController, ARSCNViewDelegate {
                 duration: TimeInterval(randomMultiplier * 0.1)
             )
         )
+        
+        let boxNormals:[GLKVector3] = [GLKVector3Make(0,0,1), GLKVector3Make(1,0,0), GLKVector3Make(0,0,-1), GLKVector3Make(-1,0,0), GLKVector3Make(0,1,0), GLKVector3Make(0,-1,0)]
+        
+//        //rotate up by invRotation
+//        SCNMatrix4 transform = SCNMatrix4MakeRotation(invRotation.w, invRotation.x, invRotation.y, invRotation.z);
+//        GLKMatrix4 glkTransform = SCNMatrix4ToGLKMatrix4(transform);
+//        GLKVector3 glkUp = SCNVector3ToGLKVector3(up);
+//        GLKVector3 rotatedUp = GLKMatrix4MultiplyVector3(glkTransform, glkUp);
+//
+//        int bestIndex = 0;
+//        float maxDot = -1;
+//
+//        for(int i=0; i<6; i++){
+//            float dot = GLKVector3DotProduct(boxNormals[i], rotatedUp);
+//            if(dot > maxDot){
+//                maxDot = dot;
+//                bestIndex = i;
+//            }
+//        }
+//
+//        return bestIndex;
+        
+        let up:SCNVector3 = SCNVector3Make(0,1,0)
+        
+        var invRotation = dice.rotation
+        invRotation.w = -invRotation.w
+        
+        print(dice.orientation)
     }
     
     func rollAll(){
